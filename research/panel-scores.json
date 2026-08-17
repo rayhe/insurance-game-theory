@@ -1,0 +1,322 @@
+[
+  {
+    "run": 1,
+    "timestamp": "2026-08-16T20:50:00-07:00",
+    "scores": {
+      "scholarly_rigor": 6,
+      "data_accuracy": 6,
+      "argument_quality": 7,
+      "writing_quality": 8,
+      "visual_ux": 7,
+      "completeness": 6
+    },
+    "average": 6.67,
+    "lowest_dimensions": [
+      "scholarly_rigor",
+      "data_accuracy",
+      "completeness"
+    ],
+    "changes": [
+      "Fixed denial rate 32% \u2192 33% per KFF 2023 CMS data",
+      "Corrected 'double industry avg' \u2192 '~1.7\u00d7 the 19% industry avg'",
+      "Clarified 90% error rate and 0.2% appeal rate as class action allegations",
+      "Added UNH counterargument callout (98% approval, 2% volume claim)",
+      "Added comparative denial rates chart (9 insurers from KFF data)",
+      "Added Cigna PxDx parallel in Information Asymmetry section",
+      "Added DOJ investigation to timeline",
+      "Added full Limitations section (4 paragraphs: data scope, allegation vs fact, confounding factors, model simplification)",
+      "Fixed stock chart with market cap-verified data points",
+      "Added 8 new source citations",
+      "Labeled stat card sources inline"
+    ],
+    "estimated_post_change_scores": {
+      "scholarly_rigor": 7.5,
+      "data_accuracy": 7.5,
+      "argument_quality": 7.5,
+      "writing_quality": 8,
+      "visual_ux": 7.5,
+      "completeness": 7
+    },
+    "estimated_post_change_average": 7.5
+  },
+  {
+    "run": 2,
+    "timestamp": "2026-08-16T21:50:00-07:00",
+    "scores": {
+      "scholarly_rigor": 7.5,
+      "data_accuracy": 7.5,
+      "argument_quality": 7.5,
+      "writing_quality": 8,
+      "visual_ux": 7.5,
+      "completeness": 7
+    },
+    "average": 7.5,
+    "lowest_dimensions": [
+      "completeness",
+      "scholarly_rigor",
+      "data_accuracy",
+      "argument_quality",
+      "visual_ux"
+    ],
+    "changes": [
+      "Added formal game theory citations: Nash (1950), Schelling (1960), Olson (1965)",
+      "Added mathematical notation (utility function formulation) to Asymmetric Risk Tolerance concept",
+      "Referenced Nash equilibrium definition in New Equilibrium section opening",
+      "Referenced Olson's Logic of Collective Action in Prisoner's Dilemma section",
+      "Expanded Mangione Aug 14 timeline with courtroom details",
+      "Added CMS public reporting milestone (Mar 31, 2026) to timeline",
+      "Added UNH Q2 2026 earnings (Jul 16, 2026) to timeline",
+      "Expanded Mechanism Design Failure with AMA physician survey data",
+      "Updated 'Where This Goes' with Q2 2026 MCR recovery data",
+      "Fixed stock chart: Dec 2025 \u2192 $326, Mar 2026 \u2192 $269, Apr 2026 \u2192 $270",
+      "Added 8 new source citations (total now 32, up from 24)"
+    ],
+    "estimated_post_change_scores": {
+      "scholarly_rigor": 8,
+      "data_accuracy": 8,
+      "argument_quality": 8,
+      "writing_quality": 8,
+      "visual_ux": 7.5,
+      "completeness": 7.5
+    },
+    "estimated_post_change_average": 7.83
+  },
+  {
+    "run": 3,
+    "timestamp": "2026-08-16T22:20:00-07:00",
+    "scores": {
+      "scholarly_rigor": 8.0,
+      "data_accuracy": 8.0,
+      "argument_quality": 8.0,
+      "writing_quality": 8.0,
+      "visual_ux": 7.5,
+      "completeness": 7.5
+    },
+    "average": 7.83,
+    "lowest_dimensions": [
+      "visual_ux",
+      "completeness"
+    ],
+    "changes": [
+      "Added state legislative wave section: 25+ states, 35+ bills regulating AI in PA decisions in 2026",
+      "Added Washington SB 5395 (Apr 3, 2026) banning AI-only PA denials to timeline",
+      "Added federal vs state AI regulation tension (Trump preemption EO vs bipartisan state action)",
+      "Added granular insurer reform data: Aetna 88% electronic, UNH/Cigna 70% target, 95% Aetna <24hr",
+      "Integrated Arrow (1963) foundational health economics into Information Asymmetry section",
+      "Added Rothschild-Stiglitz (1976) adverse selection citation as inverted paradigm",
+      "Fixed insurer pledge count: 50 -> nearly 60 per AJMC primary source",
+      "Added 8 new sources (total now 40): WSMA, PYMNTS/KFF, Morningstar, JAMA, AAFP, Arrow, R-S",
+      "Updated 'Where This Goes' with state legislative momentum and preemption battlefield"
+    ],
+    "estimated_post_change_scores": {
+      "scholarly_rigor": 8.5,
+      "data_accuracy": 8.0,
+      "argument_quality": 8.0,
+      "writing_quality": 8.0,
+      "visual_ux": 7.5,
+      "completeness": 8.0
+    },
+    "estimated_post_change_average": 8.0
+  },
+  {
+    "run": 4,
+    "timestamp": "2026-08-16T22:34:00-07:00",
+    "scores": {
+      "scholarly_rigor": 9.0,
+      "data_accuracy": 8.5,
+      "argument_quality": 9.0,
+      "writing_quality": 8.0,
+      "visual_ux": 8.0,
+      "completeness": 9.0
+    },
+    "average": 8.58,
+    "lowest_dimensions": [
+      "data_accuracy",
+      "writing_quality",
+      "visual_ux"
+    ],
+    "changes": [
+      "Added new Section IV: The Moral Calculus - Statistical Lives Saved (priority content)",
+      "Fermi estimate with 3 ranges: conservative 500-1,500, central 2,000-5,000, upper 8,000-12,000 lives/year",
+      "Built from 6 verified primary sources: MSK ASCO 2024, Cleveland Clinic 3.67M patients, BMJ systematic review 1.27M patients, AMA 2024 survey, Commonwealth Fund 2025 survey, DOT VSL",
+      "Interactive calculator with 4 adjustable parameters (PA eliminations, denial rate, mortality, VSL)",
+      "VSL value comparison: central $28-71B vs UNH $190B market cap loss",
+      "Lancet Medicaid rollback comparison (14,660 deaths/year) for scale",
+      "Full limitations section with 5 specific methodological caveats",
+      "Renumbered old Section IV (Implications) to Section V",
+      "Added 7 new source citations (total now 46+)",
+      "Added responsive CSS for calculator with dark mode styling",
+      "Added nav link for Lives Saved section"
+    ],
+    "estimated_post_change_scores": {
+      "scholarly_rigor": 9.0,
+      "data_accuracy": 8.5,
+      "argument_quality": 9.0,
+      "writing_quality": 8.0,
+      "visual_ux": 8.0,
+      "completeness": 9.0
+    },
+    "estimated_post_change_average": 8.58
+  },
+  {
+    "run": 5,
+    "timestamp": "2026-08-16T22:50:00-07:00",
+    "scores": {
+      "scholarly_rigor": 8.5,
+      "data_accuracy": 8.0,
+      "argument_quality": 8.5,
+      "writing_quality": 8.0,
+      "visual_ux": 7.5,
+      "completeness": 8.5
+    },
+    "average": 8.17,
+    "lowest_dimensions": [
+      "visual_ux",
+      "data_accuracy",
+      "writing_quality"
+    ],
+    "changes": [
+      "Fixed stock chart mid-2025 values against MacroTrends quarterly data (Jun 350->304, Sep 375->338, etc.)",
+      "Added Improving Seniors Timely Access to Care Act of 2026 (House committees bipartisan pass)",
+      "Added HHS $15B savings estimate from CMS-0057-F",
+      "Added Federal Legislative Momentum subsection",
+      "Expanded guilty plea with double jeopardy legal analysis (Capozzolo: more likely than not state case dismissed)",
+      "Added courtroom details (Judge Garnett, Thompson family, direct quotes)",
+      "Added Statistical Lives Saved horizontal bar range chart (4th visualization)",
+      "Updated limitations for double jeopardy game-theoretic implications",
+      "Added 5 new source citations (total now 51)"
+    ],
+    "estimated_post_change_scores": {
+      "scholarly_rigor": 8.5,
+      "data_accuracy": 8.5,
+      "argument_quality": 8.5,
+      "writing_quality": 8.0,
+      "visual_ux": 8.0,
+      "completeness": 9.0
+    },
+    "estimated_post_change_average": 8.42
+  },
+  {
+    "run": 6,
+    "timestamp": "2026-08-16T23:20:00-07:00",
+    "scores": {
+      "scholarly_rigor": 8.5,
+      "data_accuracy": 8.5,
+      "argument_quality": 8.5,
+      "writing_quality": 8.0,
+      "visual_ux": 8.0,
+      "completeness": 9.0
+    },
+    "average": 8.42,
+    "lowest_dimensions": [
+      "writing_quality",
+      "visual_ux"
+    ],
+    "changes": [
+      "Fixed UNH Q2 stock YTD: 37% \u2192 ~27% per Zacks primary source",
+      "Replaced enrollment drop claim (unverified 48.5M) with verified operating earnings data (+55% YoY, $8B)",
+      "Added UNH $4B share buyback, raised guidance, stock recovery to ~$400 from $260 lows",
+      "Added Stop Deadly Denials Act (H.R. 8377, Apr 2026, Khanna/Jayapal) \u2014 bans PA in Medicare Advantage",
+      "Added Prior Authorization Accountability Act (Goldman, bipartisan, Energy & Commerce) \u2014 mandatory denial rate disclosure",
+      "Added anonymous jury order for state trial (Judge Carro, after fan intimidation concerns)",
+      "Added Miranda Yaver/Medscape quote: \"I don't need a timelier denial\"",
+      "Cleaned up stock chart: reduced from 23 to 13 key data points, added colored key-point markers",
+      "Added scroll progress indicator (gradient accent\u2192purple bar under nav)",
+      "Restructured \"Where This Goes\" with three-bill federal pipeline",
+      "Added 4 new source citations (total now 55)",
+      "Updated timeline Jul 2026 entry with Prior Authorization Accountability Act"
+    ],
+    "estimated_post_change_scores": {
+      "scholarly_rigor": 8.5,
+      "data_accuracy": 9.0,
+      "argument_quality": 8.5,
+      "writing_quality": 8.0,
+      "visual_ux": 8.5,
+      "completeness": 9.0
+    },
+    "estimated_post_change_average": 8.58
+  },
+  {
+    "run": 7,
+    "timestamp": "2026-08-17T00:00:00-07:00",
+    "scores": {
+      "scholarly_rigor": 8.5,
+      "data_accuracy": 9.0,
+      "argument_quality": 8.5,
+      "writing_quality": 8.5,
+      "visual_ux": 8.5,
+      "completeness": 9.0
+    },
+    "average": 8.67,
+    "lowest_dimensions": [
+      "scholarly_rigor",
+      "argument_quality",
+      "writing_quality",
+      "visual_ux"
+    ],
+    "changes": [
+      "Added mobile hamburger navigation menu for responsive UX",
+      "Added IntersectionObserver scroll fade-in animations on all major content blocks",
+      "Added back-to-top button with smooth scroll",
+      "Added stat card and game theory box hover effects",
+      "Added Thompson family statement callout (\"Today's guilty plea marks an important step...\")",
+      "Updated state legislative count: 8 states enacted (added Minnesota HB, Indiana HB 1271 downcoding)",
+      "Tightened hero subtitle, removed filler words across multiple passages",
+      "Simplified double jeopardy paragraph, removed redundant legal analysis phrase",
+      "Sharpened Uncomfortable Conclusion prose (past tense framing)",
+      "Added 3 new source citations (total now 58): People/Thompson family, InsuranceNewsNet/Minnesota, Mondaq/Indiana, TechTarget/UNH 30% cut",
+      "Verified all UNH Q2 2026 financial data against Zacks/BusinessWire primary sources",
+      "Verified UNH stock price 01.73 as of Aug 14 2026 against MacroTrends/Finnhub"
+    ],
+    "estimated_post_change_scores": {
+      "scholarly_rigor": 8.5,
+      "data_accuracy": 9.0,
+      "argument_quality": 8.5,
+      "writing_quality": 8.5,
+      "visual_ux": 8.5,
+      "completeness": 9.0
+    },
+    "estimated_post_change_average": 8.67
+  },
+  {
+    "run": 8,
+    "timestamp": "2026-08-17T00:19:00-07:00",
+    "scores": {
+      "scholarly_rigor": 8.5,
+      "data_accuracy": 9.0,
+      "argument_quality": 8.5,
+      "writing_quality": 8.5,
+      "visual_ux": 8.5,
+      "completeness": 9.0
+    },
+    "average": 8.67,
+    "lowest_dimensions": [
+      "scholarly_rigor",
+      "argument_quality",
+      "writing_quality",
+      "visual_ux"
+    ],
+    "changes": [
+      "Added Hurwicz, Maskin & Myerson (2007 Nobel) mechanism design citation with incentive compatibility formalization",
+      "Added Pauly (1968) moral hazard citation to Martyrdom section \u2014 inverted moral hazard framework",
+      "Added Akerlof (1970) 'Market for Lemons' citation to Information Asymmetry section",
+      "Formalized mechanism design failure as incentive incompatibility (Hurwicz terminology)",
+      "Added Counterfactual Analysis section: timeline acceleration argument with specific evidence",
+      "Integrated poll data (Emerson 41%, NORC 70%) into opening prose for stronger narrative entry",
+      "Added active nav link highlighting on scroll (IntersectionObserver)",
+      "Added print stylesheet (full page formatting for paper output)",
+      "Added reading time estimate and source count in hero",
+      "Added section anchor pulse animation on navigation",
+      "Added 3 new academic source citations (total now 61): Hurwicz/Maskin/Myerson Nobel, Pauly, Akerlof"
+    ],
+    "estimated_post_change_scores": {
+      "scholarly_rigor": 9.0,
+      "data_accuracy": 9.0,
+      "argument_quality": 9.0,
+      "writing_quality": 8.5,
+      "visual_ux": 9.0,
+      "completeness": 9.0
+    },
+    "estimated_post_change_average": 8.92
+  }
+]
