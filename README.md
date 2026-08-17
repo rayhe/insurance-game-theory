@@ -19,8 +19,8 @@ A data-driven analysis of how the December 2024 killing of UnitedHealthcare CEO 
 
 | Metric | Value | Source |
 |--------|-------|--------|
-| UNH claim denial rate (pre-shooting) | 32% (2× industry avg) | Social media / industry data |
-| nH Predict AI error rate | 90% | Class action lawsuit |
+| UNH ACA marketplace denial rate (pre-shooting) | 33% (~1.7× industry avg of 19%) | KFF / CMS Public Use Files (2023 data) |
+| nH Predict denial reversal rate | 90% (per class action complaint) | Class action lawsuit (Nov 2023) |
 | Appeal rate among denied policyholders | 0.2% | Class action lawsuit |
 | Success rate of appeals | 82% | KFF / CMS data |
 | UNH market cap destroyed (Dec 2024 – May 2025) | >$190 billion | SEC filings |

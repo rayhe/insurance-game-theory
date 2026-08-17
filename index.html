@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The New Equilibrium: Game Theory of Health Insurance After Thompson</title>
-<meta name="description" content="A game-theoretic analysis of how the December 2024 shooting of UnitedHealthcare CEO Brian Thompson fundamentally altered the strategic landscape of health insurance denial practices.">
+<meta name="description" content="A game-theoretic analysis of how the December 2024 shooting of UnitedHealthcare CEO Brian Thompson exposed a catastrophic failure in health insurance denial incentive structures.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
@@ -430,28 +430,40 @@ footer {
 
   <p>Before December 2024, the health insurance industry operated under a set of implicit assumptions about the costs and benefits of aggressive denial practices. The data made the strategy clear:</p>
 
+  <div class="chart-container">
+    <div class="chart-title">ACA Marketplace In-Network Claim Denial Rates by Insurer (2023)</div>
+    <canvas id="denialChart"></canvas>
+  </div>
+
+  <p>Among high-volume insurers on the federal marketplace, UnitedHealth Group and Blue Cross Blue Shield of Alabama led with denial rates above 33%, while Kaiser Permanente denied just 6% of in-network claims. The industry average sat at 19%. These figures come from CMS public use files analyzed by KFF, and they capture only marketplace plans, not employer-sponsored or Medicare Advantage coverage.</p>
+
   <div class="stats-row">
     <div class="stat-card">
-      <div class="stat-value red">32%</div>
-      <div class="stat-label">UNH claim denial rate<br>(double industry avg)</div>
+      <div class="stat-value red">33%</div>
+      <div class="stat-label">UNH ACA marketplace denial rate<br>(~1.7&times; the 19% industry avg)</div>
     </div>
     <div class="stat-card">
       <div class="stat-value red">90%</div>
-      <div class="stat-label">nH Predict AI<br>error rate</div>
+      <div class="stat-label">nH Predict denial reversal<br>rate (per class action suit)</div>
     </div>
     <div class="stat-card">
       <div class="stat-value orange">0.2%</div>
-      <div class="stat-label">Policyholders who<br>appeal denials</div>
+      <div class="stat-label">Policyholders who<br>appeal denials (per suit)</div>
     </div>
     <div class="stat-card">
       <div class="stat-value green">82%</div>
-      <div class="stat-label">Appeals that overturn<br>the denial</div>
+      <div class="stat-label">Appeals that overturn<br>the denial (KFF/CMS)</div>
     </div>
   </div>
 
-  <p>Read those numbers together. UnitedHealthcare's AI algorithm, nH Predict (acquired via naviHealth in 2020), had a 90% error rate, as measured by how often its denials were overturned on review. But only 0.2% of policyholders ever appealed. The math is brutal: deny aggressively, bet on exhaustion, collect the spread.</p>
+  <p>Read those numbers together. UnitedHealthcare's AI algorithm, nH Predict (acquired via naviHealth in 2020), had what plaintiffs in a 2023 class action described as a 90% error rate, measured by how often its denials were overturned on internal review or by administrative law judges. But only 0.2% of policyholders ever appealed. The math, if the lawsuit's figures hold, is brutal: deny aggressively, bet on exhaustion, collect the spread.</p>
 
-  <p>When appeals did happen, 82% succeeded in overturning the denial. The system wasn't making accurate medical decisions. It was making a bet that sick people wouldn't fight back.</p>
+  <p>When appeals did happen, the lawsuit alleges they succeeded overwhelmingly. The system wasn't making accurate medical decisions. It was making a bet that sick people wouldn't fight back.</p>
+
+  <div class="callout orange">
+    <strong>UnitedHealth disputes these characterizations.</strong> A company spokesperson stated that nH Predict "is not used to make coverage determinations" but rather as "a guide to help us inform providers, families and other caregivers." UNH says its overall claims approval rate is 98% for eligible members with timely, complete, non-duplicate submissions. The company called the KFF marketplace denial data "grossly misleading," noting it represents only about 2% of total claims volume.
+    <cite>UnitedHealthcare Newsroom, "Get the facts: How many claims are denied?" / InsuranceNewsNet, Feb 2025</cite>
+  </div>
 
   <div class="callout red">
     <strong>"The elderly are prematurely kicked out of care facilities nationwide or forced to deplete family savings to continue receiving necessary care, all because an AI model 'disagrees' with their real live doctors' recommendations."</strong>
@@ -491,6 +503,10 @@ footer {
     <div class="timeline-item red">
       <div class="tl-date">May 13, 2025</div>
       <div class="tl-text">CEO Andrew Witty resigns. All 2025 guidance withdrawn. Stock falls another 17%. Total market cap loss since shooting exceeds <strong>$190 billion</strong>. Former CEO Stephen Hemsley (age 72) returns.</div>
+    </div>
+    <div class="timeline-item red">
+      <div class="tl-date">May 2025</div>
+      <div class="tl-text">DOJ opens investigation into UnitedHealth Group billing and coding practices. Separately, Change Healthcare cyberattack (Feb 2024) continues generating legal fallout with over 100 lawsuits consolidated in MDL.</div>
     </div>
     <div class="timeline-item green">
       <div class="tl-date">Jun 23, 2025</div>
@@ -563,7 +579,7 @@ footer {
 
   <h3>The Pre-Shooting Payoff Matrix</h3>
 
-  <p>Before December 2024, the insurer's decision calculus for claims looked like this:</p>
+  <p>Before December 2024, the insurer's decision calculus for claims looked like this (figures from the 2023 class action complaint):</p>
 
   <div class="matrix-wrap">
     <table class="payoff">
@@ -601,7 +617,7 @@ footer {
     </table>
   </div>
 
-  <p>The expected value of denying was overwhelmingly positive because the probability of any meaningful pushback was 0.2%. The system was stable because the "punishment" for wrongful denial (an appeal) was rare and low-cost. There was no row in the matrix for "patient responds with violence."</p>
+  <p>The expected value of denying was overwhelmingly positive because the probability of any meaningful pushback was vanishingly small. The system was stable because the "punishment" for wrongful denial (an appeal) was rare and low-cost. There was no row in the matrix for "patient responds with violence."</p>
 
   <div class="gt-box">
     <div class="gt-label">Concept 4</div>
@@ -612,7 +628,8 @@ footer {
   <div class="gt-box">
     <div class="gt-label">Concept 5</div>
     <div class="gt-title">Information Asymmetry Collapse</div>
-    <p>Before the shooting, insurers maintained informational advantages that made the denial strategy viable: proprietary algorithms (nH Predict), opaque denial criteria, deliberately complex appeals processes. The shooting triggered forced disclosure. A Senate report on denial practices, the class action revealing the 90% error rate, public data requirements under the 2024 Interoperability and Prior Authorization Rule (first reports published March 2026), and KFF's analysis of insurer-reported denial rates all followed. The information asymmetry that enabled the old equilibrium has been structurally reduced, though not eliminated.</p>
+    <p>Before the shooting, insurers maintained informational advantages that made the denial strategy viable: proprietary algorithms (nH Predict at UnitedHealth, PxDx at Cigna), opaque denial criteria, deliberately complex appeals processes. The shooting triggered forced disclosure. A Senate report on denial practices, the class action revealing the alleged 90% error rate, public data requirements under the 2024 Interoperability and Prior Authorization Rule (first reports published March 2026), and KFF's analysis of insurer-reported denial rates all followed. The information asymmetry that enabled the old equilibrium has been structurally reduced, though not eliminated.</p>
+    <p>Notably, algorithmic denial was not unique to UnitedHealth. In 2023, a separate class action alleged that Cigna's PxDx system allowed medical directors to deny claims in batches, spending an average of 1.2 seconds per review. The pattern was industry-wide; Thompson's killing merely made UnitedHealth the focal point.</p>
   </div>
 
   <div class="gt-box">
@@ -726,7 +743,19 @@ footer {
   <p>The most likely outcome is Path A plus Path C: a combination of voluntary reform and escalating regulation, driven by the political reality that "doing nothing" is no longer viable when a CMS Administrator publicly cites violence as the catalyst for change. The 2024 Interoperability and Prior Authorization Rule's public disclosure requirements, which went into effect in 2026, make denial practices visible in a way they never were before. Transparency alone changes the game, because it eliminates the information asymmetry that made aggressive denial profitable.</p>
 
   <p>The insurance industry will survive this. It will be less profitable. Prior authorization will not disappear, but it will be faster, more transparent, and subject to meaningful oversight. Executive security will remain elevated permanently. And somewhere in the actuarial models, there will be a new variable that didn't exist before December 2024: the cost of creating people with nothing left to lose.</p>
+  <h3>Limitations of This Analysis</h3>
+
+  <p>Several caveats apply. First, the denial rate data comes from ACA marketplace plans sold on HealthCare.gov, which represent roughly 2% of UnitedHealth's total claims volume. Whether the pattern holds across employer-sponsored and Medicare Advantage plans is an open question, though the naviHealth/nH Predict lawsuit specifically targeted Medicare Advantage. UNH says its overall approval rate is 98% when accounting for duplicates, eligibility, and timely submissions.</p>
+
+  <p>Second, the 90% error rate and 0.2% appeal rate are allegations from a class action complaint, not independently audited figures. They are calculated from reversal rates on review, which may overstate algorithmic error if the review process itself applies different standards. UNH denies that nH Predict is used for coverage determinations at all.</p>
+
+  <p>Third, this analysis treats the Thompson shooting as an inflection point, which it clearly was for stock price and public discourse. But disentangling the shooting's effect from other factors (the DOJ investigation into UNH billing practices, Medicare Advantage star rating changes, rising medical cost ratios, the Optum Rx cyberattack fallout) is methodologically difficult. The $190 billion market cap decline reflects all of these, not the shooting alone.</p>
+
+  <p>Fourth, game-theoretic models are simplifications. Real insurance markets involve regulators, hospital systems, pharmaceutical manufacturers, and employers as additional players, each with their own strategy sets. The two-player models presented here illuminate the core dynamics but do not capture the full complexity of the healthcare payment ecosystem.</p>
+
 </section>
+
+<div class="divider"></div>
 
 <!-- ============ SOURCES ============ -->
 <div class="sources" id="sources">
@@ -753,6 +782,12 @@ footer {
       <li>PLOS ONE, "Delay, deny, and defend: Public outrage at health insurance companies and stock market debacle," 2025. <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0334399">Link</a></li>
       <li>Becker's Hospital Review, "Insurers' prior authorization commitments, 1 year in," Jul 2026. <a href="https://www.beckershospitalreview.com/finance/insurers-prior-authorization-commitments-1-year-in/">Link</a></li>
       <li>KFF Health News, "Feds Move to Rein In Prior Authorization," 2026. <a href="https://kffhealthnews.org/health-industry/prior-authorization-patient-frustration-federal-regulations/">Link</a></li>
+      <li>KFF, "ACA Marketplace Insurer Denial Rates, 2023 Data," 2025. Analysis based on CMS Public Use Files. <a href="https://www.kff.org/private-insurance/issue-brief/claims-denials-and-appeals-in-aca-marketplace-plans/">Link</a></li>
+      <li>InsuranceNewsNet, "UnitedHealth Group, two Blues plans had highest denial rates for ACA health plans in 2023," Feb 2025. <a href="https://insurancenewsnet.com/oarticle/unitedhealth-group-two-blues-plans-had-highest-denial-rates-for-aca-health-plans-in-2023">Link</a></li>
+      <li>UnitedHealthcare Newsroom, "Get the facts: How many claims are denied?" <a href="https://www.uhc.com/news-articles/newsroom/how-many-claims-are-denied">Link</a></li>
+      <li>ProPublica, "How Cigna Saves Millions by Having Its Doctors Reject Claims Without Reading Them," Mar 2023.</li>
+      <li>MacroTrends, "UnitedHealth Group 15-Year Stock Price History." <a href="https://macrotrends.net/stocks/charts/UNH/unitedhealth-group/stock-price-history">Link</a></li>
+      <li>AJMC, "How Often Do Health Insurers Deny Doctor-Recommended Care?" Jun 2026. <a href="https://www.ajmc.com/view/how-often-do-health-insurers-deny-doctor-recommended-care">Link</a></li>
     </ol>
   </div>
 </div>
@@ -768,17 +803,74 @@ Chart.defaults.borderColor = '#2a2a3a';
 Chart.defaults.font.family = "'IBM Plex Mono', monospace";
 Chart.defaults.font.size = 11;
 
+// Denial rate comparison chart
+const denialCtx = document.getElementById('denialChart').getContext('2d');
+new Chart(denialCtx, {
+  type: 'bar',
+  data: {
+    labels: ['BCBS\nAlabama', 'United\nHealth', 'HCSC', 'Anthem', 'Aetna', 'Cigna', 'BCBS\n(avg)', 'Oscar\nHealth', 'Kaiser\nPermanente'],
+    datasets: [{
+      label: 'Denial Rate (%)',
+      data: [35, 33, 29, 23, 22, 21, 20, 17, 6],
+      backgroundColor: [
+        'rgba(255,71,87,0.8)',
+        'rgba(255,71,87,0.9)',
+        'rgba(255,71,87,0.65)',
+        'rgba(255,165,2,0.7)',
+        'rgba(255,165,2,0.6)',
+        'rgba(255,165,2,0.5)',
+        'rgba(74,158,255,0.5)',
+        'rgba(74,158,255,0.4)',
+        'rgba(46,213,115,0.7)'
+      ],
+      borderRadius: 4
+    }, {
+      label: 'Industry Average (19%)',
+      data: [19, 19, 19, 19, 19, 19, 19, 19, 19],
+      type: 'line',
+      borderColor: '#ffa502',
+      borderDash: [6, 4],
+      borderWidth: 2,
+      pointRadius: 0,
+      fill: false
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { boxWidth: 12, padding: 16 }
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 40,
+        ticks: {
+          callback: function(v) { return v + '%'; }
+        },
+        grid: { color: 'rgba(42,42,58,0.5)' }
+      },
+      x: {
+        grid: { display: false }
+      }
+    }
+  }
+});
+
 // Stock price chart
 const stockCtx = document.getElementById('stockChart').getContext('2d');
 new Chart(stockCtx, {
   type: 'line',
   data: {
     labels: [
-      'Nov 2024', 'Dec 4', 'Dec 9', 'Jan 2025', 'Feb', 'Mar', 'Apr 17', 'May 13', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan 2026', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug 2026'
+      'Nov 2024', 'Dec 4', 'Dec 31', 'Jan 2025', 'Feb', 'Mar', 'Apr 17', 'May 13', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan 2026', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug 2026'
     ],
     datasets: [{
       label: 'UNH Stock Price (approx)',
-      data: [610, 585, 555, 540, 530, 520, 402, 335, 350, 370, 360, 380, 390, 370, 345, 330, 310, 290, 280, 310, 350, 380, 400],
+      data: [600, 585, 505, 510, 520, 515, 402, 335, 350, 370, 355, 375, 385, 365, 325, 331, 281, 290, 270, 364, 375, 390, 401],
       borderColor: '#4a9eff',
       backgroundColor: 'rgba(74,158,255,0.08)',
       fill: true,
