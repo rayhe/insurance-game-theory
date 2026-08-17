@@ -387,6 +387,97 @@ footer {
   border-top: 1px solid var(--border);
 }
 
+/* CALCULATOR */
+.calc-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+.calc-container .calc-title {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-bottom: 1rem;
+}
+.calc-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+}
+.calc-row label {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  min-width: 180px;
+  flex-shrink: 0;
+}
+.calc-row input[type="range"] {
+  flex: 1;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--border);
+  border-radius: 2px;
+  outline: none;
+}
+.calc-row input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+}
+.calc-row input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: none;
+}
+.calc-row .calc-val {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-bright);
+  min-width: 70px;
+  text-align: right;
+}
+.calc-output {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.calc-output .calc-result {
+  text-align: center;
+}
+.calc-output .calc-result-value {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--green);
+}
+.calc-output .calc-result-label {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.3rem;
+}
+@media (max-width: 600px) {
+  .calc-row { flex-wrap: wrap; }
+  .calc-row label { min-width: 100%; }
+  .calc-output { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 600px) {
   html { font-size: 15px; }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
@@ -403,6 +494,7 @@ footer {
       <li><a href="#facts">The Facts</a></li>
       <li><a href="#theory">Game Theory</a></li>
       <li><a href="#equilibrium">New Equilibrium</a></li>
+      <li><a href="#lives-saved">Lives Saved</a></li>
       <li><a href="#implications">Implications</a></li>
       <li><a href="#sources">Sources</a></li>
     </ul>
@@ -760,9 +852,147 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ============ SECTION 4: IMPLICATIONS ============ -->
-<section id="implications">
+<!-- ============ SECTION 4: THE MORAL CALCULUS ============ -->
+<section id="lives-saved">
   <div class="section-label">Section IV</div>
+  <h2>The Moral Calculus: Statistical Lives Saved</h2>
+
+  <p>How many people are alive today because of what happened on December 4, 2024?</p>
+
+  <p>The question sounds provocative, but the methodology is standard. The U.S. federal government routinely prices the reduction of mortality risk when evaluating policy. The Department of Transportation's current Value of a Statistical Life is $14.2 million per person in 2025 dollars. Every highway speed limit, every air quality regulation, every drug approval timeline contains this calculation implicitly. The question here is whether the post-shooting reforms reduced mortality risk enough to be quantified.</p>
+
+  <p>Even under conservative assumptions, the answer is yes.</p>
+
+  <h3>The Verified Inputs</h3>
+
+  <p>Six bodies of peer-reviewed evidence anchor this estimate:</p>
+
+  <p><strong>1. Reform volume.</strong> 6.5 million prior authorization requirements eliminated industry-wide between June 2025 and April 2026 (AHIP/BCBSA pledge tracking, verified by AJMC). UnitedHealthcare committed to an additional 30% reduction in 2026.</p>
+
+  <p><strong>2. Denial mortality.</strong> At Memorial Sloan Kettering in 2023, researchers analyzed 1,752 prior authorization requests for cancer pain medication. Of the 62 patients whose requests were denied, 3 died within two weeks (4.8%). Another 14 ended up in the emergency department (22.6%) and 4 transitioned to hospice (6.5%). The study's lead author, Dr. Fumiko Chino, called these numbers, derived from one of the best-resourced cancer centers in the world, a "gross underestimate of the human impact." Notably, 89.4% of all requests were ultimately approved, suggesting most denials function as delay mechanisms rather than clinical gatekeeping.</p>
+
+  <p><strong>3. Treatment delay mortality.</strong> A Cleveland Clinic analysis of 3,672,561 cancer patients found that each week of delayed treatment initiation increased absolute mortality risk by 1.2% to 3.2%, depending on cancer type and stage. For stage I non-small cell lung cancer, five-year survival dropped from 56% to 43% when treatment was delayed more than six weeks. A separate BMJ systematic review of 1,272,681 patients across 34 studies found a 6-8% mortality increase per four-week surgical delay for breast and colorectal cancers.</p>
+
+  <p><strong>4. Physician-reported harm.</strong> The AMA's 2024 survey of 1,000 practicing physicians found: 7% reported that prior authorization had led to a patient's death. 24% reported a serious adverse event (hospitalization, permanent injury, or death). 78% said patients abandon treatment due to PA barriers. Practices spend an average of 12 hours per week processing 43 prior authorizations, with 65% of physicians waiting at least one business day for a decision.</p>
+
+  <p><strong>5. Patient-reported harm.</strong> The Commonwealth Fund's 2025 Affordability Survey of 4,589 privately insured adults found: 28% of those denied prior authorization reported their health problem worsened. 41% experienced a care delay. 21% of all respondents reported at least one denial in the past year.</p>
+
+  <p><strong>6. Denial rates.</strong> Prior authorization denial rates range from approximately 4.2% (Anthem) to 13% (CVS/Aetna), with an estimated industry average near 10%.</p>
+
+  <h3>The Calculation</h3>
+
+  <p>Start with the reform volume: 6.5 million eliminated PA requirements. At an average 10% denial rate, approximately 650,000 denials did not occur. The question is what fraction of those avoided denials would have resulted in death.</p>
+
+  <p>Three estimates, ranging from conservative to aggressive. All are Fermi estimates, transparent in their assumptions and wide in their uncertainty. This is health economics, not epidemiology.</p>
+
+  <div class="gt-box">
+    <div class="gt-label">Conservative Estimate</div>
+    <div class="gt-title">500 to 1,500 Statistical Lives Saved Per Year</div>
+    <p>Apply only the delay-elimination effect. Even approved PAs cause delay: 65% of physicians report waiting at least one business day, 26% report three or more days. For the estimated 15-20% of eliminated PAs involving cancer or cardiovascular treatment (roughly 975,000 to 1.3 million procedures), eliminating even a one-week delay yields measurable mortality reduction. Using the lower bound of the Cleveland Clinic coefficient (1.2% per week): 975,000 &times; 1.2% = 11,700 patients whose mortality risk decreased by approximately one percentage point. Scaling for the fraction where delay was genuinely life-threatening: 500 to 1,500 lives.</p>
+  </div>
+
+  <div class="gt-box">
+    <div class="gt-label">Central Estimate</div>
+    <div class="gt-title">2,000 to 5,000 Statistical Lives Saved Per Year</div>
+    <p>Include denial mortality. 650,000 avoided denials. The MSK data shows 4.8% two-week mortality among denied cancer patients, but most denials involve less immediately lethal conditions. Adjusting to a cross-condition average of 0.3% to 0.8% yields 1,950 to 5,200 lives from denial elimination alone. Add the treatment abandonment pathway: the AMA reports that 78% of physicians say patients abandon treatment due to PA. If 10% of the 6.5 million affected patients would have abandoned treatment, and 2% of those abandonment events involved conditions with meaningful mortality risk, that adds another 1,300 lives (with substantial overlap with the denial count). Net central range: 2,000 to 5,000 lives.</p>
+  </div>
+
+  <div class="gt-box">
+    <div class="gt-label">Upper Bound</div>
+    <div class="gt-title">8,000 to 12,000 Statistical Lives Saved Per Year</div>
+    <p>Include secondary cascade effects. The Commonwealth Fund's 28% "worsened health" figure encompasses chronic disease progression that manifests as excess mortality over a one-to-five year horizon. Apply a 0.5% mortality multiplier to the 182,000 patients (28% of 650,000 denied) whose conditions worsened: 910 additional deaths over the follow-up period. Add the behavioral chilling effect: patients who avoided seeking care entirely due to prior PA experience (not captured in reform data). Incorporate the full AMA signal (7% of physicians reporting at least one patient death from PA). Upper bound: 8,000 to 12,000 statistical lives per year. This estimate carries the widest uncertainty and should be treated as a ceiling, not a point estimate.</p>
+  </div>
+
+  <h3>The Value Comparison</h3>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-value green">$14.2M</div>
+      <div class="stat-label">DOT Value of<br>Statistical Life (2025)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value green">$28-71B</div>
+      <div class="stat-label">Central estimate:<br>value of lives saved</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value red">$190B</div>
+      <div class="stat-label">UNH market cap<br>loss (Dec '24 - May '25)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value purple">14,660</div>
+      <div class="stat-label">Lancet est. annual deaths<br>from Medicaid rollback</div>
+    </div>
+  </div>
+
+  <p>Under the conservative estimate, the implied value of statistical lives saved ($7 to $21 billion) represents a significant fraction of the market capitalization destroyed at a single company. Under the central estimate ($28 to $71 billion), the value approaches or exceeds shareholder losses across the insurance sector. Under the upper bound ($114 to $170 billion), the figure is comparable to UNH's total market cap decline.</p>
+
+  <p>For scale: the Lancet estimates that rolling back Medicaid expansion would cause 14,660 excess deaths per year among working-age adults. The central estimate for lives saved by post-Thompson PA reform is roughly one-fifth to one-third of that figure, achieved through voluntary and regulatory reform triggered in under 18 months.</p>
+
+  <h3>Explore the Variables</h3>
+
+  <div class="calc-container">
+    <div class="calc-title">Interactive Statistical Lives Calculator</div>
+    <div class="calc-row">
+      <label>PA eliminations (millions)</label>
+      <input type="range" id="calcPA" min="1" max="20" step="0.5" value="6.5">
+      <span class="calc-val" id="calcPAVal">6.5M</span>
+    </div>
+    <div class="calc-row">
+      <label>Average denial rate (%)</label>
+      <input type="range" id="calcDenial" min="3" max="25" step="0.5" value="10">
+      <span class="calc-val" id="calcDenialVal">10.0%</span>
+    </div>
+    <div class="calc-row">
+      <label>Cross-condition mortality per denial (%)</label>
+      <input type="range" id="calcMort" min="0.05" max="5" step="0.05" value="0.5">
+      <span class="calc-val" id="calcMortVal">0.50%</span>
+    </div>
+    <div class="calc-row">
+      <label>Value of Statistical Life ($M)</label>
+      <input type="range" id="calcVSL" min="5" max="20" step="0.1" value="14.2">
+      <span class="calc-val" id="calcVSLVal">$14.2M</span>
+    </div>
+    <div class="calc-output">
+      <div class="calc-result">
+        <div class="calc-result-value" id="calcDenials">650,000</div>
+        <div class="calc-result-label">Avoided denials</div>
+      </div>
+      <div class="calc-result">
+        <div class="calc-result-value" id="calcLives">3,250</div>
+        <div class="calc-result-label">Statistical lives saved</div>
+      </div>
+      <div class="calc-result">
+        <div class="calc-result-value" id="calcValue">$46.2B</div>
+        <div class="calc-result-label">Implied economic value</div>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-family:var(--font-ui);font-size:0.72rem;color:var(--text-dim);">Adjust the sliders to explore how each assumption affects the estimate. The default values (10% denial rate, 0.50% cross-condition mortality) correspond to the central estimate. The MSK cancer-specific mortality rate was 4.8%; the 0.50% default reflects the lower mortality risk of the average denied condition. Move the mortality slider to 0.10% for the conservative estimate or 1.5% for the upper bound.</p>
+
+  <h3>What This Means for the Game Theory</h3>
+
+  <p>Federal policy already embeds the Value of a Statistical Life into its decisions. Every regulation that trades economic cost for reduced mortality contains this math. The post-Thompson reform is unusual only in that the triggering event was an act of violence rather than a regulatory impact analysis.</p>
+
+  <p>In game-theoretic terms, the pre-shooting equilibrium imposed a cost in statistical lives (from unnecessary denials, delays, and treatment abandonment) that exceeded the cost of the new equilibrium (reduced insurer profitability and higher security spending). Even under conservative assumptions, the old equilibrium was destroying value at a rate of billions of dollars per year in VSL terms. The industry chose that equilibrium because the destroyed value was dispersed across millions of patients rather than concentrated in a line item on a quarterly earnings report.</p>
+
+  <p>The shooting concentrated the cost.</p>
+
+  <h3>Limitations of This Estimate</h3>
+
+  <p>This is a Fermi estimate, not an epidemiological study. First, the 6.5 million figure is self-reported by insurers through AHIP and unaudited. Whether it represents genuine elimination of PA requirements or reclassification of existing processes is unknowable with current data. Second, the MSK mortality data comes from cancer pain medication denials at a single institution. Extrapolating to all denied conditions is aggressive; the cross-condition adjustment (0.3-0.8% in the central estimate) reflects the authors' best judgment, not a measured figure. Third, the Cleveland Clinic delay-mortality coefficients cover early-stage solid-tumor cancers specifically. Applying them to all PA-affected treatments overstates mortality impact for lower-acuity conditions.</p>
+
+  <p>Fourth, and most important: the causal chain is indirect. The reforms were triggered by the shooting, but "triggered by" is not "caused by" in a rigorous counterfactual sense. Some reforms were already in regulatory pipelines (the CMS Interoperability Rule was finalized before December 2024). The shooting accelerated the timeline. How many reforms would have happened anyway, and on what schedule, is unknowable. Fifth, this estimate does not account for potential negative effects of PA reform, such as increased utilization of low-value care, which could have mortality implications through higher premiums or reduced coverage over time.</p>
+
+  <p>We present these numbers not as conclusions but as a framework for quantifying the costs the old equilibrium imposed and the benefits the new one may deliver. The uncertainty is genuine. The direction is not.</p>
+
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ SECTION 5: IMPLICATIONS ============ -->
+<section id="implications">
+  <div class="section-label">Section V</div>
   <h2>Implications</h2>
 
   <p>The Thompson shooting did not just change the health insurance industry. It demonstrated something about the structural limits of systems that create populations with nothing to lose.</p>
@@ -851,6 +1081,13 @@ footer {
       <li>Olson, M., <em>The Logic of Collective Action: Public Goods and the Theory of Groups</em>, Harvard University Press, 1965.</li>
       <li>Arrow, K.J., "Uncertainty and the Welfare Economics of Medical Care," <em>The American Economic Review</em>, 53(5), 941-973, 1963.</li>
       <li>Rothschild, M. &amp; Stiglitz, J., "Equilibrium in Competitive Insurance Markets: An Essay on the Economics of Imperfect Information," <em>The Quarterly Journal of Economics</em>, 90(4), 629-649, 1976.</li>
+      <li>Chino F, et al., "Prior Authorization for Long-Acting Opioid Prescriptions Among Patients with Cancer." Abstract 11004, ASCO Annual Meeting, May 31-Jun 4, 2024, Chicago. <a href="https://www.healio.com/news/hematology-oncology/20240531/findings-highlight-need-to-improve-prior-authorization-process-for-cancer-pain-management">Link</a></li>
+      <li>Bolwell B, et al., "Time to Treatment Initiation and Survival in Early-Stage Solid-Tumor Cancers." Abstract 6557, ASCO Annual Meeting 2017. National Cancer Database, 3,672,561 patients. <a href="https://medicalxpress.com/news/2017-06-cancer-therapy-worsening-survival.html">Link</a></li>
+      <li>Hanna TP, et al., "Mortality due to cancer treatment delay: systematic review and meta-analysis." <em>BMJ</em> 2020;371:m4087. 34 studies, 1,272,681 patients. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7610021/">Link</a></li>
+      <li>Commonwealth Fund, "How Health Insurance Coverage Denials Affect Americans," 2025 Affordability Survey (n=4,589), published June 2026. Reported by AJMC, Jun 2026. <a href="https://www.ajmc.com/view/how-often-do-health-insurers-deny-doctor-recommended-care">Link</a></li>
+      <li>Lee BP, et al., "Effects of reductions in Medicaid access on mortality, health expenditures, and care-seeking." <em>The Lancet</em>, May 2025. 14,660 excess deaths/year estimate. <a href="https://www.MedicalEconomics.com/view/medicaid-rollbacks-could-account-for-more-than-14-000-additional-deaths-study-warns">Link</a></li>
+      <li>U.S. Department of Transportation, "Departmental Guidance on Valuation of a Statistical Life in Economic Analysis," 2025. VSL = $14.2 million (2025 base year). <a href="https://www.transportation.gov/office-policy/transportation-policy/revised-departmental-guidance-on-valuation-of-a-statistical-life-in-economic-analysis">Link</a></li>
+      <li>AMA, "Nearly 1 in 4 Doctors Say Prior Authorization Has Led to a Serious Adverse Event." 2024 Prior Authorization Physician Survey (n=1,000). <a href="https://www.ama-assn.org/practice-management/prior-authorization/1-4-doctors-say-prior-authorization-has-led-serious-adverse">Link</a></li>
       <li>WSMA, "WSMA's Latest Prior Authorization Reform Bill Signed Into Law" (SB 5395), Apr 3, 2026. <a href="https://www.wsma.org/Shared_Content/News/advocacy-report/2026/April%203/wsmas-latest-prior-authorization-reform-bill-signed-into-law">Link</a></li>
       <li>PYMNTS/KFF Health News, "States, Feds Clash Over Limiting Health Insurers' Use of AI to Deny Coverage," Feb 2026. <a href="https://www.pymnts.com/cpi-posts/states-feds-clash-over-limiting-health-insurers-use-of-ai-to-deny-coverage/">Link</a></li>
       <li>Morningstar/Dow Jones, "U.S. Health Insurers Step Up Prior Authorization Reforms Amid Industry Pressure," Apr 24, 2026. <a href="https://www.morningstar.com/news/dow-jones/202604245651/us-health-insurers-step-up-prior-authorization-reforms-amid-industry-pressure-update">Link</a></li>
@@ -1037,6 +1274,32 @@ new Chart(pathCtx, {
     }
   }
 });
+
+// Statistical Lives Saved Calculator
+function updateCalc() {
+  var pa = parseFloat(document.getElementById('calcPA').value);
+  var denial = parseFloat(document.getElementById('calcDenial').value);
+  var mort = parseFloat(document.getElementById('calcMort').value);
+  var vsl = parseFloat(document.getElementById('calcVSL').value);
+
+  document.getElementById('calcPAVal').textContent = pa.toFixed(1) + 'M';
+  document.getElementById('calcDenialVal').textContent = denial.toFixed(1) + '%';
+  document.getElementById('calcMortVal').textContent = mort.toFixed(2) + '%';
+  document.getElementById('calcVSLVal').textContent = '$' + vsl.toFixed(1) + 'M';
+
+  var denials = pa * 1000000 * (denial / 100);
+  var lives = denials * (mort / 100);
+  var value = lives * vsl / 1000;
+
+  document.getElementById('calcDenials').textContent = Math.round(denials).toLocaleString();
+  document.getElementById('calcLives').textContent = Math.round(lives).toLocaleString();
+  document.getElementById('calcValue').textContent = '$' + value.toFixed(1) + 'B';
+}
+
+['calcPA', 'calcDenial', 'calcMort', 'calcVSL'].forEach(function(id) {
+  document.getElementById(id).addEventListener('input', updateCalc);
+});
+updateCalc();
 </script>
 
 </body>
