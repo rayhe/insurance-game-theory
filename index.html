@@ -1442,28 +1442,70 @@ new Chart(denialCtx, {
 });
 
 // Stock price chart
+// UNH daily/weekly close prices from verified sources:
+// StatMuse monthly OHLC, Zacks daily articles, Faller v. UNH lawsuit filings,
+// FXStreet/TradingView contemporaneous reporting, financialcontent.com daily data,
+// finnhub real-time data. See research/methodology.md for source details.
+var stockKeyEvents = {
+  4: {label: 'Shooting', color: '#ff4757'},
+  5: {label: '-4%', color: '#ff4757'},
+  11: {label: 'Apr 16 pre-earnings', color: '#ff4757'},
+  12: {label: 'Q1 miss -22%', color: '#ff4757'},
+  14: {label: 'Witty resigns', color: '#ff4757'},
+  19: {label: 'Near bottom', color: '#ff6348'},
+  33: {label: 'Q2 \'26 earnings', color: '#2ed573'},
+  35: {label: 'Current', color: '#2ed573'}
+};
 const stockCtx = document.getElementById('stockChart').getContext('2d');
 new Chart(stockCtx, {
   type: 'line',
   data: {
     labels: [
-      'Nov \'24', 'Dec 4', 'Dec 31', 'Mar \'25', 'Apr 17', 'May 13', 'Jun', 'Sep', 'Dec', 'Mar \'26', 'May', 'Jul 16', 'Aug \'26'
+      'Oct 1 \'24','Oct 31','Nov 29',
+      'Dec 3','Dec 4','Dec 5','Dec 10','Dec 24','Dec 31',
+      'Jan 31 \'25','Feb 28','Mar 31',
+      'Apr 16','Apr 17','Apr 30',
+      'May 13','May 30',
+      'Jun 30',
+      'Jul 25','Jul 31',
+      'Aug 1','Aug 8','Aug 15','Aug 29',
+      'Sep 30','Oct 31','Nov 28','Dec 31',
+      'Jan 30 \'26','Feb 27','Mar 31',
+      'Apr 30','May 29','Jun 30',
+      'Jul 16','Jul 31',
+      'Aug 14'
     ],
     datasets: [{
       label: 'UNH Stock Price',
-      data: [600, 585, 505, 515, 402, 335, 304, 338, 326, 269, 364, 390, 401],
+      data: [
+        561, 542, 585,
+        595, 601, 577, 565, 506, 506,
+        522, 457, 506,
+        585, 454, 398,
+        340, 292,
+        304,
+        281, 250,
+        238, 251, 304, 302,
+        338, 335, 323, 326,
+        283, 289, 269,
+        368, 378, 416,
+        415, 436,
+        402
+      ],
       borderColor: '#4a9eff',
       backgroundColor: 'rgba(74,158,255,0.08)',
       fill: true,
-      tension: 0.3,
+      tension: 0.1,
       pointRadius: function(ctx) {
-        var keyPoints = [0, 1, 4, 5, 11, 12];
-        return keyPoints.includes(ctx.dataIndex) ? 4 : 0;
+        return stockKeyEvents[ctx.dataIndex] ? 5 : 0;
       },
       pointBackgroundColor: function(ctx) {
-        if (ctx.dataIndex <= 1) return '#ff4757';
-        if (ctx.dataIndex >= 11) return '#2ed573';
-        return '#4a9eff';
+        var evt = stockKeyEvents[ctx.dataIndex];
+        return evt ? evt.color : '#4a9eff';
+      },
+      pointBorderColor: function(ctx) {
+        var evt = stockKeyEvents[ctx.dataIndex];
+        return evt ? evt.color : '#4a9eff';
       },
       pointHoverRadius: 6,
       borderWidth: 2
@@ -1476,6 +1518,11 @@ new Chart(stockCtx, {
       legend: { display: false },
       tooltip: {
         callbacks: {
+          title: function(items) {
+            var idx = items[0].dataIndex;
+            var evt = stockKeyEvents[idx];
+            return evt ? items[0].label + ' — ' + evt.label : items[0].label;
+          },
           label: function(ctx) { return '$' + ctx.parsed.y; }
         }
       }
@@ -1483,10 +1530,11 @@ new Chart(stockCtx, {
     scales: {
       y: {
         beginAtZero: false,
-        min: 250,
+        min: 200,
         max: 650,
         ticks: {
-          callback: function(v) { return '$' + v; }
+          callback: function(v) { return '$' + v; },
+          stepSize: 50
         },
         grid: { color: 'rgba(42,42,58,0.5)' }
       },
@@ -1495,7 +1543,7 @@ new Chart(stockCtx, {
         ticks: {
           maxRotation: 45,
           autoSkip: true,
-          maxTicksLimit: 12
+          maxTicksLimit: 14
         }
       }
     },
