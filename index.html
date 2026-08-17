@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The New Equilibrium: Game Theory of Health Insurance After Thompson</title>
+<meta name="description" content="A game-theoretic analysis of how the December 2024 shooting of UnitedHealthcare CEO Brian Thompson fundamentally altered the strategic landscape of health insurance denial practices.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg-elevated: #12121a;
+  --bg-card: #1a1a25;
+  --border: #2a2a3a;
+  --text: #e0e0e8;
+  --text-dim: #8888a0;
+  --text-bright: #ffffff;
+  --accent: #4a9eff;
+  --accent-dim: #2a6ecc;
+  --red: #ff4757;
+  --red-dim: #cc2233;
+  --green: #2ed573;
+  --orange: #ffa502;
+  --purple: #a855f7;
+  --font-body: 'Source Serif 4', Georgia, serif;
+  --font-ui: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --max-width: 820px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; font-size: 17px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: rgba(10,10,15,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  padding: 0 1.5rem;
+}
+nav .nav-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 52px;
+}
+nav .nav-title {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.03em;
+}
+nav .nav-links {
+  display: flex; gap: 1.5rem; list-style: none;
+}
+nav .nav-links a {
+  font-family: var(--font-ui);
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: color 0.2s;
+}
+nav .nav-links a:hover { color: var(--accent); }
+@media (max-width: 700px) {
+  nav .nav-links { display: none; }
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  padding: 6rem 1.5rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(74,158,255,0.06) 0%, transparent 70%);
+}
+.hero-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.hero h1 {
+  font-family: var(--font-body);
+  font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+  font-weight: 700;
+  color: var(--text-bright);
+  line-height: 1.15;
+  max-width: 800px;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.hero .subtitle {
+  font-size: 1.15rem;
+  color: var(--text-dim);
+  max-width: 600px;
+  line-height: 1.65;
+  position: relative;
+}
+.hero .date {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  margin-top: 2rem;
+  position: relative;
+}
+
+/* SECTIONS */
+section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+section.wide { max-width: 1000px; }
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+h2 {
+  font-family: var(--font-body);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+h3 {
+  font-family: var(--font-ui);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin: 2.5rem 0 0.75rem;
+}
+p { margin-bottom: 1.25rem; }
+p + p { margin-top: 0; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* STATS ROW */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 2.5rem 0;
+}
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-align: center;
+}
+.stat-card .stat-value {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.stat-card .stat-value.red { color: var(--red); }
+.stat-card .stat-value.green { color: var(--green); }
+.stat-card .stat-value.orange { color: var(--orange); }
+.stat-card .stat-value.accent { color: var(--accent); }
+.stat-card .stat-value.purple { color: var(--purple); }
+.stat-card .stat-label {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  margin-top: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* CHART */
+.chart-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+.chart-container .chart-title {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-bottom: 1rem;
+}
+.chart-container canvas {
+  width: 100% !important;
+  max-height: 340px;
+}
+
+/* CALLOUT */
+.callout {
+  background: var(--bg-card);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+  font-size: 0.95rem;
+}
+.callout.red { border-left-color: var(--red); }
+.callout.orange { border-left-color: var(--orange); }
+.callout.green { border-left-color: var(--green); }
+.callout.purple { border-left-color: var(--purple); }
+.callout cite {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  font-style: normal;
+  margin-top: 0.5rem;
+}
+
+/* GAME THEORY BOX */
+.gt-box {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+.gt-box .gt-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--purple);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.gt-box .gt-title {
+  font-family: var(--font-ui);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-bottom: 0.75rem;
+}
+.gt-box p {
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+/* PAYOFF MATRIX */
+.matrix-wrap {
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+table.payoff {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+}
+table.payoff th, table.payoff td {
+  border: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  text-align: center;
+}
+table.payoff th {
+  background: var(--bg-elevated);
+  color: var(--text-bright);
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+table.payoff td {
+  background: var(--bg-card);
+}
+table.payoff td.highlight {
+  background: rgba(74,158,255,0.08);
+  border-color: var(--accent-dim);
+}
+table.payoff .cell-label {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  display: block;
+  margin-top: 0.25rem;
+}
+
+/* TIMELINE */
+.timeline {
+  position: relative;
+  margin: 2rem 0;
+  padding-left: 2rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute; left: 0.5rem; top: 0; bottom: 0;
+  width: 2px; background: var(--border);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.75rem;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute; left: -1.75rem; top: 0.5rem;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+}
+.timeline-item.red::before { background: var(--red); }
+.timeline-item.green::before { background: var(--green); }
+.timeline-item.orange::before { background: var(--orange); }
+.timeline-item .tl-date {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+}
+.timeline-item.red .tl-date { color: var(--red); }
+.timeline-item .tl-text {
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+  color: var(--text);
+  margin-top: 0.2rem;
+}
+
+/* DIVIDER */
+.divider {
+  width: 60px;
+  height: 1px;
+  background: var(--border);
+  margin: 4rem auto;
+}
+
+/* SOURCES */
+.sources {
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border);
+  padding: 3rem 1.5rem;
+}
+.sources-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.sources h2 { font-size: 1.3rem; }
+.sources ol {
+  padding-left: 1.5rem;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+.sources ol li { margin-bottom: 0.3rem; }
+.sources ol a { color: var(--accent); font-size: 0.78rem; }
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 600px) {
+  html { font-size: 15px; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  section { padding: 3rem 1rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">insurance-game-theory</span>
+    <ul class="nav-links">
+      <li><a href="#facts">The Facts</a></li>
+      <li><a href="#theory">Game Theory</a></li>
+      <li><a href="#equilibrium">New Equilibrium</a></li>
+      <li><a href="#implications">Implications</a></li>
+      <li><a href="#sources">Sources</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Game Theory &times; Health Insurance</div>
+  <h1>The New Equilibrium</h1>
+  <p class="subtitle">How the killing of UnitedHealthcare CEO Brian Thompson revealed a catastrophic failure in the game theory of health insurance denial practices, and why the industry's old equilibrium can never return.</p>
+  <p class="date">Last updated August 16, 2026</p>
+</div>
+
+<!-- ============ SECTION 1: THE FACTS ============ -->
+<section id="facts">
+  <div class="section-label">Section I</div>
+  <h2>The Facts</h2>
+
+  <p>On December 4, 2024, UnitedHealthcare CEO Brian Thompson was shot and killed outside the Hilton Midtown in Manhattan. The words "delay," "deny," and "depose" were carved into the shell casings found at the scene, echoing a phrase used to describe insurer tactics for avoiding claims. Five days later, 26-year-old Luigi Mangione was arrested at a McDonald's in Altoona, Pennsylvania.</p>
+
+  <p>What followed was not a moment of national mourning. It was a national conversation about whether the killing was, in some structural sense, inevitable.</p>
+
+  <h3>The Pre-Shooting Baseline</h3>
+
+  <p>Before December 2024, the health insurance industry operated under a set of implicit assumptions about the costs and benefits of aggressive denial practices. The data made the strategy clear:</p>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-value red">32%</div>
+      <div class="stat-label">UNH claim denial rate<br>(double industry avg)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value red">90%</div>
+      <div class="stat-label">nH Predict AI<br>error rate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value orange">0.2%</div>
+      <div class="stat-label">Policyholders who<br>appeal denials</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value green">82%</div>
+      <div class="stat-label">Appeals that overturn<br>the denial</div>
+    </div>
+  </div>
+
+  <p>Read those numbers together. UnitedHealthcare's AI algorithm, nH Predict (acquired via naviHealth in 2020), had a 90% error rate, as measured by how often its denials were overturned on review. But only 0.2% of policyholders ever appealed. The math is brutal: deny aggressively, bet on exhaustion, collect the spread.</p>
+
+  <p>When appeals did happen, 82% succeeded in overturning the denial. The system wasn't making accurate medical decisions. It was making a bet that sick people wouldn't fight back.</p>
+
+  <div class="callout red">
+    <strong>"The elderly are prematurely kicked out of care facilities nationwide or forced to deplete family savings to continue receiving necessary care, all because an AI model 'disagrees' with their real live doctors' recommendations."</strong>
+    <cite>Class action lawsuit against UnitedHealth Group, filed November 2023 (Stat News)</cite>
+  </div>
+
+  <h3>The Financial Reckoning</h3>
+
+  <p>The shooting's financial impact on UnitedHealth Group was severe and sustained. The company's stock became a real-time barometer of how markets priced the new reality:</p>
+
+  <div class="chart-container">
+    <div class="chart-title">UNH Stock Price: The Cascading Collapse</div>
+    <canvas id="stockChart"></canvas>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item red">
+      <div class="tl-date">Dec 4, 2024</div>
+      <div class="tl-text">Brian Thompson shot and killed outside Hilton Midtown, Manhattan. Stock initially rises, then falls sharply over two sessions as social media backlash explodes.</div>
+    </div>
+    <div class="timeline-item red">
+      <div class="tl-date">Dec 9, 2024</div>
+      <div class="tl-text">Luigi Mangione arrested at McDonald's in Altoona, PA. "Wanted" posters of other healthcare CEOs appear in Manhattan. Companies begin removing executive photos from websites.</div>
+    </div>
+    <div class="timeline-item orange">
+      <div class="tl-date">Dec 2024</div>
+      <div class="tl-text">Emerson College poll: <strong>41% of voters age 18-29</strong> find the killing "acceptable." NORC poll: <strong>70% of Americans</strong> blame insurance denials and profits for creating conditions that led to the shooting.</div>
+    </div>
+    <div class="timeline-item red">
+      <div class="tl-date">Apr 17, 2025</div>
+      <div class="tl-text">UNH reports Q1 earnings miss (first since 2008). EPS guidance slashed from $29.50-$30.00 to $26.00-$26.50. Stock drops <strong>22.4% in a single day</strong>, wiping out $119 billion in market cap. CEO Witty calls results "unusual and unacceptable."</div>
+    </div>
+    <div class="timeline-item red">
+      <div class="tl-date">May 7, 2025</div>
+      <div class="tl-text">Shareholders file class action suit (<em>Faller v. UnitedHealth Group</em>, SDNY No. 25-03799), alleging UNH concealed that backlash-driven reform was eroding profitability.</div>
+    </div>
+    <div class="timeline-item red">
+      <div class="tl-date">May 13, 2025</div>
+      <div class="tl-text">CEO Andrew Witty resigns. All 2025 guidance withdrawn. Stock falls another 17%. Total market cap loss since shooting exceeds <strong>$190 billion</strong>. Former CEO Stephen Hemsley (age 72) returns.</div>
+    </div>
+    <div class="timeline-item green">
+      <div class="tl-date">Jun 23, 2025</div>
+      <div class="tl-text">Nearly 50 insurers sign voluntary prior authorization reform pledge with CMS/HHS. CMS Administrator Mehmet Oz explains why reform is happening now: <em>"There's violence in the streets over these issues."</em></div>
+    </div>
+    <div class="timeline-item green">
+      <div class="tl-date">Apr 2026</div>
+      <div class="tl-text">AHIP reports 11% reduction in prior auth requirements (6.5 million fewer). Medicare Advantage sees 15% reduction. Critics call it "barely scratching the surface."</div>
+    </div>
+    <div class="timeline-item orange">
+      <div class="tl-date">Aug 14, 2026</div>
+      <div class="tl-text">Mangione pleads guilty to two federal stalking charges. No plea deal. Prosecutors seek life. He files double jeopardy motion to dismiss state murder charges. Sentencing set for Dec 18, 2026.</div>
+    </div>
+  </div>
+
+  <h3>The Industry Response</h3>
+
+  <p>The insurance industry's response was split between performative reform and genuine fear:</p>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-value accent">50</div>
+      <div class="stat-label">Insurers signed<br>reform pledge</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value green">6.5M</div>
+      <div class="stat-label">Fewer prior auth<br>requirements</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value orange">$1.7M</div>
+      <div class="stat-label">UNH exec security<br>spending (2024)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value purple">2&times;</div>
+      <div class="stat-label">S&P 500 median exec<br>security spend (2021-23)</div>
+    </div>
+  </div>
+
+  <p>At least a dozen S&P 500 companies flagged increased security risks in their 2025 proxy statements. The Department of Homeland Security issued a report warning that "individuals mobilized by economic grievances are using the murder of a health insurance CEO as inspiration for threats and attack plotting, expanding their target set to include government and public safety officials."</p>
+
+  <p>But the most revealing response was from the shareholders. The <em>Faller v. UnitedHealth Group</em> lawsuit alleged that UNH quietly shifted to approving more claims after the shooting, concealing the profitability impact from investors. The thesis of the lawsuit is remarkable: the company's stock price was fraudulently inflated because management didn't disclose that <em>they were being nicer to patients</em>. The fact that "treating patients better" is a material risk factor tells you everything about the pre-shooting equilibrium.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ SECTION 2: THE GAME THEORY ============ -->
+<section id="theory">
+  <div class="section-label">Section II</div>
+  <h2>The Game Theory</h2>
+
+  <p>The Thompson shooting can be analyzed as a catastrophic failure in mechanism design, one in which every player acted rationally within their own framework, yet the system produced an outcome that no party would have chosen ex ante. Here are the formal concepts at work.</p>
+
+  <div class="gt-box">
+    <div class="gt-label">Concept 1</div>
+    <div class="gt-title">Asymmetric Risk Tolerance</div>
+    <p>In standard negotiations, both parties have something to lose from escalation. This creates a natural boundary on conflict. The health insurance model breaks this assumption for a specific population: people who have been denied life-saving or life-altering care. A terminal patient facing a denial has a fundamentally different utility function than a corporate actor. The marginal cost of extreme action approaches zero when expected remaining utility is already near zero. The industry priced this risk at approximately zero for decades.</p>
+  </div>
+
+  <div class="gt-box">
+    <div class="gt-label">Concept 2</div>
+    <div class="gt-title">Repeated Game to One-Shot Game</div>
+    <p>For a healthy person, health insurance functions as a repeated game. You cooperate now (pay premiums, tolerate bureaucracy) because you expect future benefit. This structure incentivizes compliance. For a person denied life-saving coverage, the game becomes one-shot. There are no future rounds. The cooperative incentive vanishes entirely. The insurer's entire strategy depended on treating all interactions as moves within a repeated game. Thompson's killing demonstrated that some interactions are terminal rounds, with no future to incentivize cooperation.</p>
+  </div>
+
+  <div class="gt-box">
+    <div class="gt-label">Concept 3</div>
+    <div class="gt-title">Credible Threat and Deterrence Failure</div>
+    <p>The industry's pre-shooting equilibrium implicitly assumed that the legal and social costs of violence were sufficient deterrents for all players. This assumption held for decades. But deterrence requires that the threatened party values what is at stake. A person facing denial of life-saving treatment, who has already exhausted appeals, is not deterrable in the conventional sense. The shooting established, empirically, that this population exists and that its members can act. The threat became credible through demonstration.</p>
+  </div>
+
+  <h3>The Pre-Shooting Payoff Matrix</h3>
+
+  <p>Before December 2024, the insurer's decision calculus for claims looked like this:</p>
+
+  <div class="matrix-wrap">
+    <table class="payoff">
+      <tr>
+        <th></th>
+        <th colspan="2">Patient Response</th>
+      </tr>
+      <tr>
+        <th></th>
+        <th>Accept Denial (99.8%)</th>
+        <th>Appeal (0.2%)</th>
+      </tr>
+      <tr>
+        <th>Insurer: Deny Claim</th>
+        <td class="highlight">
+          <strong style="color:var(--green)">+$X saved</strong>
+          <span class="cell-label">Insurer wins, patient absorbs cost</span>
+        </td>
+        <td>
+          <strong style="color:var(--orange)">-$X (82% of appeals)</strong>
+          <span class="cell-label">Insurer pays after delay; tiny population</span>
+        </td>
+      </tr>
+      <tr>
+        <th>Insurer: Approve Claim</th>
+        <td>
+          <strong style="color:var(--red)">-$X cost</strong>
+          <span class="cell-label">Insurer pays; patient gets care</span>
+        </td>
+        <td>
+          <strong style="color:var(--text-dim)">N/A</strong>
+          <span class="cell-label">No appeal if approved</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <p>The expected value of denying was overwhelmingly positive because the probability of any meaningful pushback was 0.2%. The system was stable because the "punishment" for wrongful denial (an appeal) was rare and low-cost. There was no row in the matrix for "patient responds with violence."</p>
+
+  <div class="gt-box">
+    <div class="gt-label">Concept 4</div>
+    <div class="gt-title">Mechanism Design Failure</div>
+    <p>Every complex system needs a release valve. In healthcare, the designated mechanisms were: internal appeals, external review, state insurance commissioners, CMS oversight, and the courts. These mechanisms existed. They also failed. When 82% of appeals succeed but only 0.2% of patients appeal, the mechanism is not functioning as designed. It is functioning as a filter that selects for the most persistent patients while allowing the vast majority of wrongful denials to stand unchallenged. The shooting was what happens when the designated release valves are inadequate: pressure finds another outlet.</p>
+  </div>
+
+  <div class="gt-box">
+    <div class="gt-label">Concept 5</div>
+    <div class="gt-title">Information Asymmetry Collapse</div>
+    <p>Before the shooting, insurers maintained informational advantages that made the denial strategy viable: proprietary algorithms (nH Predict), opaque denial criteria, deliberately complex appeals processes. The shooting triggered forced disclosure. A Senate report on denial practices, the class action revealing the 90% error rate, public data requirements under the 2024 Interoperability and Prior Authorization Rule (first reports published March 2026), and KFF's analysis of insurer-reported denial rates all followed. The information asymmetry that enabled the old equilibrium has been structurally reduced, though not eliminated.</p>
+  </div>
+
+  <div class="gt-box">
+    <div class="gt-label">Concept 6</div>
+    <div class="gt-title">The Prisoner's Dilemma of Reform</div>
+    <p>Individual insurers face a classic collective action problem. The insurer that reforms most aggressively loses margin to competitors who reform less. The June 2025 voluntary pledge attempts to solve this by coordinating simultaneous reform across 50 insurers. But the pledge is voluntary and AHIP refused to release the underlying survey data. Without verification, each insurer has an incentive to free-ride: announce reform while maintaining aggressive denial practices. The 11% reduction in prior auth requirements is self-reported and unaudited. Whether it represents genuine reform or a strategic minimum to defuse public pressure is unknowable with current data.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ SECTION 3: THE NEW EQUILIBRIUM ============ -->
+<section id="equilibrium">
+  <div class="section-label">Section III</div>
+  <h2>The New Equilibrium</h2>
+
+  <p>The pre-shooting equilibrium (aggressive denial with no personal risk to decision-makers) is no longer stable. A new Nash equilibrium must account for a demonstrated non-zero probability of violence against executives. The question is what form this equilibrium takes.</p>
+
+  <h3>Three Possible Stable States</h3>
+
+  <div class="chart-container">
+    <div class="chart-title">Industry Response Pathways and Their Costs</div>
+    <canvas id="pathwayChart"></canvas>
+  </div>
+
+  <h3>Path A: Genuine Denial Reform</h3>
+  <p>Reduce denial rates to clinically defensible levels. Eliminate or restructure AI-driven denial systems. Make appeals automatic rather than patient-initiated. This path directly addresses the asymmetric risk by reducing the population of desperate, denied patients. Cost: reduced margins. The shareholder lawsuit reveals that markets treat "being nicer to patients" as a profitability risk. Reform means structurally lower earnings.</p>
+
+  <h3>Path B: Security Fortress</h3>
+  <p>Maintain denial practices but invest heavily in executive protection. UNH spent $1.7M in 2024; industry-wide security spending has doubled. The problem: this scales linearly with threat while doing nothing about root cause. At some point the security cost exceeds the savings from aggressive denial. Additionally, it only protects individuals, not the industry's political viability. The DHS report confirms the threat set is expanding beyond healthcare executives to government officials.</p>
+
+  <h3>Path C: Regulatory Capitulation</h3>
+  <p>Government mandates reform. The 2024 Interoperability and Prior Authorization Rule requires public disclosure of denial metrics starting in 2026. CMS Administrator Mehmet Oz explicitly linked reform urgency to the shooting. If voluntary reform proves insufficient, mandatory denial rate caps or automatic approval requirements become politically viable. The industry loses control of the pace and scope of change.</p>
+
+  <div class="callout orange">
+    <strong>"There's violence in the streets over these issues."</strong>
+    <cite>CMS Administrator Mehmet Oz, on why insurers are reforming prior authorization, June 2025</cite>
+  </div>
+
+  <h3>The Guilty Plea Paradox</h3>
+
+  <p>On August 14, 2026, Mangione pled guilty to two federal stalking charges with no deal. Prosecutors are seeking life in prison. His attorneys immediately filed to dismiss the state murder charges on double jeopardy grounds.</p>
+
+  <p>In game-theoretic terms, the guilty plea with no deal is a signal of commitment. It demonstrates that the actor accepted the maximum personal cost, which strengthens rather than weakens the credible threat for others in similar positions. A rational actor seeking leniency would have bargained. An actor demonstrating that the cause was worth any personal cost sends a different signal entirely.</p>
+
+  <p>In the language of Thomas Schelling's commitment theory, Mangione burned his own ships. The absence of a deal means there is no implicit message of "this was a mistake." The message is: "I did this, I knew the cost, and I accepted it."</p>
+
+  <div class="gt-box">
+    <div class="gt-label">Concept 7</div>
+    <div class="gt-title">The Moral Hazard of Martyrdom</div>
+    <p>The public response to the shooting created a moral hazard the industry did not anticipate. Forty-one percent of young Americans found the killing acceptable. Mangione became a folk hero. T-shirts, fan clubs, and memes proliferated. The social cost of the act, which deterrence theory assumes is high, turned out to be low or even negative for a significant portion of the population. This inverts the standard deterrence calculus. If society partially rewards the act, the cost function changes for potential future actors.</p>
+  </div>
+
+  <h3>What Changed vs. What Didn't</h3>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-value green">11%</div>
+      <div class="stat-label">Reduction in prior<br>auth requirements</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value green">15%</div>
+      <div class="stat-label">Medicare Advantage<br>PA reduction</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value red">34%</div>
+      <div class="stat-label">Insured adults: PA is<br>#1 burden (KFF 2026)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value red">47%</div>
+      <div class="stat-label">Had claim denied or<br>delayed in past 2 years</div>
+    </div>
+  </div>
+
+  <p>The industry cut 6.5 million prior auth requirements. Patient surveys show the core experience hasn't meaningfully changed. Nearly half of insured adults report a denial or delay in the past two years. The gap between the reform announcement and the lived experience creates its own instability.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ SECTION 4: IMPLICATIONS ============ -->
+<section id="implications">
+  <div class="section-label">Section IV</div>
+  <h2>Implications</h2>
+
+  <p>The Thompson shooting did not just change the health insurance industry. It demonstrated something about the structural limits of systems that create populations with nothing to lose.</p>
+
+  <h3>The Broader Pattern</h3>
+
+  <p>Any industry whose business model depends on denying resources to people facing existential outcomes faces a version of this game-theoretic problem. The specific conditions are:</p>
+
+  <p><strong>1. Asymmetric stakes.</strong> One party risks profit margins. The other risks their life, their child's health, or their family's financial survival.</p>
+
+  <p><strong>2. Failed release valves.</strong> The official mechanisms for redress (appeals, regulators, courts) are designed to be difficult enough that most people give up. The 0.2% appeal rate is not a bug; it is the system working as designed.</p>
+
+  <p><strong>3. Information opacity.</strong> The decision-maker (insurer, algorithm) operates behind proprietary walls. The affected party cannot see or understand why they were denied.</p>
+
+  <p><strong>4. Concentration of authority.</strong> Decisions affecting millions of lives flow through identifiable executives and institutions. This creates focal points for grievance.</p>
+
+  <h3>The Uncomfortable Conclusion</h3>
+
+  <p>The Thompson shooting produced more concrete reform in six months than decades of legislative effort. The prior authorization reform pledge, the mandatory disclosure rules, the 6.5 million fewer denials, the CEO resignation, the $190 billion in market value destroyed. None of this happened because of lobbying, lawsuits, or elections. It happened because a single act of violence made the cost of the status quo viscerally real to the people who profited from it.</p>
+
+  <p>This is not an endorsement. It is an observation about incentive structures. When a system creates a population of people with diminishing reasons to cooperate, and the mechanisms for peaceful redress are deliberately inadequate, the system has engineered its own instability. The question is not whether someone will eventually act outside the rules. The question is what changes after they do.</p>
+
+  <div class="callout purple">
+    <strong>The insurance industry's fundamental miscalculation was treating all players as if they were operating in a repeated game with a future worth protecting. For the subset of people whose future the industry itself has foreclosed, that assumption was always false. December 4, 2024 was the day the industry learned it empirically.</strong>
+  </div>
+
+  <h3>Where This Goes</h3>
+
+  <p>The most likely outcome is Path A plus Path C: a combination of voluntary reform and escalating regulation, driven by the political reality that "doing nothing" is no longer viable when a CMS Administrator publicly cites violence as the catalyst for change. The 2024 Interoperability and Prior Authorization Rule's public disclosure requirements, which went into effect in 2026, make denial practices visible in a way they never were before. Transparency alone changes the game, because it eliminates the information asymmetry that made aggressive denial profitable.</p>
+
+  <p>The insurance industry will survive this. It will be less profitable. Prior authorization will not disappear, but it will be faster, more transparent, and subject to meaningful oversight. Executive security will remain elevated permanently. And somewhere in the actuarial models, there will be a new variable that didn't exist before December 2024: the cost of creating people with nothing left to lose.</p>
+</section>
+
+<!-- ============ SOURCES ============ -->
+<div class="sources" id="sources">
+  <div class="sources-inner">
+    <div class="section-label">Methodology &amp; Sources</div>
+    <h2>Sources</h2>
+    <p style="font-family:var(--font-ui);font-size:0.82rem;color:var(--text-dim);margin-bottom:1.5rem;">All claims are sourced from primary reporting. Stock data from public filings. Survey data from original polling organizations. Legal data from court filings.</p>
+    <ol>
+      <li>STAT News, "UnitedHealth sued over use of algorithm in Medicare Advantage plans," Nov 2023. <a href="https://www.statnews.com/2023/11/14/unitedhealth-class-action-lawsuit-algorithm-medicare-advantage/">Link</a></li>
+      <li>Medscape, "UHC Accused of Using AI to Skirt Doctor Orders, Deny Claims." <a href="https://www.medscape.com/viewarticle/998653">Link</a></li>
+      <li>Emerson College Polling, "December 2024 National Poll," Dec 2024. <a href="https://emersoncollegepolling.com/december-2024-national-poll-young-voters-diverge-from-majority-on-crypto-tiktok-and-ceo-assassination/">Link</a></li>
+      <li>AP-NORC/STAT News, "Most Americans blame insurers alongside the killer in UHC CEO death," Dec 2024. <a href="https://www.statnews.com/2024/12/27/most-americans-blame-insurers-alongside-killer-in-uhc-ceo-death-poll-finds/">Link</a></li>
+      <li>Fast Company, "UnitedHealth spent $1.7 million on executive security," Apr 2025. <a href="http://www.fastcompany.com/91321472/unitedhealth-spending-executive-security-2024-ceo-fatal-shooting">Link</a></li>
+      <li>GlobeNewsWire / Hagens Berman, "Faller v. UnitedHealth Group, SDNY No. 25-03799," May 2025. <a href="https://www.globenewswire.com/news-release/2025/05/14/3081685/32716/en/UnitedHealth-Group-UNH-Shares-Sharply-Down-Again-After-CEO-Resignation-2025-Guidance-Suspension-Securities-Class-Action-Pending-Hagens-Berman.html">Link</a></li>
+      <li>Becker's Payer Issues, "One year after CEO's killing, UnitedHealth navigates a financial reset," Dec 2025. <a href="https://www.beckerspayer.com/payer/one-year-after-ceo-killing-unitedhealth-navigates-a-financial-reset/">Link</a></li>
+      <li>AJMC, "Insurers Cut 11% of Prior Authorizations," Apr 2026. <a href="https://www.ajmc.com/view/insurers-cut-11-of-prior-authorizations-expand-continuity-of-care-protections">Link</a></li>
+      <li>Medscape, "Insurers Fail to Get Specific on Prior Authorization Reforms," Apr 2026. <a href="https://www.medscape.com/viewarticle/frustratingly-vague-insurers-fail-get-specific-prior-2026a1000be1">Link</a></li>
+      <li>KFF, "Prior Authorization Is Source of Greatest Patient Burdens," Feb 2026. <a href="https://www.ajmc.com/view/prior-authorization-is-source-of-greatest-patient-burdens-in-the-health-system-poll-finds">Link</a></li>
+      <li>KFF, "Insurers' Prior Authorization Data Offers Little Insight," Apr 2026. <a href="https://www.kff.org/quick-take/insurers-prior-authorization-data-offers-little-insight-into-what-gets-approved-or-denied/">Link</a></li>
+      <li>Reuters, "Luigi Mangione admits killing insurance CEO, pleads guilty in federal case," Aug 14, 2026. <a href="https://www.reuters.com/legal/government/luigi-mangione-accused-insurance-ceo-killer-due-court-amid-plea-deal-reports-2026-08-14/">Link</a></li>
+      <li>Reuters, "What's next for Luigi Mangione after his guilty plea?" Aug 14, 2026. <a href="https://www.reuters.com/legal/government/whats-next-luigi-mangione-after-his-guilty-plea-over-ceo-killing-2026-08-14/">Link</a></li>
+      <li>ASIS International, "6 Months After Thompson's Murder, What's Changed About Executive Protection?" Jun 2025. <a href="http://www.asisonline.org/security-management-magazine/articles/2025/06/executive-protection/six-months-executive-protection/">Link</a></li>
+      <li>DHS Report (via ABC News), "Individuals mobilized by economic grievances using CEO murder as inspiration," 2025.</li>
+      <li>PLOS ONE, "Delay, deny, and defend: Public outrage at health insurance companies and stock market debacle," 2025. <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0334399">Link</a></li>
+      <li>Becker's Hospital Review, "Insurers' prior authorization commitments, 1 year in," Jul 2026. <a href="https://www.beckershospitalreview.com/finance/insurers-prior-authorization-commitments-1-year-in/">Link</a></li>
+      <li>KFF Health News, "Feds Move to Rein In Prior Authorization," 2026. <a href="https://kffhealthnews.org/health-industry/prior-authorization-patient-frustration-federal-regulations/">Link</a></li>
+    </ol>
+  </div>
+</div>
+
+<footer>
+  <p>insurance-game-theory &middot; Analysis and research &middot; Not legal or investment advice &middot; All sources linked above</p>
+</footer>
+
+<script>
+// Chart defaults
+Chart.defaults.color = '#8888a0';
+Chart.defaults.borderColor = '#2a2a3a';
+Chart.defaults.font.family = "'IBM Plex Mono', monospace";
+Chart.defaults.font.size = 11;
+
+// Stock price chart
+const stockCtx = document.getElementById('stockChart').getContext('2d');
+new Chart(stockCtx, {
+  type: 'line',
+  data: {
+    labels: [
+      'Nov 2024', 'Dec 4', 'Dec 9', 'Jan 2025', 'Feb', 'Mar', 'Apr 17', 'May 13', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan 2026', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug 2026'
+    ],
+    datasets: [{
+      label: 'UNH Stock Price (approx)',
+      data: [610, 585, 555, 540, 530, 520, 402, 335, 350, 370, 360, 380, 390, 370, 345, 330, 310, 290, 280, 310, 350, 380, 400],
+      borderColor: '#4a9eff',
+      backgroundColor: 'rgba(74,158,255,0.08)',
+      fill: true,
+      tension: 0.3,
+      pointRadius: 0,
+      pointHoverRadius: 5,
+      borderWidth: 2
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) { return '$' + ctx.parsed.y; }
+        }
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: false,
+        min: 250,
+        max: 650,
+        ticks: {
+          callback: function(v) { return '$' + v; }
+        },
+        grid: { color: 'rgba(42,42,58,0.5)' }
+      },
+      x: {
+        grid: { display: false },
+        ticks: {
+          maxRotation: 45,
+          autoSkip: true,
+          maxTicksLimit: 12
+        }
+      }
+    },
+    interaction: {
+      intersect: false,
+      mode: 'index'
+    }
+  }
+});
+
+// Pathway comparison chart
+const pathCtx = document.getElementById('pathwayChart').getContext('2d');
+new Chart(pathCtx, {
+  type: 'bar',
+  data: {
+    labels: ['Path A:\nDenial Reform', 'Path B:\nSecurity Fortress', 'Path C:\nRegulatory\nCapitulation'],
+    datasets: [
+      {
+        label: 'Direct Financial Cost',
+        data: [8, 3, 9],
+        backgroundColor: 'rgba(255,71,87,0.7)',
+        borderRadius: 4
+      },
+      {
+        label: 'Risk Reduction',
+        data: [9, 4, 7],
+        backgroundColor: 'rgba(46,213,115,0.7)',
+        borderRadius: 4
+      },
+      {
+        label: 'Political Sustainability',
+        data: [7, 2, 8],
+        backgroundColor: 'rgba(74,158,255,0.7)',
+        borderRadius: 4
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { boxWidth: 12, padding: 16 }
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 10,
+        ticks: {
+          stepSize: 2,
+          callback: function(v) { return v + '/10'; }
+        },
+        grid: { color: 'rgba(42,42,58,0.5)' }
+      },
+      x: {
+        grid: { display: false }
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
