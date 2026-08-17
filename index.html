@@ -659,7 +659,7 @@ section:target {
   <h1>The New Equilibrium</h1>
   <p class="subtitle">How the killing of UnitedHealthcare CEO Brian Thompson exposed a catastrophic failure in the game theory of American health insurance, and why the industry's old equilibrium was always unsustainable.</p>
   <p class="date">Last updated August 17, 2026</p>
-  <p class="reading-time">~30 min read &middot; 61 sources</p>
+  <p class="reading-time">~35 min read &middot; 68 sources</p>
 </div>
 
 <!-- ============ SECTION 1: THE FACTS ============ -->
@@ -667,13 +667,13 @@ section:target {
   <div class="section-label">Section I</div>
   <h2>The Facts</h2>
 
-  <p>On December 4, 2024, UnitedHealthcare CEO Brian Thompson was shot and killed outside the Hilton Midtown in Manhattan. The words "delay," "deny," and "depose" were carved into the shell casings, echoing a phrase used to describe insurer tactics for avoiding claims. Five days later, 26-year-old Luigi Mangione was arrested at a McDonald's in Altoona, Pennsylvania.</p>
+  <p>On December 4, 2024, UnitedHealthcare CEO Brian Thompson was shot and killed outside the Hilton Midtown in Manhattan. The words "delay," "deny," and "depose" were carved into the shell casings. Five days later, 26-year-old Luigi Mangione was arrested at a McDonald's in Altoona, Pennsylvania.</p>
 
-  <p>What followed was not a moment of national mourning. Polling by Emerson College found 41% of voters aged 18-29 considered the killing "acceptable." NORC found 70% of Americans blamed insurance denials and profits for creating the conditions that led to it. The shooting forced a question that the industry had spent decades avoiding: whether its denial practices had engineered, in game-theoretic terms, the conditions for their own destabilization.</p>
+  <p>What followed was not mourning. Emerson College found 41% of voters aged 18-29 considered the killing "acceptable." NORC found 70% of Americans blamed insurance denials and profits for creating the conditions that led to it. The shooting forced a question the industry had spent decades dodging: whether its denial practices had engineered the conditions for their own destabilization.</p>
 
   <h3>The Pre-Shooting Baseline</h3>
 
-  <p>Before December 2024, the health insurance industry operated under a set of implicit assumptions about the costs and benefits of aggressive denial practices. The data made the strategy clear:</p>
+  <p>Before December 2024, the health insurance industry operated under implicit assumptions about the costs and benefits of aggressive denial. The data made the strategy transparent:</p>
 
   <div class="chart-container">
     <div class="chart-title">ACA Marketplace In-Network Claim Denial Rates by Insurer (2023)</div>
@@ -701,9 +701,9 @@ section:target {
     </div>
   </div>
 
-  <p>Read those numbers together. UnitedHealthcare's AI algorithm, nH Predict (acquired via naviHealth in 2020), had what plaintiffs in a 2023 class action described as a 90% error rate, measured by how often its denials were overturned on internal review or by administrative law judges. But only 0.2% of policyholders ever appealed. The math, if the lawsuit's figures hold, is brutal: deny aggressively, bet on exhaustion, collect the spread.</p>
+  <p>Read those numbers together. UnitedHealthcare's AI algorithm, nH Predict (acquired via naviHealth in 2020), had what plaintiffs in a 2023 class action described as a 90% error rate, measured by overturn rates on review. But only 0.2% of policyholders ever appealed. The math is brutal: deny aggressively, bet on exhaustion, collect the spread.</p>
 
-  <p>When appeals did happen, the lawsuit alleges they succeeded overwhelmingly. The system wasn't making accurate medical decisions. It was making a bet that sick people wouldn't fight back.</p>
+  <p>When appeals happened, the lawsuit alleges they succeeded overwhelmingly. The system was not making accurate medical decisions. It was making a bet that sick people wouldn't fight back.</p>
 
   <div class="callout orange">
     <strong>UnitedHealth disputes these characterizations.</strong> A company spokesperson stated that nH Predict "is not used to make coverage determinations" but rather as "a guide to help us inform providers, families and other caregivers." UNH says its overall claims approval rate is 98% for eligible members with timely, complete, non-duplicate submissions. The company called the KFF marketplace denial data "grossly misleading," noting it represents only about 2% of total claims volume.
@@ -770,6 +770,10 @@ section:target {
       <div class="tl-text">CMS public reporting goes live: for the first time, insurers must publish prior authorization denial rates, decision turnaround times, and appeal outcomes on their websites (CMS-0057-F, covering CY2025 data). KFF analysis finds the data "offers little insight," noting it is aggregated across all items and services with no breakdown by service type.</div>
     </div>
     <div class="timeline-item green">
+      <div class="tl-date">Jun 8, 2026</div>
+      <div class="tl-text">HHS Office of Inspector General releases two reports on Medicare Advantage prior authorization. Finds <strong>95% of appealed SNF denials overturned</strong>. CVS denied 80% of LTCH requests; UNH denied 71% LTCH and 66% IRF. naviHealth's SNF denials overturned 97% of the time on appeal. OIG: financial incentives "may be partially driving higher denial rates" at for-profit plans.</div>
+    </div>
+    <div class="timeline-item green">
       <div class="tl-date">Jul 16, 2026</div>
       <div class="tl-text">UNH reports Q2 2026: adjusted EPS $6.38 (beat $4.94 estimate), revenue $112B, medical cost ratio <strong>86.7%</strong> (down from 89.4% YoY). Raises 2026 guidance to $19.50-$20.00 EPS. Stock up ~27% YTD. Operating earnings jump 55% YoY to $8B. Hemsley says results reflect "continuing progress in our work to simplify how we operate."</div>
     </div>
@@ -818,7 +822,7 @@ section:target {
   <div class="section-label">Section II</div>
   <h2>The Game Theory</h2>
 
-  <p>The Thompson shooting can be analyzed as a catastrophic failure in mechanism design. Leonid Hurwicz introduced the concept in the 1960s, and the 2007 Nobel Prize in Economics went to Hurwicz, Eric Maskin, and Roger Myerson "for having laid the foundations of mechanism design theory." The core question: given that people have private information and incentives to misrepresent it, what institutional rules produce desirable outcomes? The health insurance appeals system is a mechanism. It was designed to resolve disputes. It failed. Every player acted rationally within their own framework, yet the system produced an outcome that no party would have chosen ex ante. Here are the formal concepts at work.</p>
+  <p>The Thompson shooting can be analyzed as a catastrophic failure in mechanism design. Leonid Hurwicz introduced the concept in the 1960s; the 2007 Nobel in Economics went to Hurwicz, Eric Maskin, and Roger Myerson "for having laid the foundations of mechanism design theory." The core question: given that people have private information and incentives to misrepresent it, what institutional rules produce desirable outcomes? The health insurance appeals system is a mechanism. It was designed to resolve disputes. It failed. Every player acted rationally within their own framework, yet the system produced an outcome no party would have chosen ex ante.</p>
 
   <div class="gt-box">
     <div class="gt-label">Concept 1</div>
@@ -881,11 +885,73 @@ section:target {
 
   <p>The expected value of denying was overwhelmingly positive because the probability of any meaningful pushback was vanishingly small. The system was stable because the "punishment" for wrongful denial (an appeal) was rare and low-cost. There was no row in the matrix for "patient responds with violence."</p>
 
+  <h3>The Post-Shooting Payoff Matrix</h3>
+
+  <p>After December 4, 2024, the matrix changed. New rows appeared, and old probabilities shifted:</p>
+
+  <div class="matrix-wrap">
+    <table class="payoff">
+      <tr>
+        <th></th>
+        <th colspan="4">Patient / Public Response</th>
+      </tr>
+      <tr>
+        <th></th>
+        <th>Accept Denial</th>
+        <th>Appeal</th>
+        <th>Political Action</th>
+        <th>Extreme Response</th>
+      </tr>
+      <tr>
+        <th>Insurer: Deny Claim</th>
+        <td>
+          <strong style="color:var(--orange)">+$X saved</strong>
+          <span class="cell-label">Probability declining<br>(awareness ↑, appeals ↑)</span>
+        </td>
+        <td>
+          <strong style="color:var(--red)">-$X (95% overturn)</strong>
+          <span class="cell-label">Rising appeal rates;<br>OIG/CMS scrutiny</span>
+        </td>
+        <td class="highlight">
+          <strong style="color:var(--red)">-$$$</strong>
+          <span class="cell-label">Legislation, disclosure mandates,<br>financial penalties</span>
+        </td>
+        <td>
+          <strong style="color:var(--red)">-$190B+</strong>
+          <span class="cell-label">Demonstrated non-zero<br>probability (Dec 2024)</span>
+        </td>
+      </tr>
+      <tr>
+        <th>Insurer: Approve Claim</th>
+        <td>
+          <strong style="color:var(--orange)">-$X cost</strong>
+          <span class="cell-label">Higher MCR, lower margins</span>
+        </td>
+        <td>
+          <strong style="color:var(--text-dim)">N/A</strong>
+          <span class="cell-label"></span>
+        </td>
+        <td>
+          <strong style="color:var(--green)">Goodwill</strong>
+          <span class="cell-label">Reduced regulatory pressure</span>
+        </td>
+        <td>
+          <strong style="color:var(--green)">Risk → 0</strong>
+          <span class="cell-label">Removes motive entirely</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <p>The strategic calculus flipped. Denial still generates short-term savings, but the expected costs now include regulatory retaliation, congressional action, OIG investigations, class action liability, and a demonstrated (if small) probability of physical violence. The June 2026 OIG reports showed that appeals are rising and oversight is intensifying: when 95% of appealed SNF denials are overturned, the system's information asymmetry is collapsing in real time. The new equilibrium favors approval because the cost of denial now exceeds the cost of treatment across multiple payoff dimensions simultaneously.</p>
+
   <div class="gt-box">
     <div class="gt-label">Concept 4</div>
     <div class="gt-title">Mechanism Design Failure</div>
     <p>Every complex system needs a release valve. In healthcare, the designated mechanisms were: internal appeals, external review, state insurance commissioners, CMS oversight, and the courts. These mechanisms existed. They also failed. When 82% of appeals succeed but only 0.2% of patients appeal, the mechanism is not functioning as designed. It is functioning as a filter that selects for the most persistent patients while allowing the vast majority of wrongful denials to stand unchallenged. In Hurwicz's terminology, the mechanism is not <em>incentive compatible</em>: it relies on patients bearing costs (time, expertise, emotional labor) that exceed the expected benefit of appealing, even when the appeal would succeed. The mechanism's designers knew this. The low appeal rate was not a failure to anticipate; it was a feature that kept costs down.</p>
     <p>The failure is measurable on the provider side, too. A 2022 AMA survey of 1,000 physicians found that 94% said prior authorization demands at least sometimes lead to delays in care. Seven percent reported that the PA process "resulted in a serious adverse event leading to a patient's disability, permanent bodily damage, congenital anomaly, birth defect, or death." Eighty-eight percent said the number of drugs requiring PA had increased; 86% said the same for services. The mechanisms that were supposed to prevent harm were themselves causing it.</p>
+    <p>In June 2026, the HHS Office of Inspector General put hard numbers on the problem. Across 19 Medicare Advantage organizations covering 29.3 million enrollees, OIG found that the three largest insurers denied post-acute care at rates far exceeding their peers. CVS Health denied 80% of long-term acute care hospital admission requests. Humana denied 72%. UnitedHealth denied 71%. For inpatient rehabilitation, UnitedHealth led at 66%. The 16 remaining insurers averaged 42% and 41%, respectively. When enrollees appealed, 95% of skilled nursing facility denials were overturned. That number is not a typo. The denials were almost universally wrong.</p>
+    <p>OIG traced part of the problem to naviHealth, UnitedHealth's Optum subsidiary. naviHealth processed half of all skilled nursing admission requests and denied 14% (compared to 11% for internal review and 9% for other contractors). Ninety-seven percent of naviHealth's SNF denials were overturned on appeal. For long-term care hospitals and rehab facilities, naviHealth's denial rates were 73% and 68%. "Differences in denial rates between for-profit and nonprofit [Medicare Advantage insurers] suggest that financial incentives may be partially driving higher denial rates," OIG wrote. The Inspector General of the United States government is saying, with careful bureaucratic phrasing, what the class action alleged: the algorithm optimizes for money, not medicine.</p>
     <p>The shooting was what happens when the designated release valves are inadequate: pressure finds another outlet.</p>
   </div>
 
@@ -994,7 +1060,7 @@ section:target {
 
   <p>Congress is moving in the same direction as the states, but through different channels. In July 2026, the House Energy and Commerce Committee overwhelmingly passed the <em>Improving Seniors' Timely Access to Care Act of 2026</em>, which would mandate electronic prior authorization workflows, real-time decision requirements, and public reporting of PA denial rates for all Medicare Advantage plans. The bill passed with bipartisan votes at both the Ways and Means and Energy and Commerce committees. The AMA called the legislation's momentum evidence that "this idea has bipartisan support and political legs."</p>
 
-  <p>The legislative pipeline is deeper than a single bill. In April 2026, Representatives Ro Khanna and Pramila Jayapal introduced the <em>Stop Deadly Denials Act</em> (H.R. 8377), which would ban prior authorization entirely in Medicare Advantage plans and prohibit AI-only coverage determinations. The bipartisan <em>Prior Authorization Accountability Act</em>, led by Rep. Craig Goldman, passed the Energy and Commerce Committee in July 2026, requiring all insurers to publicly post denial rates, appeal outcomes, and processing times on their websites and plan materials. Together, these three bills represent a spectrum of reform ambition: transparency (Accountability Act), standardization (Timely Access Act), and abolition (Stop Deadly Denials).</p>
+  <p>The legislative pipeline is deeper than a single bill. In April 2026, Representatives Ro Khanna and Pramila Jayapal introduced the <em>Stop Deadly Denials Act</em> (H.R. 8377), which would ban prior authorization entirely in Medicare Advantage plans and prohibit AI-only coverage determinations. The bipartisan <em>Prior Authorization Accountability Act</em>, led by Rep. Craig Goldman, passed the Energy and Commerce Committee in July 2026, requiring all insurers to publicly post denial rates, appeal outcomes, and processing times on their websites and plan materials. Representatives Angie Craig and Pat Ryan introduced the <em>Patient Refunds for Bad Denials Act</em>, which takes a different approach: financial penalties of $10 million plus $2 million per percentage point above a 25% denial threshold, with penalties paid directly to affected enrollees. Together, these four bills represent a full spectrum of reform ambition: transparency (Accountability Act), standardization (Timely Access Act), punishment (Patient Refunds Act), and abolition (Stop Deadly Denials).</p>
 
   <p>Separately, HHS estimates that the CMS Interoperability and Prior Authorization Rule (CMS-0057-F) will save physician practices approximately $15 billion over ten years through electronic streamlining alone. Beginning in 2026, insurers must share specific explanations for PA denials. Starting in 2027, plans must support electronic PA embedded within physicians' EHR systems. These are not voluntary pledges. They are rules with compliance deadlines.</p>
 
@@ -1048,7 +1114,7 @@ section:target {
 
   <p><strong>1. Reform volume.</strong> 6.5 million prior authorization requirements eliminated industry-wide between June 2025 and April 2026 (AHIP/BCBSA pledge tracking, verified by AJMC). UnitedHealthcare committed to an additional 30% reduction in 2026.</p>
 
-  <p><strong>2. Denial mortality.</strong> At Memorial Sloan Kettering in 2023, researchers analyzed 1,752 prior authorization requests for cancer pain medication. Of the 62 patients whose requests were denied, 3 died within two weeks (4.8%). Another 14 ended up in the emergency department (22.6%) and 4 transitioned to hospice (6.5%). The study's lead author, Dr. Fumiko Chino, called these numbers, derived from one of the best-resourced cancer centers in the world, a "gross underestimate of the human impact." Notably, 89.4% of all requests were ultimately approved, suggesting most denials function as delay mechanisms rather than clinical gatekeeping.</p>
+  <p><strong>2. Denial mortality.</strong> At Memorial Sloan Kettering in 2023, researchers analyzed 1,752 prior authorization requests for cancer pain medication. Of the 62 patients whose requests were denied, 3 died within two weeks (4.8%). Another 14 ended up in the emergency department (22.6%) and 4 transitioned to hospice (6.5%). The study's lead author, Dr. Fumiko Chino, called these numbers, derived from one of the best-resourced cancer centers in the world, a "gross underestimate of the human impact." Notably, 89.4% of all requests were ultimately approved, suggesting most denials function as delay mechanisms rather than clinical gatekeeping. The OIG's June 2026 data corroborated this pattern at scale: across 19 Medicare Advantage organizations, 95% of appealed skilled nursing facility denials were overturned. naviHealth's overturn rate was 97%.</p>
 
   <p><strong>3. Treatment delay mortality.</strong> A Cleveland Clinic analysis of 3,672,561 cancer patients found that each week of delayed treatment initiation increased absolute mortality risk by 1.2% to 3.2%, depending on cancer type and stage. For stage I non-small cell lung cancer, five-year survival dropped from 56% to 43% when treatment was delayed more than six weeks. A separate BMJ systematic review of 1,272,681 patients across 34 studies found a 6-8% mortality increase per four-week surgical delay for breast and colorectal cancers.</p>
 
@@ -1195,7 +1261,7 @@ section:target {
 
   <h3>The Uncomfortable Conclusion</h3>
 
-  <p>The Thompson shooting produced more concrete reform in six months than decades of legislative effort. The prior authorization reform pledge, the mandatory disclosure rules, the 6.5 million fewer denials, the CEO resignation, the $190 billion in market value destroyed. None of this happened because of lobbying, lawsuits, or elections. It happened because one act of violence made the cost of the status quo viscerally real to the people who profited from it.</p>
+  <p>The Thompson shooting produced more concrete reform in six months than decades of legislative effort. The prior authorization reform pledge, the mandatory disclosure rules, the 6.5 million fewer denials, the OIG investigations confirming systematic wrongful denial, the CEO resignation, the $190 billion in market value destroyed. None of this happened because of lobbying, lawsuits, or elections. It happened because one act of violence made the cost of the status quo viscerally real to the people who profited from it.</p>
 
   <p>This is not an endorsement. It is an observation about incentive structures. When a system creates a population with diminishing reasons to cooperate, and the mechanisms for peaceful redress are deliberately inadequate, the system has engineered its own instability. The question was never whether someone would eventually act outside the rules. The question was what would change after they did.</p>
 
@@ -1205,7 +1271,7 @@ section:target {
 
   <h3>Where This Goes</h3>
 
-  <p>The most likely outcome is Path A plus Path C: voluntary reform accelerated by escalating regulation, driven by the political reality that inaction is no longer viable when a CMS Administrator publicly cites violence as the catalyst for change. The 2024 Interoperability and Prior Authorization Rule's public disclosure requirements went live on March 31, 2026, forcing insurers to publish denial rates, decision times, and appeal outcomes for the first time. Early analysis by KFF found the data frustratingly aggregated, but the precedent is set: opacity is being dismantled. Three distinct bills are moving through Congress. The <em>Improving Seniors' Timely Access to Care Act</em> mandates electronic PA workflows. The <em>Prior Authorization Accountability Act</em> forces public denial-rate disclosure. The <em>Stop Deadly Denials Act</em> would ban prior authorization in Medicare Advantage entirely. Meanwhile, eight states have enacted binding restrictions on AI in coverage decisions, with over 25 more considering similar measures. Whether Trump's AI preemption order can override state insurance regulation is the next legal battlefield.</p>
+  <p>The most likely outcome is Path A plus Path C: voluntary reform accelerated by escalating regulation, driven by the political reality that inaction is no longer viable when a CMS Administrator publicly cites violence as the catalyst for change. The 2024 Interoperability and Prior Authorization Rule's public disclosure requirements went live on March 31, 2026, forcing insurers to publish denial rates, decision times, and appeal outcomes for the first time. Early analysis by KFF found the data frustratingly aggregated, but the precedent is set: opacity is being dismantled. Four distinct bills are moving through Congress. The <em>Improving Seniors' Timely Access to Care Act</em> mandates electronic PA workflows. The <em>Prior Authorization Accountability Act</em> forces public denial-rate disclosure. The <em>Patient Refunds for Bad Denials Act</em> creates financial penalties for high denial rates. The <em>Stop Deadly Denials Act</em> would ban prior authorization in Medicare Advantage entirely. Meanwhile, eight states have enacted binding restrictions on AI in coverage decisions, with over 25 more considering similar measures. Whether Trump's AI preemption order can override state insurance regulation is the next legal battlefield.</p>
 
   <p>UNH's Q2 2026 earnings offer a preview of what Path A looks like financially. The medical cost ratio improved to 86.7% (from 89.4% a year earlier), and operating earnings jumped 55% year-over-year to $8 billion, suggesting the company is finding operational efficiencies to offset the cost of denying fewer claims. Revenue of $112 billion was essentially flat, but adjusted EPS of $6.38 beat estimates by 29%. The company raised its full-year guidance to $19.50-$20.00 adjusted EPS and announced $4 billion in share buybacks. The stock has recovered to roughly $400 from its mid-2025 lows near $260. The message to Wall Street is clear: the company can be profitable under the new rules, even if the era of 33% denial rates is over.</p>
 
@@ -1216,9 +1282,9 @@ section:target {
 
   <h3>Limitations of This Analysis</h3>
 
-  <p>Several caveats apply. First, the denial rate data comes from ACA marketplace plans sold on HealthCare.gov, which represent roughly 2% of UnitedHealth's total claims volume. Whether the pattern holds across employer-sponsored and Medicare Advantage plans is an open question, though the naviHealth/nH Predict lawsuit specifically targeted Medicare Advantage. UNH says its overall approval rate is 98% when accounting for duplicates, eligibility, and timely submissions.</p>
+  <p>Several caveats apply. First, the denial rate data comes from ACA marketplace plans sold on HealthCare.gov, which represent roughly 2% of UnitedHealth's total claims volume. The OIG's June 2026 reports on Medicare Advantage post-acute care suggest the pattern holds in other segments: UNH denied 66-71% of LTCH and IRF requests, far exceeding the 41-42% average. But extrapolating to employer-sponsored coverage remains an open question. UNH says its overall approval rate is 98% when accounting for duplicates, eligibility, and timely submissions.</p>
 
-  <p>Second, the 90% error rate and 0.2% appeal rate are allegations from a class action complaint, not independently audited figures. They are calculated from reversal rates on review, which may overstate algorithmic error if the review process itself applies different standards. UNH denies that nH Predict is used for coverage determinations at all.</p>
+  <p>Second, the 90% error rate and 0.2% appeal rate are allegations from a class action complaint, not independently audited figures. They are calculated from reversal rates on review, which may overstate algorithmic error if the review process applies different standards. The OIG data provides independent government corroboration: naviHealth's 97% overturn rate on SNF appeals is in the same ballpark. UNH denies that nH Predict is used for coverage determinations at all.</p>
 
   <p>Third, this analysis treats the Thompson shooting as an inflection point, which it clearly was for stock price and public discourse. But disentangling the shooting's effect from other factors (the DOJ investigation into UNH billing practices, Medicare Advantage star rating changes, rising medical cost ratios, the Optum Rx cyberattack fallout) is methodologically difficult. The $190 billion market cap decline reflects all of these, not the shooting alone.</p>
 
@@ -1296,6 +1362,13 @@ section:target {
       <li>Hurwicz, L., Maskin, E.S. &amp; Myerson, R.B. The Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 2007, "for having laid the foundations of mechanism design theory." <a href="https://www.nobelprize.org/prizes/economic-sciences/2007/summary/">Link</a></li>
       <li>Pauly, M.V., "The Economics of Moral Hazard: Comment," <em>The American Economic Review</em>, 58(3), 531-537, 1968.</li>
       <li>Akerlof, G.A., "The Market for 'Lemons': Quality Uncertainty and the Market Mechanism," <em>The Quarterly Journal of Economics</em>, 84(3), 488-500, 1970.</li>
+      <li>HHS Office of Inspector General, "Prior Authorization Denials for Long-Term Care Hospital and Inpatient Rehabilitation Facility Admissions in Medicare Advantage," Jun 2026. Reported by Fierce Healthcare, Becker's Hospital Review, and InsuranceNewsNet. <a href="https://www.fiercehealthcare.com/payers/oig-look-ma-prior-authorization-denials-long-term-care-hospitals-inpatient-rehab">Link</a></li>
+      <li>HHS Office of Inspector General, "Prior Authorization for Skilled Nursing Facility Admissions in Medicare Advantage," Jun 2026. 95% overturn rate on appeal. Reported by Healthcare Finance News and AMA. <a href="https://healthcarefinancenews.com/news/medicare-advantage-organizations-overturned-most-snf-denials-oig-finds">Link</a></li>
+      <li>AMA, "OIG reports blast prior authorization use in Medicare Advantage," Jul 29, 2026. <a href="https://www.ama-assn.org/practice-management/prior-authorization/oig-reports-blast-prior-authorization-use-medicare">Link</a></li>
+      <li>InsuranceNewsNet, "Report finds high denial rates at UnitedHealth, two other Medicare Advantage plans," Jun 12, 2026. naviHealth 97% SNF overturn rate. <a href="https://insurancenewsnet.com/oarticle/report-finds-high-denial-rates-at-unitedhealth-two-other-medicare-advantage-plans">Link</a></li>
+      <li>InsuranceNewsNet, "Report: Health insurers denied one in five claims in 2024," Feb 2026. Massachusetts HPC data: UHC 28% denial rate. <a href="https://insurancenewsnet.com/oarticle/report-health-insurers-denied-one-in-five-claims-in-2024">Link</a></li>
+      <li>InsuranceNewsNet, "Reps. Craig, Ryan introduce Patient Refunds for Bad Denials Act," Apr 2026. $10M+ penalties for insurers exceeding 25% denial threshold. <a href="https://insurancenewsnet.com/oarticle/reps-craig-ryan-introduce-legislation-to-hold-health-insurance-companies-accountable-for-sky-high-denial-rates-refund-patients-for-unfair-health-care-costs">Link</a></li>
+      <li>Medical Economics, "Insurance denials leave millions delayed, sicker and in debt," Jun 2026. Commonwealth Fund 2025 survey (n=4,589): 21% denial rate, representing ~130.6 million adults. <a href="https://www.medicaleconomics.com/view/doctor-s-orders-aren-t-enough-insurance-denials-leave-millions-delayed-sicker-and-in-debt">Link</a></li>
     </ol>
   </div>
 </div>
