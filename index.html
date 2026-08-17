@@ -387,6 +387,18 @@ footer {
   border-top: 1px solid var(--border);
 }
 
+/* SCROLL PROGRESS */
+.scroll-progress {
+  position: fixed;
+  top: 52px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--purple));
+  z-index: 101;
+  transition: width 0.1s linear;
+}
+
 /* CALCULATOR */
 .calc-container {
   background: var(--bg-card);
@@ -486,6 +498,8 @@ footer {
 </style>
 </head>
 <body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <nav>
   <div class="nav-inner">
@@ -618,15 +632,15 @@ footer {
     </div>
     <div class="timeline-item green">
       <div class="tl-date">Jul 16, 2026</div>
-      <div class="tl-text">UNH reports Q2 2026: EPS $6.38 (beat $4.94 estimate), revenue $112B, medical cost ratio <strong>86.7%</strong> (down from 89.4% YoY). Raises 2026 guidance to $19.50-$20.00 EPS. Stock up 37% YTD. Enrollment drops to 48.5M (vs. 51M expected). Hemsley says results reflect "continuing progress in our work to simplify how we operate."</div>
+      <div class="tl-text">UNH reports Q2 2026: adjusted EPS $6.38 (beat $4.94 estimate), revenue $112B, medical cost ratio <strong>86.7%</strong> (down from 89.4% YoY). Raises 2026 guidance to $19.50-$20.00 EPS. Stock up ~27% YTD. Operating earnings jump 55% YoY to $8B. Hemsley says results reflect "continuing progress in our work to simplify how we operate."</div>
     </div>
     <div class="timeline-item green">
       <div class="tl-date">Jul 2026</div>
-      <div class="tl-text">House Energy and Commerce Committee passes <em>Improving Seniors' Timely Access to Care Act of 2026</em> with bipartisan votes, mandating electronic PA workflows and real-time decisions for Medicare Advantage. HHS estimates the broader CMS rule will save physician practices <strong>$15 billion over 10 years</strong>.</div>
+      <div class="tl-text">House Energy and Commerce Committee passes <em>Improving Seniors' Timely Access to Care Act of 2026</em> with bipartisan votes, mandating electronic PA workflows and real-time decisions for Medicare Advantage. HHS estimates the broader CMS rule will save physician practices <strong>$15 billion over 10 years</strong>. Separately, the bipartisan <em>Prior Authorization Accountability Act</em> passes the same committee, requiring all insurers to publicly display denial rates, appeal outcomes, and processing times.</div>
     </div>
     <div class="timeline-item orange">
       <div class="tl-date">Aug 14, 2026</div>
-      <div class="tl-text">Mangione pleads guilty to two federal stalking charges before U.S. District Judge Margaret Garnett, with no plea deal. "I shot Mr. Thompson in Manhattan," he tells the court. Says he suffered a broken back, posed as an investor managing $50M+ to learn about UNH's investor conference, and made part of the gun with a 3D printer. Sentencing guidelines: 24-30 years; prosecutors seek life. Sentencing set Dec 18, 2026. Defense immediately files to dismiss state murder charges on double jeopardy grounds; legal experts say the motion is "more likely than not" to succeed under NY's expansive CPL &sect;40.20. State jury selection was scheduled Sept 8. Five Pennsylvania charges remain pending.</div>
+      <div class="tl-text">Mangione pleads guilty to two federal stalking charges before U.S. District Judge Margaret Garnett, with no plea deal. "I shot Mr. Thompson in Manhattan," he tells the court. Says he suffered a broken back, posed as an investor managing $50M+ to learn about UNH's investor conference, and made part of the gun with a 3D printer. Sentencing guidelines: 24-30 years; prosecutors seek life. Sentencing set Dec 18, 2026. Defense immediately files to dismiss state murder charges on double jeopardy grounds; legal experts say the motion is "more likely than not" to succeed under NY's expansive CPL &sect;40.20. State jury selection was scheduled Sept 8 with an anonymous jury (ordered after prosecutors raised concerns about fan intimidation). Five Pennsylvania charges remain pending.</div>
     </div>
   </div>
 
@@ -834,6 +848,8 @@ footer {
 
   <p>Congress is moving in the same direction as the states, but through different channels. In July 2026, the House Energy and Commerce Committee overwhelmingly passed the <em>Improving Seniors' Timely Access to Care Act of 2026</em>, which would mandate electronic prior authorization workflows, real-time decision requirements, and public reporting of PA denial rates for all Medicare Advantage plans. The bill passed with bipartisan votes at both the Ways and Means and Energy and Commerce committees. The AMA called the legislation's momentum evidence that "this idea has bipartisan support and political legs."</p>
 
+  <p>The legislative pipeline is deeper than a single bill. In April 2026, Representatives Ro Khanna and Pramila Jayapal introduced the <em>Stop Deadly Denials Act</em> (H.R. 8377), which would ban prior authorization entirely in Medicare Advantage plans and prohibit AI-only coverage determinations. The bipartisan <em>Prior Authorization Accountability Act</em>, led by Rep. Craig Goldman, passed the Energy and Commerce Committee in July 2026, requiring all insurers to publicly post denial rates, appeal outcomes, and processing times on their websites and plan materials. Together, these three bills represent a spectrum of reform ambition: transparency (Accountability Act), standardization (Timely Access Act), and abolition (Stop Deadly Denials).</p>
+
   <p>Separately, HHS estimates that the CMS Interoperability and Prior Authorization Rule (CMS-0057-F) will save physician practices approximately $15 billion over ten years through electronic streamlining alone. Beginning in 2026, insurers must share specific explanations for PA denials. Starting in 2027, plans must support electronic PA embedded within physicians' EHR systems. These are not voluntary pledges. They are rules with compliance deadlines.</p>
 
   <h3>The Granular Reform Picture</h3>
@@ -860,6 +876,11 @@ footer {
   </div>
 
   <p>Aetna leads with 88% of its prior authorization volume already standardized electronically, processing 83% of requests in real time and approving 95% of eligible requests within 24 hours. UnitedHealthcare and Cigna are targeting 70% electronic standardization by year-end. The Blues have eliminated over one million provider calls through automation. The industry's collective 2027 goal is 80% real-time decisions. These numbers suggest that the technology to process prior auth quickly has always existed. The industry chose not to deploy it when the alternative was more profitable.</p>
+
+  <div class="callout red">
+    <strong>"I don't need a timelier denial. I need an approval for the medically necessary care I'm prescribing."</strong>
+    <cite>Physician sentiment reported by Miranda Yaver, PhD (University of Pittsburgh), from interviews for <em>Coverage Denied: How Health Insurers Drive Inequality in the United States</em> (Medscape, May 2026)</cite>
+  </div>
 </section>
 
 <div class="divider"></div>
@@ -1038,9 +1059,9 @@ footer {
 
   <h3>Where This Goes</h3>
 
-  <p>The most likely outcome is Path A plus Path C: a combination of voluntary reform and escalating regulation, driven by the political reality that "doing nothing" is no longer viable when a CMS Administrator publicly cites violence as the catalyst for change. The 2024 Interoperability and Prior Authorization Rule's public disclosure requirements went live on March 31, 2026, forcing insurers to publish denial rates, decision times, and appeal outcomes for the first time. Early analysis by KFF found the data frustratingly aggregated, but the precedent is set: opacity is being dismantled. At the federal level, the <em>Improving Seniors' Timely Access to Care Act of 2026</em> has cleared both House committees with bipartisan votes, mandating electronic PA workflows and real-time decisions for Medicare Advantage. Meanwhile, more than 25 states have moved faster than Congress, introducing over 35 bills in 2026 alone to regulate AI in coverage decisions, with at least eight states already enacting binding restrictions. Whether Trump's AI preemption order can override state insurance regulation is the next legal battlefield.</p>
+  <p>The most likely outcome is Path A plus Path C: a combination of voluntary reform and escalating regulation, driven by the political reality that "doing nothing" is no longer viable when a CMS Administrator publicly cites violence as the catalyst for change. The 2024 Interoperability and Prior Authorization Rule's public disclosure requirements went live on March 31, 2026, forcing insurers to publish denial rates, decision times, and appeal outcomes for the first time. Early analysis by KFF found the data frustratingly aggregated, but the precedent is set: opacity is being dismantled. At the federal level, three distinct bills are moving through Congress simultaneously. The <em>Improving Seniors' Timely Access to Care Act</em> mandates electronic PA workflows. The <em>Prior Authorization Accountability Act</em> forces public denial-rate disclosure. The <em>Stop Deadly Denials Act</em> would ban prior authorization in Medicare Advantage entirely. Meanwhile, more than 25 states have moved faster than Congress, introducing over 35 bills in 2026 alone to regulate AI in coverage decisions, with at least eight states already enacting binding restrictions. Whether Trump's AI preemption order can override state insurance regulation is the next legal battlefield.</p>
 
-  <p>UNH's Q2 2026 earnings offer a preview of what Path A looks like financially. The medical cost ratio improved to 86.7% (from 89.4% a year earlier), suggesting the company is finding operational efficiencies to offset the cost of denying fewer claims. But enrollment dropped to 48.5 million, below the 51 million analysts expected. The company is getting more profitable per member while losing members. Whether this reflects genuine reform or strategic retrenchment is an open question.</p>
+  <p>UNH's Q2 2026 earnings offer a preview of what Path A looks like financially. The medical cost ratio improved to 86.7% (from 89.4% a year earlier), and operating earnings jumped 55% year-over-year to $8 billion, suggesting the company is finding operational efficiencies to offset the cost of denying fewer claims. Revenue of $112 billion was essentially flat, but adjusted EPS of $6.38 beat estimates by 29%. The company raised its full-year guidance to $19.50-$20.00 adjusted EPS and announced $4 billion in share buybacks. The stock has recovered to roughly $400 from its mid-2025 lows near $260. The message to Wall Street is clear: the company can be profitable under the new rules, even if the era of 33% denial rates is over.</p>
 
   <p>The insurance industry will survive this. It will be less profitable. Prior authorization will not disappear, but it will be faster, more transparent, and subject to meaningful oversight. Starting in 2026, CMS requires most payers to decide standard PA requests within seven calendar days and urgent requests within 72 hours, down from a previous standard of 14 days. Executive security will remain elevated permanently. And somewhere in the actuarial models, there will be a new variable that didn't exist before December 2024: the cost of creating people with nothing left to lose.</p>
   <h3>Limitations of This Analysis</h3>
@@ -1114,6 +1135,10 @@ footer {
       <li>AMA, "Patients, physicians score important win in prior authorization rule." HHS estimates $15 billion in practice savings over 10 years from CMS-0057-F. <a href="https://www.ama-assn.org/about/leadership/patients-physicians-score-important-win-prior-authorization-rule">Link</a></li>
       <li>CNN, "What comes next after Luigi Mangione pleads guilty," Aug 15, 2026. Legal analysis of double jeopardy implications under NY CPL &sect;40.20. <a href="https://www.cnn.com/2026/08/15/us/luigi-mangione-whats-next-guilty-plea?cid=external-feeds_iluminar_meta">Link</a></li>
       <li>USA Today, "Luigi Mangione pleads guilty to federal stalking charges in surprise decision," Aug 14, 2026. <a href="https://www.usatoday.com/story/news/nation/2026/08/14/luigi-mangione-guilty-federal-charges/91290392007/">Link</a></li>
+      <li>H.R. 8377, "Stop Deadly Denials Act of 2026," introduced Apr 20, 2026 by Reps. Khanna and Jayapal. Prohibits prior authorization in Medicare Advantage. <a href="https://www.govinfo.gov/app/details/BILLS-119hr8377ih">Link</a></li>
+      <li>InsuranceNewsNet, "Here's what Rep. Goldman's bipartisan bill for health insurance transparency does," Jul 2026. Prior Authorization Accountability Act. <a href="https://insurancenewsnet.com/oarticle/heres-what-rep-goldmans-bipartisan-bill-for-health-insurance-transparency-does">Link</a></li>
+      <li>Medscape, "Prior Auth Rules Vary Widely Across Insurers, Study Finds," May 2026. Includes physician interviews from Miranda Yaver, PhD (<em>Coverage Denied</em>). <a href="https://www.medscape.com/viewarticle/prior-authorization-rules-show-little-consistency-across-2026a1000ghs">Link</a></li>
+      <li>People, "Luigi Mangione's Murder Trial Will Be Before Anonymous Jury," Aug 12, 2026. <a href="https://people.com/luigi-mangione-will-face-anonymous-jury-12037760">Link</a></li>
     </ol>
   </div>
 </div>
@@ -1192,17 +1217,25 @@ new Chart(stockCtx, {
   type: 'line',
   data: {
     labels: [
-      'Nov 2024', 'Dec 4', 'Dec 31', 'Jan 2025', 'Feb', 'Mar', 'Apr 17', 'May 13', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan 2026', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul 16', 'Aug 2026'
+      'Nov \'24', 'Dec 4', 'Dec 31', 'Mar \'25', 'Apr 17', 'May 13', 'Jun', 'Sep', 'Dec', 'Mar \'26', 'May', 'Jul 16', 'Aug \'26'
     ],
     datasets: [{
-      label: 'UNH Stock Price (approx)',
-      data: [600, 585, 505, 510, 520, 515, 402, 335, 304, 310, 320, 338, 345, 340, 326, 331, 281, 269, 270, 364, 375, 390, 401],
+      label: 'UNH Stock Price',
+      data: [600, 585, 505, 515, 402, 335, 304, 338, 326, 269, 364, 390, 401],
       borderColor: '#4a9eff',
       backgroundColor: 'rgba(74,158,255,0.08)',
       fill: true,
       tension: 0.3,
-      pointRadius: 0,
-      pointHoverRadius: 5,
+      pointRadius: function(ctx) {
+        var keyPoints = [0, 1, 4, 5, 11, 12];
+        return keyPoints.includes(ctx.dataIndex) ? 4 : 0;
+      },
+      pointBackgroundColor: function(ctx) {
+        if (ctx.dataIndex <= 1) return '#ff4757';
+        if (ctx.dataIndex >= 11) return '#2ed573';
+        return '#4a9eff';
+      },
+      pointHoverRadius: 6,
       borderWidth: 2
     }]
   },
@@ -1391,6 +1424,14 @@ new Chart(livesCtx, {
   document.getElementById(id).addEventListener('input', updateCalc);
 });
 updateCalc();
+
+// Scroll progress indicator
+window.addEventListener('scroll', function() {
+  var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var progress = (scrollTop / scrollHeight) * 100;
+  document.getElementById('scrollProgress').style.width = progress + '%';
+});
 </script>
 
 </body>
