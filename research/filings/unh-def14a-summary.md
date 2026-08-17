@@ -90,8 +90,8 @@ Executive security was a **zero-disclosure item** pre-shooting. The Dec 4, 2024 
 |---|---|---|
 | 2025 Annual Meeting (Jun 2025) | **60% support** | Historically low — post-shooting, post-guidance cut |
 | 2024 Annual Meeting (Jun 2024) | **96% support** | Normal pre-shooting levels |
-| 2023 Annual Meeting | ~95%+ | Not specifically cited (typical high support) |
-| 2022 Annual Meeting | ~95%+ | Not specifically cited |
+| 2023 Annual Meeting | **96% support** | Normal pre-shooting levels |
+| 2022 Annual Meeting | **94% support** | Included Say-on-Frequency vote (every year) |
 
 **Post-60% Actions (2026 proxy):**
 - Contacted 46 shareholders (60% of shares), including 12 who voted against
