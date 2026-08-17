@@ -399,6 +399,92 @@ footer {
   transition: width 0.1s linear;
 }
 
+/* MOBILE NAV */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  line-height: 1;
+}
+@media (max-width: 700px) {
+  .nav-toggle { display: block; }
+  nav .nav-links {
+    display: none;
+    position: absolute;
+    top: 52px; left: 0; right: 0;
+    background: rgba(10,10,15,0.97);
+    backdrop-filter: blur(12px);
+    flex-direction: column;
+    padding: 1rem 1.5rem;
+    gap: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  nav .nav-links.open { display: flex; }
+}
+
+/* BACK TO TOP */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, background 0.2s, color 0.2s;
+  z-index: 90;
+}
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.back-to-top:hover {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+/* SCROLL ANIMATIONS */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* STAT CARD HOVER */
+.stat-card {
+  transition: border-color 0.2s, transform 0.15s;
+}
+.stat-card:hover {
+  border-color: var(--accent-dim);
+  transform: translateY(-2px);
+}
+
+/* GT BOX HOVER */
+.gt-box {
+  transition: border-color 0.2s;
+}
+.gt-box:hover {
+  border-color: var(--purple);
+}
+
 /* CALCULATOR */
 .calc-container {
   background: var(--bg-card);
@@ -504,7 +590,8 @@ footer {
 <nav>
   <div class="nav-inner">
     <span class="nav-title">insurance-game-theory</span>
-    <ul class="nav-links">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
+    <ul class="nav-links" id="navLinks">
       <li><a href="#facts">The Facts</a></li>
       <li><a href="#theory">Game Theory</a></li>
       <li><a href="#equilibrium">New Equilibrium</a></li>
@@ -515,22 +602,24 @@ footer {
   </div>
 </nav>
 
+<button class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</button>
+
 <!-- ============ HERO ============ -->
 <div class="hero">
   <div class="hero-label">Game Theory &times; Health Insurance</div>
   <h1>The New Equilibrium</h1>
-  <p class="subtitle">How the killing of UnitedHealthcare CEO Brian Thompson revealed a catastrophic failure in the game theory of health insurance denial practices, and why the industry's old equilibrium can never return.</p>
+  <p class="subtitle">How the killing of UnitedHealthcare CEO Brian Thompson exposed a catastrophic failure in the game theory of American health insurance, and why the industry's old equilibrium was always unsustainable.</p>
   <p class="date">Last updated August 16, 2026</p>
 </div>
 
 <!-- ============ SECTION 1: THE FACTS ============ -->
-<section id="facts">
+<section id="facts" class="fade-in">
   <div class="section-label">Section I</div>
   <h2>The Facts</h2>
 
-  <p>On December 4, 2024, UnitedHealthcare CEO Brian Thompson was shot and killed outside the Hilton Midtown in Manhattan. The words "delay," "deny," and "depose" were carved into the shell casings found at the scene, echoing a phrase used to describe insurer tactics for avoiding claims. Five days later, 26-year-old Luigi Mangione was arrested at a McDonald's in Altoona, Pennsylvania.</p>
+  <p>On December 4, 2024, UnitedHealthcare CEO Brian Thompson was shot and killed outside the Hilton Midtown in Manhattan. The words "delay," "deny," and "depose" were carved into the shell casings, echoing a phrase used to describe insurer tactics for avoiding claims. Five days later, 26-year-old Luigi Mangione was arrested at a McDonald's in Altoona, Pennsylvania.</p>
 
-  <p>What followed was not a moment of national mourning. It was a national conversation about whether the killing was, in some structural sense, inevitable.</p>
+  <p>What followed was not a moment of national mourning. It was a reckoning with the question of whether the killing was, in some structural sense, inevitable.</p>
 
   <h3>The Pre-Shooting Baseline</h3>
 
@@ -578,7 +667,7 @@ footer {
 
   <h3>The Financial Reckoning</h3>
 
-  <p>The shooting's financial impact on UnitedHealth Group was severe and sustained. The company's stock became a real-time barometer of how markets priced the new reality:</p>
+  <p>The shooting's financial impact on UnitedHealth Group was severe and sustained. The stock became a real-time barometer of how markets priced the new reality:</p>
 
   <div class="chart-container">
     <div class="chart-title">UNH Stock Price: The Cascading Collapse</div>
@@ -675,7 +764,7 @@ footer {
 <div class="divider"></div>
 
 <!-- ============ SECTION 2: THE GAME THEORY ============ -->
-<section id="theory">
+<section id="theory" class="fade-in">
   <div class="section-label">Section II</div>
   <h2>The Game Theory</h2>
 
@@ -753,7 +842,7 @@ footer {
   <div class="gt-box">
     <div class="gt-label">Concept 5</div>
     <div class="gt-title">Information Asymmetry Collapse</div>
-    <p>Kenneth Arrow's foundational 1963 paper on health economics demonstrated that medical care markets deviate from competitive ideals precisely because of information asymmetry between providers, insurers, and patients. The prior authorization system weaponized this asymmetry in ways Arrow could not have anticipated. Before the shooting, insurers maintained informational advantages that made the denial strategy viable: proprietary algorithms (nH Predict at UnitedHealth, PxDx at Cigna), opaque denial criteria, deliberately complex appeals processes. Patients could not observe the decision criteria, could not evaluate whether a denial was clinically justified, and faced prohibitive costs in challenging it. This is the Rothschild-Stiglitz (1976) adverse selection problem inverted: instead of insurers suffering from information disadvantage vis-à-vis policyholders, the insurers used their informational advantage against the very people they were supposed to protect.</p>
+    <p>Kenneth Arrow's foundational 1963 paper demonstrated that medical care markets deviate from competitive ideals precisely because of information asymmetry between providers, insurers, and patients. The prior authorization system weaponized this asymmetry. Before the shooting, insurers maintained informational advantages that made the denial strategy viable: proprietary algorithms (nH Predict at UnitedHealth, PxDx at Cigna), opaque denial criteria, deliberately complex appeals processes. Patients could not observe the decision criteria, could not evaluate whether a denial was clinically justified, and faced prohibitive costs in challenging it. This is the Rothschild-Stiglitz (1976) adverse selection problem inverted: instead of insurers suffering from information disadvantage vis-à-vis policyholders, the insurers used their informational advantage against the very people they were supposed to protect.</p>
     <p>The shooting triggered forced disclosure. A Senate report on denial practices, the class action revealing the alleged 90% error rate, public data requirements under the 2024 Interoperability and Prior Authorization Rule (first reports published March 2026), and KFF's analysis of insurer-reported denial rates all followed. The information asymmetry that enabled the old equilibrium has been structurally reduced, though not eliminated.</p>
     <p>Notably, algorithmic denial was not unique to UnitedHealth. In 2023, a separate class action alleged that Cigna's PxDx system allowed medical directors to deny claims in batches, spending an average of 1.2 seconds per review. The pattern was industry-wide; Thompson's killing merely made UnitedHealth the focal point.</p>
   </div>
@@ -768,7 +857,7 @@ footer {
 <div class="divider"></div>
 
 <!-- ============ SECTION 3: THE NEW EQUILIBRIUM ============ -->
-<section id="equilibrium">
+<section id="equilibrium" class="fade-in">
   <div class="section-label">Section III</div>
   <h2>The New Equilibrium</h2>
 
@@ -799,7 +888,12 @@ footer {
 
   <p>On August 14, 2026, Mangione pled guilty to two federal stalking charges with no deal. "I shot Mr. Thompson in Manhattan," he told U.S. District Judge Margaret Garnett. "I understood that my actions would place him in fear of death or bodily injury. I knew what I was doing was illegal." Prosecutors are seeking life in prison; sentencing guidelines indicate a range of 24 to 30 years. Sentencing is set for December 18, 2026.</p>
 
-  <p>His attorneys immediately filed to dismiss the state murder charges on double jeopardy grounds. Legal experts give the motion strong odds: New York's double jeopardy statute goes further than the U.S. Constitution in prohibiting two prosecutions based on the same criminal act. Former Manhattan ADA Anthony Capozzolo told CNN it is "more likely than not that the state case goes away," because both the federal and state offenses punish the same harm. If the motion succeeds, the guilty plea becomes the sole criminal proceeding. Five Pennsylvania charges remain pending but are effectively on hold.</p>
+  <div class="callout green">
+    <strong>"Today's guilty plea marks an important step toward justice for Brian and for our family. While nothing will ease the pain of losing him, we are grateful that the federal justice system has held the person responsible for this heinous act accountable."</strong>
+    <cite>Thompson family statement, August 14, 2026 (People / USA Today)</cite>
+  </div>
+
+  <p>His attorneys immediately filed to dismiss the state murder charges on double jeopardy grounds. New York's double jeopardy statute goes further than the U.S. Constitution in prohibiting two prosecutions based on the same criminal act. Former Manhattan ADA Anthony Capozzolo told CNN it is "more likely than not that the state case goes away," because both the federal and state offenses punish the same harm. The state trial had been set for September 8 with an anonymous jury (ordered after prosecutors raised concerns about fan intimidation). Five Pennsylvania charges remain pending but are effectively on hold.</p>
 
   <p>In his courtroom statement, Mangione described suffering a broken back and watching others endure similar denials of care. He explained how he posed as an investor managing more than $50 million to learn about UNH's investor conference, receiving an immediate response, and that he made part of the gun using a 3D printer. Thompson's wife, Paulette, wiped away tears in the front row as Mangione spoke.</p>
 
@@ -838,7 +932,9 @@ footer {
 
   <h3>The State Legislative Wave</h3>
 
-  <p>While the voluntary pledge was aspirational, state legislatures responded with binding law. By mid-2026, more than 25 states had introduced over 35 bills specifically regulating insurers' use of AI in coverage decisions. Four states enacted legislation in 2025 alone: Arizona (HB 2175), Maryland (HB 820), Nebraska (LB 77), and Texas (SB 815). Washington State signed SB 5395 in April 2026, which explicitly prohibits insurance carriers from using AI as the sole basis for denying prior authorization requests, requiring that a licensed health care practitioner make such determinations.</p>
+  <p>While the voluntary pledge was aspirational, state legislatures responded with binding law. By mid-2026, more than 25 states had introduced over 35 bills specifically regulating insurers' use of AI in coverage decisions. Seven states enacted legislation by the end of May 2026: Arizona (HB 2175), Illinois (SB 1425), Indiana (HB 1271), Maryland (HB 820), Nebraska (LB 77), Texas (SB 815), and Washington (SB 5395). Minnesota became the eighth in May 2026, passing a bipartisan ban on AI-only prior authorization decisions that awaits Governor Walz's signature, effective January 2027. Indiana's law went further than prior auth, prohibiting insurers from using AI as the sole basis to downcode any claim without physician review of the patient's medical record.</p>
+
+  <p>Washington State signed SB 5395 in April 2026, explicitly prohibiting insurance carriers from using AI as the sole basis for denying prior authorization requests, requiring that a licensed health care practitioner make such determinations. The bill was the state's third PA reform measure since 2020.</p>
 
   <p>The political alignments are striking. Florida Governor Ron DeSantis, a Republican, rolled out an "AI Bill of Rights" that includes restrictions on AI in insurance claims processing and authorizes state regulators to inspect insurer algorithms. In Democratic-led Maryland and Illinois, lawmakers pursued similar bans. The bipartisan nature of this response reflects the depth of public anger: restricting algorithmic denials is one of the few issues where red and blue states legislate in the same direction.</p>
 
@@ -886,7 +982,7 @@ footer {
 <div class="divider"></div>
 
 <!-- ============ SECTION 4: THE MORAL CALCULUS ============ -->
-<section id="lives-saved">
+<section id="lives-saved" class="fade-in">
   <div class="section-label">Section IV</div>
   <h2>The Moral Calculus: Statistical Lives Saved</h2>
 
@@ -1029,7 +1125,7 @@ footer {
 <div class="divider"></div>
 
 <!-- ============ SECTION 5: IMPLICATIONS ============ -->
-<section id="implications">
+<section id="implications" class="fade-in">
   <div class="section-label">Section V</div>
   <h2>Implications</h2>
 
@@ -1049,9 +1145,9 @@ footer {
 
   <h3>The Uncomfortable Conclusion</h3>
 
-  <p>The Thompson shooting produced more concrete reform in six months than decades of legislative effort. The prior authorization reform pledge, the mandatory disclosure rules, the 6.5 million fewer denials, the CEO resignation, the $190 billion in market value destroyed. None of this happened because of lobbying, lawsuits, or elections. It happened because a single act of violence made the cost of the status quo viscerally real to the people who profited from it.</p>
+  <p>The Thompson shooting produced more concrete reform in six months than decades of legislative effort. The prior authorization reform pledge, the mandatory disclosure rules, the 6.5 million fewer denials, the CEO resignation, the $190 billion in market value destroyed. None of this happened because of lobbying, lawsuits, or elections. It happened because one act of violence made the cost of the status quo viscerally real to the people who profited from it.</p>
 
-  <p>This is not an endorsement. It is an observation about incentive structures. When a system creates a population of people with diminishing reasons to cooperate, and the mechanisms for peaceful redress are deliberately inadequate, the system has engineered its own instability. The question is not whether someone will eventually act outside the rules. The question is what changes after they do.</p>
+  <p>This is not an endorsement. It is an observation about incentive structures. When a system creates a population with diminishing reasons to cooperate, and the mechanisms for peaceful redress are deliberately inadequate, the system has engineered its own instability. The question was never whether someone would eventually act outside the rules. The question was what would change after they did.</p>
 
   <div class="callout purple">
     <strong>The insurance industry's fundamental miscalculation was treating all players as if they were operating in a repeated game with a future worth protecting. For the subset of people whose future the industry itself has foreclosed, that assumption was always false. December 4, 2024 was the day the industry learned it empirically.</strong>
@@ -1059,7 +1155,7 @@ footer {
 
   <h3>Where This Goes</h3>
 
-  <p>The most likely outcome is Path A plus Path C: a combination of voluntary reform and escalating regulation, driven by the political reality that "doing nothing" is no longer viable when a CMS Administrator publicly cites violence as the catalyst for change. The 2024 Interoperability and Prior Authorization Rule's public disclosure requirements went live on March 31, 2026, forcing insurers to publish denial rates, decision times, and appeal outcomes for the first time. Early analysis by KFF found the data frustratingly aggregated, but the precedent is set: opacity is being dismantled. At the federal level, three distinct bills are moving through Congress simultaneously. The <em>Improving Seniors' Timely Access to Care Act</em> mandates electronic PA workflows. The <em>Prior Authorization Accountability Act</em> forces public denial-rate disclosure. The <em>Stop Deadly Denials Act</em> would ban prior authorization in Medicare Advantage entirely. Meanwhile, more than 25 states have moved faster than Congress, introducing over 35 bills in 2026 alone to regulate AI in coverage decisions, with at least eight states already enacting binding restrictions. Whether Trump's AI preemption order can override state insurance regulation is the next legal battlefield.</p>
+  <p>The most likely outcome is Path A plus Path C: voluntary reform accelerated by escalating regulation, driven by the political reality that inaction is no longer viable when a CMS Administrator publicly cites violence as the catalyst for change. The 2024 Interoperability and Prior Authorization Rule's public disclosure requirements went live on March 31, 2026, forcing insurers to publish denial rates, decision times, and appeal outcomes for the first time. Early analysis by KFF found the data frustratingly aggregated, but the precedent is set: opacity is being dismantled. Three distinct bills are moving through Congress. The <em>Improving Seniors' Timely Access to Care Act</em> mandates electronic PA workflows. The <em>Prior Authorization Accountability Act</em> forces public denial-rate disclosure. The <em>Stop Deadly Denials Act</em> would ban prior authorization in Medicare Advantage entirely. Meanwhile, eight states have enacted binding restrictions on AI in coverage decisions, with over 25 more considering similar measures. Whether Trump's AI preemption order can override state insurance regulation is the next legal battlefield.</p>
 
   <p>UNH's Q2 2026 earnings offer a preview of what Path A looks like financially. The medical cost ratio improved to 86.7% (from 89.4% a year earlier), and operating earnings jumped 55% year-over-year to $8 billion, suggesting the company is finding operational efficiencies to offset the cost of denying fewer claims. Revenue of $112 billion was essentially flat, but adjusted EPS of $6.38 beat estimates by 29%. The company raised its full-year guidance to $19.50-$20.00 adjusted EPS and announced $4 billion in share buybacks. The stock has recovered to roughly $400 from its mid-2025 lows near $260. The message to Wall Street is clear: the company can be profitable under the new rules, even if the era of 33% denial rates is over.</p>
 
@@ -1072,7 +1168,7 @@ footer {
 
   <p>Third, this analysis treats the Thompson shooting as an inflection point, which it clearly was for stock price and public discourse. But disentangling the shooting's effect from other factors (the DOJ investigation into UNH billing practices, Medicare Advantage star rating changes, rising medical cost ratios, the Optum Rx cyberattack fallout) is methodologically difficult. The $190 billion market cap decline reflects all of these, not the shooting alone.</p>
 
-  <p>Fourth, game-theoretic models are simplifications. Real insurance markets involve regulators, hospital systems, pharmaceutical manufacturers, and employers as additional players, each with their own strategy sets. The two-player models presented here illuminate the core dynamics but do not capture the full complexity of the healthcare payment ecosystem. The ongoing legal proceedings add another layer: if New York's double jeopardy law shields Mangione from state prosecution (as legal experts suggest is likely), the game-theoretic implications shift further. A single guilty plea resolving all criminal liability simplifies the narrative from "ongoing uncertainty" to "resolved act with known consequences," which changes the calculus for any future actor considering the cost-benefit of extreme action.</p>
+  <p>Fourth, game-theoretic models are simplifications. Real insurance markets involve regulators, hospital systems, pharmaceutical manufacturers, and employers as additional players, each with their own strategy sets. The two-player models presented here illuminate the core dynamics but do not capture the full complexity of the healthcare payment ecosystem. The legal proceedings add another dimension: if New York's double jeopardy law shields Mangione from state prosecution (as legal experts suggest is likely), the game-theoretic implications shift. A single guilty plea resolving all criminal liability simplifies the narrative from "ongoing uncertainty" to "resolved act with known consequences," which alters the calculus for any future actor weighing the cost-benefit of extreme action.</p>
 
 </section>
 
@@ -1139,6 +1235,10 @@ footer {
       <li>InsuranceNewsNet, "Here's what Rep. Goldman's bipartisan bill for health insurance transparency does," Jul 2026. Prior Authorization Accountability Act. <a href="https://insurancenewsnet.com/oarticle/heres-what-rep-goldmans-bipartisan-bill-for-health-insurance-transparency-does">Link</a></li>
       <li>Medscape, "Prior Auth Rules Vary Widely Across Insurers, Study Finds," May 2026. Includes physician interviews from Miranda Yaver, PhD (<em>Coverage Denied</em>). <a href="https://www.medscape.com/viewarticle/prior-authorization-rules-show-little-consistency-across-2026a1000ghs">Link</a></li>
       <li>People, "Luigi Mangione's Murder Trial Will Be Before Anonymous Jury," Aug 12, 2026. <a href="https://people.com/luigi-mangione-will-face-anonymous-jury-12037760">Link</a></li>
+      <li>People, "Luigi Mangione Pleaded Guilty in Federal Court. How Long Will He Be in Prison?" Aug 16, 2026. Thompson family statement. <a href="https://people.com/luigi-mangione-pleaded-guilty-in-federal-court-how-long-will-he-be-in-prison-12060526">Link</a></li>
+      <li>InsuranceNewsNet/Insurify, "Minnesota Moves to Ban AI Decision-Making in Health Insurance Authorizations," Jun 2026. <a href="https://insurancenewsnet.com/oarticle/minnesota-moves-to-ban-ai-decision-making-in-health-insurance-authorizations-insurify">Link</a></li>
+      <li>Mondaq, "State Legislatures Consider Oversight of Artificial Intelligence in Health Insurance Decisions," Apr 2026. Indiana HB 1271 and state-by-state analysis. <a href="https://www.mondaq.com/unitedstates/new-technology/1778050/state-legislatures-consider-oversight-of-artificial-intelligence-in-health-insurance-decisions">Link</a></li>
+      <li>TechTarget, "United promises another 30% cut to prior auths in 2026," May 5, 2026. <a href="https://www.techtarget.com/healthcarepayers/news/366642707/United-promises-another-30-cut-to-prior-auths-in-2026">Link</a></li>
     </ol>
   </div>
 </div>
@@ -1431,7 +1531,48 @@ window.addEventListener('scroll', function() {
   var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   var progress = (scrollTop / scrollHeight) * 100;
   document.getElementById('scrollProgress').style.width = progress + '%';
+
+  // Back to top visibility
+  var btn = document.getElementById('backToTop');
+  if (scrollTop > 600) {
+    btn.classList.add('visible');
+  } else {
+    btn.classList.remove('visible');
+  }
 });
+
+// Back to top click
+document.getElementById('backToTop').addEventListener('click', function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Mobile nav toggle
+document.getElementById('navToggle').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+// Close mobile nav on link click
+document.querySelectorAll('.nav-links a').forEach(function(link) {
+  link.addEventListener('click', function() {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+// Scroll-triggered fade-in animations
+(function() {
+  var targets = document.querySelectorAll('.gt-box, .chart-container, .stats-row, .callout, .calc-container, .matrix-wrap, .timeline');
+  targets.forEach(function(el) { el.classList.add('fade-in'); });
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  targets.forEach(function(el) { observer.observe(el); });
+})();
 </script>
 
 </body>
