@@ -485,6 +485,55 @@ footer {
   border-color: var(--purple);
 }
 
+/* ACTIVE NAV LINK */
+nav .nav-links a.active {
+  color: var(--accent);
+}
+
+/* SECTION ANCHOR HIGHLIGHT */
+section:target {
+  animation: sectionPulse 1.2s ease-out;
+}
+@keyframes sectionPulse {
+  0% { background: rgba(74,158,255,0.06); }
+  100% { background: transparent; }
+}
+
+/* READING TIME */
+.reading-time {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  margin-top: 0.75rem;
+  position: relative;
+}
+
+/* PRINT STYLES */
+@media print {
+  nav, .scroll-progress, .back-to-top, .nav-toggle { display: none !important; }
+  body { background: #fff; color: #111; font-size: 11pt; }
+  section { padding: 1.5rem 0; page-break-inside: avoid; }
+  .hero { min-height: auto; padding: 2rem 0; }
+  .hero h1 { color: #111; font-size: 24pt; }
+  .hero .subtitle, .hero .date, .hero-label, .reading-time { color: #444; }
+  h2 { color: #111; font-size: 18pt; }
+  h3 { color: #111; }
+  .stat-card { background: #f5f5f5; border-color: #ccc; }
+  .stat-card .stat-value { color: #111 !important; }
+  .stat-card .stat-label { color: #555; }
+  .gt-box { background: #f9f9f9; border-color: #ccc; }
+  .gt-box .gt-label { color: #666; }
+  .gt-box .gt-title { color: #111; }
+  .gt-box p { color: #222; }
+  .callout { background: #f9f9f9; border-left-color: #999; }
+  .chart-container { page-break-inside: avoid; }
+  .divider { background: #ccc; }
+  a { color: #111; text-decoration: underline; }
+  .sources ol { color: #333; }
+  .sources { background: #f5f5f5; border-top-color: #ccc; }
+  footer { color: #666; border-top-color: #ccc; }
+}
+
 /* CALCULATOR */
 .calc-container {
   background: var(--bg-card);
@@ -609,7 +658,8 @@ footer {
   <div class="hero-label">Game Theory &times; Health Insurance</div>
   <h1>The New Equilibrium</h1>
   <p class="subtitle">How the killing of UnitedHealthcare CEO Brian Thompson exposed a catastrophic failure in the game theory of American health insurance, and why the industry's old equilibrium was always unsustainable.</p>
-  <p class="date">Last updated August 16, 2026</p>
+  <p class="date">Last updated August 17, 2026</p>
+  <p class="reading-time">~30 min read &middot; 61 sources</p>
 </div>
 
 <!-- ============ SECTION 1: THE FACTS ============ -->
@@ -619,7 +669,7 @@ footer {
 
   <p>On December 4, 2024, UnitedHealthcare CEO Brian Thompson was shot and killed outside the Hilton Midtown in Manhattan. The words "delay," "deny," and "depose" were carved into the shell casings, echoing a phrase used to describe insurer tactics for avoiding claims. Five days later, 26-year-old Luigi Mangione was arrested at a McDonald's in Altoona, Pennsylvania.</p>
 
-  <p>What followed was not a moment of national mourning. It was a reckoning with the question of whether the killing was, in some structural sense, inevitable.</p>
+  <p>What followed was not a moment of national mourning. Polling by Emerson College found 41% of voters aged 18-29 considered the killing "acceptable." NORC found 70% of Americans blamed insurance denials and profits for creating the conditions that led to it. The shooting forced a question that the industry had spent decades avoiding: whether its denial practices had engineered, in game-theoretic terms, the conditions for their own destabilization.</p>
 
   <h3>The Pre-Shooting Baseline</h3>
 
@@ -768,7 +818,7 @@ footer {
   <div class="section-label">Section II</div>
   <h2>The Game Theory</h2>
 
-  <p>The Thompson shooting can be analyzed as a catastrophic failure in mechanism design, one in which every player acted rationally within their own framework, yet the system produced an outcome that no party would have chosen ex ante. Here are the formal concepts at work.</p>
+  <p>The Thompson shooting can be analyzed as a catastrophic failure in mechanism design. Leonid Hurwicz introduced the concept in the 1960s, and the 2007 Nobel Prize in Economics went to Hurwicz, Eric Maskin, and Roger Myerson "for having laid the foundations of mechanism design theory." The core question: given that people have private information and incentives to misrepresent it, what institutional rules produce desirable outcomes? The health insurance appeals system is a mechanism. It was designed to resolve disputes. It failed. Every player acted rationally within their own framework, yet the system produced an outcome that no party would have chosen ex ante. Here are the formal concepts at work.</p>
 
   <div class="gt-box">
     <div class="gt-label">Concept 1</div>
@@ -834,7 +884,7 @@ footer {
   <div class="gt-box">
     <div class="gt-label">Concept 4</div>
     <div class="gt-title">Mechanism Design Failure</div>
-    <p>Every complex system needs a release valve. In healthcare, the designated mechanisms were: internal appeals, external review, state insurance commissioners, CMS oversight, and the courts. These mechanisms existed. They also failed. When 82% of appeals succeed but only 0.2% of patients appeal, the mechanism is not functioning as designed. It is functioning as a filter that selects for the most persistent patients while allowing the vast majority of wrongful denials to stand unchallenged.</p>
+    <p>Every complex system needs a release valve. In healthcare, the designated mechanisms were: internal appeals, external review, state insurance commissioners, CMS oversight, and the courts. These mechanisms existed. They also failed. When 82% of appeals succeed but only 0.2% of patients appeal, the mechanism is not functioning as designed. It is functioning as a filter that selects for the most persistent patients while allowing the vast majority of wrongful denials to stand unchallenged. In Hurwicz's terminology, the mechanism is not <em>incentive compatible</em>: it relies on patients bearing costs (time, expertise, emotional labor) that exceed the expected benefit of appealing, even when the appeal would succeed. The mechanism's designers knew this. The low appeal rate was not a failure to anticipate; it was a feature that kept costs down.</p>
     <p>The failure is measurable on the provider side, too. A 2022 AMA survey of 1,000 physicians found that 94% said prior authorization demands at least sometimes lead to delays in care. Seven percent reported that the PA process "resulted in a serious adverse event leading to a patient's disability, permanent bodily damage, congenital anomaly, birth defect, or death." Eighty-eight percent said the number of drugs requiring PA had increased; 86% said the same for services. The mechanisms that were supposed to prevent harm were themselves causing it.</p>
     <p>The shooting was what happens when the designated release valves are inadequate: pressure finds another outlet.</p>
   </div>
@@ -842,7 +892,7 @@ footer {
   <div class="gt-box">
     <div class="gt-label">Concept 5</div>
     <div class="gt-title">Information Asymmetry Collapse</div>
-    <p>Kenneth Arrow's foundational 1963 paper demonstrated that medical care markets deviate from competitive ideals precisely because of information asymmetry between providers, insurers, and patients. The prior authorization system weaponized this asymmetry. Before the shooting, insurers maintained informational advantages that made the denial strategy viable: proprietary algorithms (nH Predict at UnitedHealth, PxDx at Cigna), opaque denial criteria, deliberately complex appeals processes. Patients could not observe the decision criteria, could not evaluate whether a denial was clinically justified, and faced prohibitive costs in challenging it. This is the Rothschild-Stiglitz (1976) adverse selection problem inverted: instead of insurers suffering from information disadvantage vis-à-vis policyholders, the insurers used their informational advantage against the very people they were supposed to protect.</p>
+    <p>Kenneth Arrow's foundational 1963 paper demonstrated that medical care markets deviate from competitive ideals precisely because of information asymmetry between providers, insurers, and patients. George Akerlof's "Market for Lemons" (1970) showed that information asymmetry can destroy entire markets when buyers cannot distinguish quality. The prior authorization system created an analogous dynamic: patients cannot distinguish a clinically justified denial from a financially motivated one, so they treat all denials as potentially illegitimate. The system weaponized this asymmetry. Before the shooting, insurers maintained informational advantages that made the denial strategy viable: proprietary algorithms (nH Predict at UnitedHealth, PxDx at Cigna), opaque denial criteria, deliberately complex appeals processes. Patients could not observe the decision criteria, could not evaluate whether a denial was clinically justified, and faced prohibitive costs in challenging it. This is the Rothschild-Stiglitz (1976) adverse selection problem inverted: instead of insurers suffering from information disadvantage vis-à-vis policyholders, the insurers used their informational advantage against the very people they were supposed to protect.</p>
     <p>The shooting triggered forced disclosure. A Senate report on denial practices, the class action revealing the alleged 90% error rate, public data requirements under the 2024 Interoperability and Prior Authorization Rule (first reports published March 2026), and KFF's analysis of insurer-reported denial rates all followed. The information asymmetry that enabled the old equilibrium has been structurally reduced, though not eliminated.</p>
     <p>Notably, algorithmic denial was not unique to UnitedHealth. In 2023, a separate class action alleged that Cigna's PxDx system allowed medical directors to deny claims in batches, spending an average of 1.2 seconds per review. The pattern was industry-wide; Thompson's killing merely made UnitedHealth the focal point.</p>
   </div>
@@ -904,7 +954,7 @@ footer {
   <div class="gt-box">
     <div class="gt-label">Concept 7</div>
     <div class="gt-title">The Moral Hazard of Martyrdom</div>
-    <p>The public response to the shooting created a moral hazard the industry did not anticipate. Forty-one percent of young Americans found the killing acceptable. Mangione became a folk hero. T-shirts, fan clubs, and memes proliferated. The social cost of the act, which deterrence theory assumes is high, turned out to be low or even negative for a significant portion of the population. This inverts the standard deterrence calculus. If society partially rewards the act, the cost function changes for potential future actors.</p>
+    <p>The public response to the shooting created a moral hazard the industry did not anticipate. Mark Pauly's 1968 paper established the concept of moral hazard in health insurance: when people are shielded from costs, they consume more. The post-Thompson variant inverts this. Here, the moral hazard runs toward the industry: when the social cost of retaliatory violence is reduced by public sympathy, the probability of future acts increases. Forty-one percent of young Americans found the killing acceptable. Mangione became a folk hero. T-shirts, fan clubs, and memes proliferated. The social cost of the act, which deterrence theory assumes is high, turned out to be low or even negative for a significant portion of the population. This inverts the standard deterrence calculus. If society partially rewards the act, the cost function changes for potential future actors.</p>
   </div>
 
   <h3>What Changed vs. What Didn't</h3>
@@ -1160,6 +1210,10 @@ footer {
   <p>UNH's Q2 2026 earnings offer a preview of what Path A looks like financially. The medical cost ratio improved to 86.7% (from 89.4% a year earlier), and operating earnings jumped 55% year-over-year to $8 billion, suggesting the company is finding operational efficiencies to offset the cost of denying fewer claims. Revenue of $112 billion was essentially flat, but adjusted EPS of $6.38 beat estimates by 29%. The company raised its full-year guidance to $19.50-$20.00 adjusted EPS and announced $4 billion in share buybacks. The stock has recovered to roughly $400 from its mid-2025 lows near $260. The message to Wall Street is clear: the company can be profitable under the new rules, even if the era of 33% denial rates is over.</p>
 
   <p>The insurance industry will survive this. It will be less profitable. Prior authorization will not disappear, but it will be faster, more transparent, and subject to meaningful oversight. Starting in 2026, CMS requires most payers to decide standard PA requests within seven calendar days and urgent requests within 72 hours, down from a previous standard of 14 days. Executive security will remain elevated permanently. And somewhere in the actuarial models, there will be a new variable that didn't exist before December 2024: the cost of creating people with nothing left to lose.</p>
+  <h3>The Counterfactual</h3>
+
+  <p>Would these reforms have happened without the shooting? Some would have. The CMS Interoperability and Prior Authorization Rule was finalized in January 2024, eleven months before Thompson was killed. The <em>Improving Seniors' Timely Access to Care Act</em> evolved from a bill first introduced in 2022. The AMA had been lobbying for PA reform for years. But the counterfactual matters at the margin. Before December 2024, these reforms were moving at the pace of legislative horse-trading: the Timely Access Act had been introduced and reintroduced across three Congresses without reaching the floor. After December 2024, a CMS Administrator went on the record citing "violence in the streets" as the reason for urgency. Nearly 60 insurers signed a voluntary pledge within six months. Eight states enacted binding AI denial bans in under 18 months. The shooting did not create the reform agenda. It collapsed the timeline. In policy terms, that acceleration is not trivial. Every month of delay in eliminating unnecessary prior authorizations has a body count, measured in the treatment delays and abandonments documented by the AMA, MSK, and Cleveland Clinic data above. The reforms that were "already in the pipeline" might have taken another five to ten years to reach their current state. The statistical lives saved in the interim are the difference between the counterfactual timeline and the actual one.</p>
+
   <h3>Limitations of This Analysis</h3>
 
   <p>Several caveats apply. First, the denial rate data comes from ACA marketplace plans sold on HealthCare.gov, which represent roughly 2% of UnitedHealth's total claims volume. Whether the pattern holds across employer-sponsored and Medicare Advantage plans is an open question, though the naviHealth/nH Predict lawsuit specifically targeted Medicare Advantage. UNH says its overall approval rate is 98% when accounting for duplicates, eligibility, and timely submissions.</p>
@@ -1239,6 +1293,9 @@ footer {
       <li>InsuranceNewsNet/Insurify, "Minnesota Moves to Ban AI Decision-Making in Health Insurance Authorizations," Jun 2026. <a href="https://insurancenewsnet.com/oarticle/minnesota-moves-to-ban-ai-decision-making-in-health-insurance-authorizations-insurify">Link</a></li>
       <li>Mondaq, "State Legislatures Consider Oversight of Artificial Intelligence in Health Insurance Decisions," Apr 2026. Indiana HB 1271 and state-by-state analysis. <a href="https://www.mondaq.com/unitedstates/new-technology/1778050/state-legislatures-consider-oversight-of-artificial-intelligence-in-health-insurance-decisions">Link</a></li>
       <li>TechTarget, "United promises another 30% cut to prior auths in 2026," May 5, 2026. <a href="https://www.techtarget.com/healthcarepayers/news/366642707/United-promises-another-30-cut-to-prior-auths-in-2026">Link</a></li>
+      <li>Hurwicz, L., Maskin, E.S. &amp; Myerson, R.B. The Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 2007, "for having laid the foundations of mechanism design theory." <a href="https://www.nobelprize.org/prizes/economic-sciences/2007/summary/">Link</a></li>
+      <li>Pauly, M.V., "The Economics of Moral Hazard: Comment," <em>The American Economic Review</em>, 58(3), 531-537, 1968.</li>
+      <li>Akerlof, G.A., "The Market for 'Lemons': Quality Uncertainty and the Market Mechanism," <em>The Quarterly Journal of Economics</em>, 84(3), 488-500, 1970.</li>
     </ol>
   </div>
 </div>
@@ -1572,6 +1629,33 @@ document.querySelectorAll('.nav-links a').forEach(function(link) {
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
   targets.forEach(function(el) { observer.observe(el); });
+})();
+
+// Active nav link highlighting on scroll
+(function() {
+  var sections = document.querySelectorAll('section[id], div.sources[id]');
+  var navLinks = document.querySelectorAll('.nav-links a');
+  
+  function updateActiveNav() {
+    var scrollPos = window.scrollY + 100;
+    var currentId = '';
+    
+    sections.forEach(function(section) {
+      if (section.offsetTop <= scrollPos) {
+        currentId = section.getAttribute('id');
+      }
+    });
+    
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + currentId) {
+        link.classList.add('active');
+      }
+    });
+  }
+  
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
 })();
 </script>
 
