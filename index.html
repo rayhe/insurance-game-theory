@@ -625,10 +625,73 @@ section:target {
   .calc-output { grid-template-columns: 1fr; }
 }
 
+/* KEY FINDINGS BOX */
+.key-findings {
+  max-width: var(--max-width);
+  margin: -2rem auto 0;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+.key-findings-inner {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2rem;
+}
+.key-findings .kf-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.key-findings ul {
+  list-style: none;
+  padding: 0;
+}
+.key-findings li {
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.6;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(42,42,58,0.5);
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+.key-findings li:last-child { border-bottom: none; }
+.key-findings .kf-icon {
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+  font-size: 0.82rem;
+  margin-top: 0.15rem;
+}
+
+/* INLINE FOOTNOTES */
+sup.fn {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0 0.1rem;
+  position: relative;
+  top: -0.3em;
+  transition: color 0.2s;
+}
+sup.fn:hover {
+  color: var(--text-bright);
+  text-decoration: underline;
+}
+
 @media (max-width: 600px) {
   html { font-size: 15px; }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   section { padding: 3rem 1rem; }
+  .key-findings-inner { padding: 1.25rem; }
 }
 </style>
 </head>
@@ -659,7 +722,21 @@ section:target {
   <h1>The New Equilibrium</h1>
   <p class="subtitle">How the killing of UnitedHealthcare CEO Brian Thompson exposed a catastrophic failure in the game theory of American health insurance, and why the industry's old equilibrium was always unsustainable.</p>
   <p class="date">Last updated August 17, 2026</p>
-  <p class="reading-time">~35 min read &middot; 68 sources</p>
+  <p class="reading-time">~35 min read &middot; 70 sources</p>
+</div>
+
+<!-- ============ KEY FINDINGS ============ -->
+<div class="key-findings">
+  <div class="key-findings-inner">
+    <div class="kf-label">Key Findings</div>
+    <ul>
+      <li><span class="kf-icon" style="color:var(--red)">&#9632;</span>UnitedHealthcare's ACA marketplace denial rate was 33%, nearly twice the 19% industry average. Its nH Predict algorithm had an alleged 90% error rate, but only 0.2% of policyholders ever appealed.</li>
+      <li><span class="kf-icon" style="color:var(--orange)">&#9632;</span>The shooting destroyed $190 billion in UNH market capitalization, forced its CEO to resign, and triggered nearly 60 insurers to sign reform pledges eliminating 6.5 million prior authorizations.</li>
+      <li><span class="kf-icon" style="color:var(--green)">&#9632;</span>Eight states enacted binding restrictions on AI-driven claim denials. Four federal bills are moving through Congress, ranging from transparency mandates to an outright Medicare Advantage PA ban.</li>
+      <li><span class="kf-icon" style="color:var(--purple)">&#9632;</span>A Fermi estimate based on MSK, Cleveland Clinic, and AMA data suggests 2,000 to 5,000 statistical lives saved per year from post-shooting reforms, valued at $28 to $71 billion.</li>
+      <li><span class="kf-icon" style="color:var(--accent)">&#9632;</span>Seven formal game theory concepts explain why the old equilibrium collapsed: from asymmetric risk tolerance to the moral hazard of martyrdom. The system engineered its own instability.</li>
+    </ul>
+  </div>
 </div>
 
 <!-- ============ SECTION 1: THE FACTS ============ -->
@@ -669,7 +746,7 @@ section:target {
 
   <p>On December 4, 2024, UnitedHealthcare CEO Brian Thompson was shot and killed outside the Hilton Midtown in Manhattan. The words "delay," "deny," and "depose" were carved into the shell casings. Five days later, 26-year-old Luigi Mangione was arrested at a McDonald's in Altoona, Pennsylvania.</p>
 
-  <p>What followed was not mourning. Emerson College found 41% of voters aged 18-29 considered the killing "acceptable." NORC found 70% of Americans blamed insurance denials and profits for creating the conditions that led to it. The shooting forced a question the industry had spent decades dodging: whether its denial practices had engineered the conditions for their own destabilization.</p>
+  <p>What followed was not mourning. An Emerson College poll found 41% of voters aged 18-29 considered the killing "acceptable." NORC found 70% of Americans blamed insurance denials and profits for creating the conditions that led to it. The shooting forced a question the industry had spent decades avoiding: whether its denial practices had engineered the conditions for their own destabilization.</p>
 
   <h3>The Pre-Shooting Baseline</h3>
 
@@ -777,6 +854,10 @@ section:target {
       <div class="tl-date">Jul 16, 2026</div>
       <div class="tl-text">UNH reports Q2 2026: adjusted EPS $6.38 (beat $4.94 estimate), revenue $112B, medical cost ratio <strong>86.7%</strong> (down from 89.4% YoY). Raises 2026 guidance to $19.50-$20.00 EPS. Stock up ~27% YTD. Operating earnings jump 55% YoY to $8B. Hemsley says results reflect "continuing progress in our work to simplify how we operate."</div>
     </div>
+    <div class="timeline-item orange">
+      <div class="tl-date">Jun 30, 2026</div>
+      <div class="tl-text">Judge Gregory Carro dismisses first-degree murder and terrorism charges against Mangione, ruling insufficient evidence that he intended to "intimidate and coerce a civilian population." Second-degree murder and 8 other counts survive. Removes possibility of mandatory life without parole in state case.</div>
+    </div>
     <div class="timeline-item green">
       <div class="tl-date">Jul 2026</div>
       <div class="tl-text">House Energy and Commerce Committee passes <em>Improving Seniors' Timely Access to Care Act of 2026</em> with bipartisan votes, mandating electronic PA workflows and real-time decisions for Medicare Advantage. HHS estimates the broader CMS rule will save physician practices <strong>$15 billion over 10 years</strong>. Separately, the bipartisan <em>Prior Authorization Accountability Act</em> passes the same committee, requiring all insurers to publicly display denial rates, appeal outcomes, and processing times.</div>
@@ -822,7 +903,7 @@ section:target {
   <div class="section-label">Section II</div>
   <h2>The Game Theory</h2>
 
-  <p>The Thompson shooting can be analyzed as a catastrophic failure in mechanism design. Leonid Hurwicz introduced the concept in the 1960s; the 2007 Nobel in Economics went to Hurwicz, Eric Maskin, and Roger Myerson "for having laid the foundations of mechanism design theory." The core question: given that people have private information and incentives to misrepresent it, what institutional rules produce desirable outcomes? The health insurance appeals system is a mechanism. It was designed to resolve disputes. It failed. Every player acted rationally within their own framework, yet the system produced an outcome no party would have chosen ex ante.</p>
+  <p>The Thompson shooting can be analyzed as a catastrophic failure in mechanism design. Leonid Hurwicz introduced the concept in the 1960s; the 2007 Nobel in Economics went to Hurwicz, Eric Maskin, and Roger Myerson "for having laid the foundations of mechanism design theory." The core question: given that people have private information and incentives to misrepresent it, what rules produce desirable outcomes? The health insurance appeals system is a mechanism. It was designed to resolve disputes. It failed. Every player acted rationally within their own framework, yet the system produced an outcome no party would have chosen ex ante.</p>
 
   <div class="gt-box">
     <div class="gt-label">Concept 1</div>
@@ -950,8 +1031,8 @@ section:target {
     <div class="gt-title">Mechanism Design Failure</div>
     <p>Every complex system needs a release valve. In healthcare, the designated mechanisms were: internal appeals, external review, state insurance commissioners, CMS oversight, and the courts. These mechanisms existed. They also failed. When 82% of appeals succeed but only 0.2% of patients appeal, the mechanism is not functioning as designed. It is functioning as a filter that selects for the most persistent patients while allowing the vast majority of wrongful denials to stand unchallenged. In Hurwicz's terminology, the mechanism is not <em>incentive compatible</em>: it relies on patients bearing costs (time, expertise, emotional labor) that exceed the expected benefit of appealing, even when the appeal would succeed. The mechanism's designers knew this. The low appeal rate was not a failure to anticipate; it was a feature that kept costs down.</p>
     <p>The failure is measurable on the provider side, too. A 2022 AMA survey of 1,000 physicians found that 94% said prior authorization demands at least sometimes lead to delays in care. Seven percent reported that the PA process "resulted in a serious adverse event leading to a patient's disability, permanent bodily damage, congenital anomaly, birth defect, or death." Eighty-eight percent said the number of drugs requiring PA had increased; 86% said the same for services. The mechanisms that were supposed to prevent harm were themselves causing it.</p>
-    <p>In June 2026, the HHS Office of Inspector General put hard numbers on the problem. Across 19 Medicare Advantage organizations covering 29.3 million enrollees, OIG found that the three largest insurers denied post-acute care at rates far exceeding their peers. CVS Health denied 80% of long-term acute care hospital admission requests. Humana denied 72%. UnitedHealth denied 71%. For inpatient rehabilitation, UnitedHealth led at 66%. The 16 remaining insurers averaged 42% and 41%, respectively. When enrollees appealed, 95% of skilled nursing facility denials were overturned. That number is not a typo. The denials were almost universally wrong.</p>
-    <p>OIG traced part of the problem to naviHealth, UnitedHealth's Optum subsidiary. naviHealth processed half of all skilled nursing admission requests and denied 14% (compared to 11% for internal review and 9% for other contractors). Ninety-seven percent of naviHealth's SNF denials were overturned on appeal. For long-term care hospitals and rehab facilities, naviHealth's denial rates were 73% and 68%. "Differences in denial rates between for-profit and nonprofit [Medicare Advantage insurers] suggest that financial incentives may be partially driving higher denial rates," OIG wrote. The Inspector General of the United States government is saying, with careful bureaucratic phrasing, what the class action alleged: the algorithm optimizes for money, not medicine.</p>
+    <p>In June 2026, the HHS Office of Inspector General quantified the pattern across 19 Medicare Advantage organizations covering 29.3 million enrollees. CVS Health denied 80% of long-term acute care hospital admission requests. Humana denied 72%. UnitedHealth denied 71%. For inpatient rehabilitation, UnitedHealth led at 66%. The 16 remaining insurers averaged 42% and 41%, respectively. When enrollees appealed skilled nursing facility denials, 95% were overturned. The denials were almost universally wrong.</p>
+    <p>The trail led directly to naviHealth, UnitedHealth's Optum subsidiary. naviHealth processed half of all skilled nursing admission requests and denied 14%, compared to 11% for internal review and 9% for other contractors. Ninety-seven percent of naviHealth's SNF denials were overturned on appeal. For long-term care hospitals and rehab facilities, naviHealth's denial rates were 73% and 68%. "Differences in denial rates between for-profit and nonprofit [Medicare Advantage insurers] suggest that financial incentives may be partially driving higher denial rates," OIG wrote. The Inspector General was saying, with careful bureaucratic phrasing, what the class action alleged: the algorithm optimizes for money, not medicine.</p>
     <p>The shooting was what happens when the designated release valves are inadequate: pressure finds another outlet.</p>
   </div>
 
@@ -1009,13 +1090,13 @@ section:target {
     <cite>Thompson family statement, August 14, 2026 (People / USA Today)</cite>
   </div>
 
-  <p>His attorneys immediately filed to dismiss the state murder charges on double jeopardy grounds. New York's double jeopardy statute goes further than the U.S. Constitution in prohibiting two prosecutions based on the same criminal act. Former Manhattan ADA Anthony Capozzolo told CNN it is "more likely than not that the state case goes away," because both the federal and state offenses punish the same harm. The state trial had been set for September 8 with an anonymous jury (ordered after prosecutors raised concerns about fan intimidation). Five Pennsylvania charges remain pending but are effectively on hold.</p>
+  <p>His attorneys immediately filed to dismiss the state murder charges on double jeopardy grounds. Their core claim: that state and federal prosecutors coordinated from the start. "From the day of his arrest on December 9, 2024, Luigi Mangione has been a pawn in parallel prosecutions pursued by the New York County District Attorney's Office and the United States Department of Justice," the defense wrote. New York's double jeopardy statute goes further than the U.S. Constitution, barring two prosecutions "based upon the same act or criminal transaction," even between separate sovereigns. There is precedent. In 2019, a New York judge dismissed state charges against former Trump campaign chairman Paul Manafort after his defense lawyer argued the state residential mortgage fraud prosecution covered the same conduct as his federal bank fraud conviction. But precedent also runs against Mangione: Derek Chauvin was prosecuted in both state and federal courts for the killing of George Floyd, and the Marine Midland Bank robbers' dual prosecution survived a double jeopardy challenge before New York's highest court. The DA's office said it "remains committed to seeking justice." The state trial had been set for September 8 with an anonymous jury. Five Pennsylvania charges remain pending.</p>
 
   <p>In his courtroom statement, Mangione described suffering a broken back and watching others endure similar denials of care. He explained how he posed as an investor managing more than $50 million to learn about UNH's investor conference, receiving an immediate response, and that he made part of the gun using a 3D printer. Thompson's wife, Paulette, wiped away tears in the front row as Mangione spoke.</p>
 
   <p>In game-theoretic terms, the guilty plea with no deal is a signal of commitment. It demonstrates that the actor accepted the maximum personal cost, which strengthens rather than weakens the credible threat for others in similar positions. A rational actor seeking leniency would have bargained. An actor demonstrating that the cause was worth any personal cost sends a different signal entirely.</p>
 
-  <p>In the language of Thomas Schelling's commitment theory, Mangione burned his own ships. The absence of a deal means there is no implicit message of "this was a mistake." The message is: "I did this, I knew the cost, and I accepted it."</p>
+  <p>In Schelling's commitment theory, Mangione burned his ships. No deal means no implicit message of regret. The message is: "I did this, I knew the cost, and I accepted it."</p>
 
   <div class="gt-box">
     <div class="gt-label">Concept 7</div>
@@ -1278,17 +1359,21 @@ section:target {
   <p>The insurance industry will survive this. It will be less profitable. Prior authorization will not disappear, but it will be faster, more transparent, and subject to meaningful oversight. Starting in 2026, CMS requires most payers to decide standard PA requests within seven calendar days and urgent requests within 72 hours, down from a previous standard of 14 days. Executive security will remain elevated permanently. And somewhere in the actuarial models, there will be a new variable that didn't exist before December 2024: the cost of creating people with nothing left to lose.</p>
   <h3>The Counterfactual</h3>
 
-  <p>Would these reforms have happened without the shooting? Some would have. The CMS Interoperability and Prior Authorization Rule was finalized in January 2024, eleven months before Thompson was killed. The <em>Improving Seniors' Timely Access to Care Act</em> evolved from a bill first introduced in 2022. The AMA had been lobbying for PA reform for years. But the counterfactual matters at the margin. Before December 2024, these reforms were moving at the pace of legislative horse-trading: the Timely Access Act had been introduced and reintroduced across three Congresses without reaching the floor. After December 2024, a CMS Administrator went on the record citing "violence in the streets" as the reason for urgency. Nearly 60 insurers signed a voluntary pledge within six months. Eight states enacted binding AI denial bans in under 18 months. The shooting did not create the reform agenda. It collapsed the timeline. In policy terms, that acceleration is not trivial. Every month of delay in eliminating unnecessary prior authorizations has a body count, measured in the treatment delays and abandonments documented by the AMA, MSK, and Cleveland Clinic data above. The reforms that were "already in the pipeline" might have taken another five to ten years to reach their current state. The statistical lives saved in the interim are the difference between the counterfactual timeline and the actual one.</p>
+  <p>Would these reforms have happened without the shooting? Some would have. The CMS Interoperability Rule was finalized in January 2024, eleven months before Thompson was killed. The <em>Improving Seniors' Timely Access to Care Act</em> had been introduced across three Congresses without reaching the floor. The AMA had lobbied for PA reform for years. But the counterfactual matters at the margin. Before December 2024, these reforms crept forward at the pace of legislative horse-trading. After December 2024, a CMS Administrator cited "violence in the streets" as the reason for urgency. Nearly 60 insurers signed a voluntary pledge within six months. Eight states enacted binding AI denial bans in under 18 months.</p>
+
+  <p>The shooting did not create the reform agenda. It collapsed the timeline. Every month of delay in eliminating unnecessary prior authorizations has a body count, measured in the treatment delays and abandonments documented by the AMA, MSK, and Cleveland Clinic data. The reforms that were "already in the pipeline" might have taken another five to ten years to reach their current state. The statistical lives saved in the interim are the difference between the counterfactual timeline and the actual one.</p>
 
   <h3>Limitations of This Analysis</h3>
 
   <p>Several caveats apply. First, the denial rate data comes from ACA marketplace plans sold on HealthCare.gov, which represent roughly 2% of UnitedHealth's total claims volume. The OIG's June 2026 reports on Medicare Advantage post-acute care suggest the pattern holds in other segments: UNH denied 66-71% of LTCH and IRF requests, far exceeding the 41-42% average. But extrapolating to employer-sponsored coverage remains an open question. UNH says its overall approval rate is 98% when accounting for duplicates, eligibility, and timely submissions.</p>
 
+  <p>Second, this analysis treats prior authorization as uniformly harmful. That framing has a counterpoint. A University of Chicago working paper by Brot-Goldberg et al. found that Medicare prescription drug PA requirements save $95.88 per beneficiary in drug spending and that these savings exceed the administrative costs they create. The paper's authors argue that "we can't just infer waste based on the presence of administrative costs." This is a legitimate finding. But it measures cost savings from redirecting patients to generic alternatives, not the mortality cost of denying life-saving treatments. The question is not whether PA can work; it is whether the way the largest insurers deployed it was killing people.</p>
+
   <p>Second, the 90% error rate and 0.2% appeal rate are allegations from a class action complaint, not independently audited figures. They are calculated from reversal rates on review, which may overstate algorithmic error if the review process applies different standards. The OIG data provides independent government corroboration: naviHealth's 97% overturn rate on SNF appeals is in the same ballpark. UNH denies that nH Predict is used for coverage determinations at all.</p>
 
   <p>Third, this analysis treats the Thompson shooting as an inflection point, which it clearly was for stock price and public discourse. But disentangling the shooting's effect from other factors (the DOJ investigation into UNH billing practices, Medicare Advantage star rating changes, rising medical cost ratios, the Optum Rx cyberattack fallout) is methodologically difficult. The $190 billion market cap decline reflects all of these, not the shooting alone.</p>
 
-  <p>Fourth, game-theoretic models are simplifications. Real insurance markets involve regulators, hospital systems, pharmaceutical manufacturers, and employers as additional players, each with their own strategy sets. The two-player models presented here illuminate the core dynamics but do not capture the full complexity of the healthcare payment ecosystem. The legal proceedings add another dimension: if New York's double jeopardy law shields Mangione from state prosecution (as legal experts suggest is likely), the game-theoretic implications shift. A single guilty plea resolving all criminal liability simplifies the narrative from "ongoing uncertainty" to "resolved act with known consequences," which alters the calculus for any future actor weighing the cost-benefit of extreme action.</p>
+  <p>Fourth, game-theoretic models are simplifications. Real insurance markets involve regulators, hospital systems, pharmaceutical manufacturers, and employers as additional players, each with their own strategy sets. The two-player models presented here illuminate the core dynamics but do not capture the full ecosystem. The legal proceedings add another dimension: if New York's double jeopardy law shields Mangione from state prosecution, the game shifts. A single guilty plea resolving all criminal liability simplifies the narrative from ongoing uncertainty to a resolved act with known consequences, altering the calculus for any future actor weighing the cost of extreme action.</p>
 
 </section>
 
@@ -1369,6 +1454,8 @@ section:target {
       <li>InsuranceNewsNet, "Report: Health insurers denied one in five claims in 2024," Feb 2026. Massachusetts HPC data: UHC 28% denial rate. <a href="https://insurancenewsnet.com/oarticle/report-health-insurers-denied-one-in-five-claims-in-2024">Link</a></li>
       <li>InsuranceNewsNet, "Reps. Craig, Ryan introduce Patient Refunds for Bad Denials Act," Apr 2026. $10M+ penalties for insurers exceeding 25% denial threshold. <a href="https://insurancenewsnet.com/oarticle/reps-craig-ryan-introduce-legislation-to-hold-health-insurance-companies-accountable-for-sky-high-denial-rates-refund-patients-for-unfair-health-care-costs">Link</a></li>
       <li>Medical Economics, "Insurance denials leave millions delayed, sicker and in debt," Jun 2026. Commonwealth Fund 2025 survey (n=4,589): 21% denial rate, representing ~130.6 million adults. <a href="https://www.medicaleconomics.com/view/doctor-s-orders-aren-t-enough-insurance-denials-leave-millions-delayed-sicker-and-in-debt">Link</a></li>
+      <li>WSJ, "What to Know About Luigi Mangione's Double Jeopardy Claims," Aug 15, 2026. Manafort precedent, Chauvin comparison, defense coordination claim. <a href="https://www.wsj.com/us-news/law/what-to-know-about-luigi-mangiones-double-jeopardy-claims-99633a76">Link</a></li>
+      <li>Brot-Goldberg, Z., Burn, S., Layton, T., &amp; Vabson, B., "New Study Finds that Medicare's Prior Authorization Bureaucracy Produces Program Savings, Not Waste," Harris School of Public Policy, University of Chicago. PA saves $95.88/beneficiary in drug spending. <a href="https://harris.uchicago.edu/news-events/news/new-study-finds-medicares-prior-authorization-bureaucracy-produces-program-savings">Link</a></li>
     </ol>
   </div>
 </div>
@@ -1737,7 +1824,7 @@ document.querySelectorAll('.nav-links a').forEach(function(link) {
 
 // Scroll-triggered fade-in animations
 (function() {
-  var targets = document.querySelectorAll('.gt-box, .chart-container, .stats-row, .callout, .calc-container, .matrix-wrap, .timeline');
+  var targets = document.querySelectorAll('.gt-box, .chart-container, .stats-row, .callout, .calc-container, .matrix-wrap, .timeline, .key-findings-inner');
   targets.forEach(function(el) { el.classList.add('fade-in'); });
 
   var observer = new IntersectionObserver(function(entries) {
