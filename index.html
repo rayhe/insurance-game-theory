@@ -347,6 +347,26 @@ table.payoff .cell-label {
   color: var(--text);
   margin-top: 0.2rem;
 }
+.timeline-legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.75rem;
+  padding-left: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+.timeline-legend span::before {
+  content: '';
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+}
+.timeline-legend .leg-red::before { background: var(--red); }
+.timeline-legend .leg-green::before { background: var(--green); }
+.timeline-legend .leg-orange::before { background: var(--orange); }
 
 /* DIVIDER */
 .divider {
@@ -918,6 +938,11 @@ sup.fn:hover {
       <div class="tl-date">Aug 2026</div>
       <div class="tl-text">CMS publishes <strong>Contract Year 2025 Audit and Enforcement Report</strong>, fining <strong>14 Medicare sponsors $1.54 million</strong> for 18 violations. CVS Health: $753,805. Centene: $380,785. UnitedHealth Group: $48,869. Audit finds systemic failures: duplicate logic in PA systems that processed appeals incorrectly after software updates, approved coverage requests made unavailable for the rest of the plan year, medications denied because systems checked prior enrollment dates. In 89% of violations, enrollees suffered financial harm exceeding $100. Comes five months before the January 1, 2027 deadline requiring all MA, Medicaid, CHIP, and marketplace plans to support electronic PA submission.</div>
     </div>
+  </div>
+  <div class="timeline-legend">
+    <span class="leg-red">Crisis / market impact</span>
+    <span class="leg-orange">Investigation / data</span>
+    <span class="leg-green">Reform / legislation</span>
   </div>
 
   <h3>The Industry Response</h3>
