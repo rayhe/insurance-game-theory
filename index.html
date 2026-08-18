@@ -742,7 +742,7 @@ sup.fn:hover {
   <h1>The New Equilibrium</h1>
   <p class="subtitle">How the killing of UnitedHealthcare CEO Brian Thompson exposed a catastrophic failure in the game theory of American health insurance, and why the industry's old equilibrium was always unsustainable.</p>
   <p class="date">Last updated August 17, 2026</p>
-  <p class="reading-time">~71 min read &middot; 126 sources</p>
+  <p class="reading-time">~75 min read &middot; 132 sources</p>
 </div>
 
 <!-- ============ KEY FINDINGS ============ -->
@@ -754,7 +754,7 @@ sup.fn:hover {
       <li><span class="kf-icon" style="color:var(--orange)">&#9632;</span>The shooting destroyed $190 billion in UNH market capitalization, forced its CEO to resign, and triggered nearly 60 insurers to sign reform pledges eliminating 6.5 million prior authorizations.</li>
       <li><span class="kf-icon" style="color:var(--green)">&#9632;</span>Eight states enacted binding restrictions on AI-driven claim denials. Six federal bills are moving through Congress, ranging from transparency mandates to an outright Medicare Advantage PA ban.</li>
       <li><span class="kf-icon" style="color:var(--purple)">&#9632;</span>A Fermi estimate based on MSK, Cleveland Clinic, and AMA data suggests 2,000 to 5,000 statistical lives saved per year from post-shooting reforms, valued at $28 to $71 billion.</li>
-      <li><span class="kf-icon" style="color:var(--accent)">&#9632;</span>Seven formal game theory concepts explain why the old equilibrium collapsed: from asymmetric risk tolerance to the moral hazard of martyrdom. New evidence shows PA burdens fall disproportionately on Black, Hispanic, and lower-income patients, while CMS fines of $1.54M across 14 insurers reveal enforcement penalties below the indifference threshold. Hospitals have entered the game as a coordinated third player, filing $100M+ lawsuits against insurers.</li>
+      <li><span class="kf-icon" style="color:var(--accent)">&#9632;</span>Seven formal game theory concepts explain why the old equilibrium collapsed: from asymmetric risk tolerance to the moral hazard of martyrdom. New evidence shows PA burdens fall disproportionately on Black, Hispanic, and lower-income patients, while CMS fines of $1.54M across 14 insurers reveal enforcement penalties below the indifference threshold. Hospitals have entered the game as a coordinated third player, filing $100M+ lawsuits against insurers. CMS's own WISeR pilot, deploying AI-driven PA in Traditional Medicare with a 62% initial approval rate, embodies the Regulator's Paradox: the referee has entered the game on the same side as the player it polices.</li>
     </ul>
   </div>
 </div>
@@ -1224,7 +1224,7 @@ sup.fn:hover {
 
   <p>A federal counter-current complicates matters. President Trump's December 2025 executive order on AI seeks to preempt most state AI regulation, warning that "excessive State regulation thwarts" American competitiveness. The order proposes restricting federal funding or pursuing litigation against states that enact overly burdensome AI rules. Whether federal preemption will override state insurance regulation remains legally untested, but the tension creates a new dimension in the game: states legislating faster than the federal government can preempt them.</p>
 
-  <p>The policy incoherence runs deeper than federalism. While Congress advances five bills to restrict prior authorization, the CMS Innovation Center proposed the opposite: the "Wasteful and Inappropriate Service Reduction" (WISeR) Model, which would have <em>expanded</em> PA requirements in traditional Medicare by 30%, outsourcing the new approvals to the same private companies running PA for Medicare Advantage. The House responded with H.Res.704, a bipartisan resolution formally opposing the model. The resolution's text cited the KFF finding that 81.7% of Medicare Advantage denials are overturned on appeal and referenced the 90% AI error rate alleged in the class action suits. One arm of the federal government tried to replicate a system that another arm was dismantling. The resolution passed, and CMS quietly shelved WISeR in early 2026. In game-theoretic terms, this was a coordination failure within the regulator itself, not just between the regulator and the regulated.</p>
+  <p>The policy incoherence runs deeper than federalism. While Congress advances five bills to restrict prior authorization in Medicare Advantage, the CMS Innovation Center did the opposite: it launched the "Wasteful and Inappropriate Service Reduction" (WISeR) Model, which <em>expands</em> PA requirements in traditional Medicare, outsourcing approvals to six private technology companies across six states. The House introduced H.Res.704, a bipartisan resolution formally opposing the model. The resolution's text cited the KFF finding that 81.7% of Medicare Advantage denials are overturned on appeal and referenced the 90% AI error rate alleged in the class action suits. But CMS launched WISeR anyway on January 15, 2026, in Arizona, New Jersey, Ohio, Oklahoma, Texas, and Washington. One arm of the federal government is expanding the same system that another arm is dismantling. In game-theoretic terms, this is not a past coordination failure but an ongoing one.</p>
 
   <p>California may offer the most aggressive state-level model. SB 363, introduced by Sen. Scott Wiener, imposes escalating fines on insurers whose denial overturn rates exceed 50%: at least $50,000 for the first violation, up to $400,000 for the second, and a minimum of $1 million for each subsequent case. In 2023, 72% of California appeals filed with the Department of Managed Health Care resulted in denial reversals. The bill also mandates the first-ever public reporting of denial rates by care category (medical, behavioral, surgical) and by age, with insurer-specific data published in annual reports. Reporting requirements took effect June 1, 2026. If the penalty provisions survive a Newsom veto, California would join Connecticut as one of the only states forcing insurers to face financial consequences for systematic wrongful denials.</p>
 
@@ -1393,6 +1393,24 @@ sup.fn:hover {
   </div>
 
   <p>The report's timing is pointed. It arrived five months before the January 1, 2027 deadline requiring all Medicare Advantage, Medicaid, CHIP, and marketplace plans to support electronic prior authorization through standardized APIs. Starting in 2027, payers must also publish annual prior authorization metrics on their websites: the share of requests approved, denied, and approved on appeal, plus the average time from submission to decision. CMS has signaled that compliance with the new timeframes is now an audit target. The combination of a transparency mandate with trivial financial penalties creates a distinctive enforcement regime: the regulator is betting that public shame will succeed where fines have failed. Whether that bet pays off depends on whether the new data empowers the other players in the game (patients, providers, employers, state attorneys general) to impose costs the regulator cannot.</p>
+
+  <h3>The Regulator's Dilemma: When the Government Becomes the Denier</h3>
+
+  <p>The WISeR Model deserves its own game-theoretic analysis because it violates a foundational assumption of mechanism design: that the regulator sits outside the game. CMS is simultaneously the entity fining private insurers for PA system failures and the entity running its own AI-driven PA system that denies care at higher rates than the private insurers it regulates.</p>
+
+  <p>The early data is damning. In Texas, where Cohere Health runs WISeR's prior authorization reviews, only 62% of requests received initial approval. After a physician review of the non-authorizations, the rate climbed to 84%. For comparison, the national Medicare Advantage approval rate exceeds 92%. Traditional Medicare, which WISeR targets, has historically operated without prior authorization for most services. CMS introduced a denial mechanism into a program that functioned without one, outsourced the denials to private vendors compensated based on a share of the "savings" they generate, and then faced a federal FOIA lawsuit for refusing to disclose how the AI algorithms make their decisions.</p>
+
+  <p>The vendor incentive structure is the critical game-theoretic flaw. WISeR's six contracted companies (Cohere Health, Genzeon, Humata Health, Innovaccer, Virtix Health, Zyter) receive compensation tied to the "savings" their reviews produce. The more procedures denied or delayed, the more revenue the vendors earn. This is the exact shared-savings structure that CMS criticizes when private insurers use it. When CMS fines UnitedHealth $48,869 for systematic PA failures while its own WISeR vendors operate under incentives that reward denial volume, the regulatory signal collapses. The referee has entered the game on the same side as the player it is supposed to be policing.</p>
+
+  <div class="gt-box">
+    <div class="gt-label">Game Theory Concept</div>
+    <div class="gt-title">The Regulator's Paradox: Credibility Collapse in Multi-Role Games</div>
+    <p>In classical mechanism design (Hurwicz 1960, Myerson 1981), the designer is assumed to be a disinterested party who sets rules but does not participate in the game those rules govern. When the designer becomes a player, two problems emerge. First, the designer's rules lose credibility: a regulator that profits from denials cannot credibly punish other firms for denials. Second, the designer gains private information about the game's mechanics that creates asymmetric advantage over other players and over the public. The EFF's FOIA lawsuit targets this second problem directly: CMS refused to disclose the training data, bias safeguards, or decision logic of WISeR's AI tools, replicating the same opacity that provoked the NaviHealth class action against UnitedHealth. When the regulator's opacity mirrors the regulated firm's opacity, the regulated firm's defense ("we are acting within the rules") becomes unfalsifiable. The GAO's May 12, 2026 determination that WISeR constitutes a "rule" under the Administrative Procedure Act introduces a constitutional meta-game: the Congressional Review Act allows Congress to void the executive branch's rule through an expedited process immune to Senate filibuster, a mechanism used fewer than 20 times since 1996.</p>
+  </div>
+
+  <p>The Congressional response has been unusually coordinated. On May 20, 2026, Senator Ron Wyden and Representatives Suzan DelBene and Greg Landsman introduced a joint resolution of disapproval under the CRA to repeal WISeR entirely. The resolution's legal basis rests on the GAO's determination eight days earlier that WISeR meets the APA definition of a rule because it prescribes new requirements for Traditional Medicare providers. CMS had not submitted WISeR to Congress as a rule, which is itself a procedural violation that triggers the CRA's special procedures. If the resolution passes both chambers and the President signs it, CMS would be required to terminate the model and could not implement a "substantially similar" program without new legislation.</p>
+
+  <p>CMS has already blinked once. In April 2026, it delayed WISeR implementation for two services (Deep Brain Stimulation for Parkinson's and Percutaneous Image-Guided Lumbar Decompression for spinal stenosis) "to allow additional time for operational readiness." The delay is a signaling game: CMS retreats on the most medically consequential services while maintaining the program's overall structure, hoping to reduce political pressure without conceding the principle that AI-driven PA belongs in Traditional Medicare. Whether Congress reads this as an adequate concession or an invitation to escalate depends on whether the CRA resolution can secure Republican support. The program's architects may have miscalculated the bipartisan breadth of opposition to algorithmic denial. In a political environment where both DeSantis's "AI Bill of Rights" and Democratic state legislation target the same practice, defending a government-run AI denial program is an unusual hill for either party.</p>
 
 </section>
 
@@ -1750,6 +1768,11 @@ sup.fn:hover {
       <li>People, "What We Know About Luigi Mangione's Life in Prison 2 Years After Shooting UnitedHealthcare CEO," Aug 14, 2026. MDC Brooklyn conditions, orderly work assignment, sentencing timeline. <a href="https://people.com/luigi-mangione-now-what-to-know-12060109">Link</a></li>
       <li>Medical Daily, "Medicare Just Fined 14 Insurers as the Electronic Prior Authorization Deadline Approaches," Aug 2026. CMS Contract Year 2025 audit: $1.54M total penalties, 18 violations, 89% caused financial harm >$100, system failures in PA processing. <a href="https://www.medicaldaily.com/cms-medicare-audit-penalties-electronic-prior-authorization-2027-476577">Link</a></li>
       <li>CMS, "Contract Year 2025 Part C and Part D Program Audit and Enforcement Report," 2026. CVS Health $753,805, Centene $380,785, UNH $48,869; duplicate logic failures, appeals processed as new requests, transition fill denials. <a href="https://www.cms.gov">Link</a></li>
+      <li>Georgetown University Medicare Policy Initiative, "CMS's WISeR Model Faces Potential Repeal Following GAO Determination," May 2026. WISeR six-state implementation timeline, vendor assignments, 62% Texas approval rate, GAO APA rule determination, CRA joint resolution of disapproval. <a href="https://medicare.chir.georgetown.edu/cmss-wiser-model-faces-potential-repeal-following-gao-determination/">Link</a></li>
+      <li>Medscape, "Docs, Lawsuit Challenge Medicare WISeR Prior Auth Experiment," Apr 2026. Physicians report "completely nonfunctional" system, zero epidural steroid injection approvals in months since rollout. <a href="https://www.medscape.com/viewarticle/unsustainable-physicians-lawsuit-challenge-medicares-wiser-2026a1000ae8">Link</a></li>
+      <li>Healthcare Dive, "Tech nonprofit sues CMS over Medicare AI prior authorization pilot," Mar 2026. EFF FOIA lawsuit: CMS failed to disclose AI training data, bias safeguards, or vendor financial incentive structures. <a href="https://www.healthcaredive.com/news/electronic-frontier-foundation-sues-cms-medicare-ai-prior-authorization-wiser/816087/">Link</a></li>
+      <li>GAO, Determination on WISeR Model as APA "rule," May 12, 2026. WISeR prescribes new requirements for Traditional Medicare providers, triggering Congressional Review Act expedited procedures. <a href="https://www.gao.gov">Link</a></li>
+      <li>AASM, "Lawsuit challenges CMS's WISeR prior authorization model," May 2026. Washington Post analysis: Texas 62% initial approval rising to 84% after physician review vs. 92% national MA approval rate. <a href="https://aasm.org/cms-wiser-prior-authorization-lawsuit/">Link</a></li>
     </ol>
   </div>
 </div>
@@ -1836,7 +1859,7 @@ var stockKeyEvents = {
   19: {label: 'Near bottom', color: '#ff6348'},
   33: {label: 'Q2 \'26 earnings', color: '#2ed573'},
   35: {label: 'Guilty plea', color: '#ffa502'},
-  36: {label: 'Current', color: '#2ed573'}
+  37: {label: 'Current', color: '#2ed573'}
 };
 const stockCtx = document.getElementById('stockChart').getContext('2d');
 new Chart(stockCtx, {
@@ -1855,7 +1878,7 @@ new Chart(stockCtx, {
       'Jan 30 \'26','Feb 27','Mar 31',
       'Apr 30','May 29','Jun 30',
       'Jul 16','Jul 31',
-      'Aug 14','Aug 15'
+      'Aug 14','Aug 15','Aug 17'
     ],
     datasets: [{
       label: 'UNH Stock Price',
@@ -1872,7 +1895,7 @@ new Chart(stockCtx, {
         283, 289, 269,
         368, 378, 416,
         415, 436,
-        402, 394
+        402, 394, 396
       ],
       borderColor: '#4a9eff',
       backgroundColor: 'rgba(74,158,255,0.08)',
