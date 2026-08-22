@@ -32,7 +32,7 @@ A data-driven analysis of how the December 2024 killing of UnitedHealthcare CEO 
 
 ## Stats
 
-- **4,432 lines** | **122 subsections** | **~560 sources** | **6 interactive charts** | **~425 min read**
+- **4,491 lines** | **125 subsections** | **~574 sources** | **6 interactive charts** | **~430 min read**
 
 ## Sources
 
