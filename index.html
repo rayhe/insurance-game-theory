@@ -812,6 +812,36 @@ sup.fn:hover {
     <cite>Class action lawsuit against UnitedHealth Group, filed November 2023 (Stat News)</cite>
   </div>
 
+  <h3>The Cross-Market View: First Standardized KFF Data (August 2026)</h3>
+
+  <p>On August 13, 2026, KFF published the first cross-market analysis of insurer-reported prior authorization denial rates, using data CMS mandated under the Interoperability and Prior Authorization Rule (CMS-0057-F). For the first time, denial rates across Medicare Advantage, Medicaid managed care, and ACA Marketplace plans are directly comparable on a standardized basis. The results reveal a pattern that no single-market analysis could: UnitedHealth Group's denial behavior varies systematically by market, and the variation tracks population vulnerability rather than clinical appropriateness.</p>
+
+  <div class="chart-container">
+    <div class="chart-title">UNH Prior Authorization Denial Rates by Market vs. Market Average (KFF, 2025 data)</div>
+    <canvas id="crossMarketChart"></canvas>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-value red">17%</div>
+      <div class="stat-label">UNH Medicare Advantage<br>denial rate (highest of 6)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value orange">11%</div>
+      <div class="stat-label">UNH Medicaid managed<br>care denial rate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value red">21%</div>
+      <div class="stat-label">UNH ACA Marketplace<br>denial rate (#2 of 8)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value green">67%</div>
+      <div class="stat-label">MA appeals overturned<br>(47% Medicaid, 43% ACA)</div>
+    </div>
+  </div>
+
+  <p>Three findings from the cross-market data demand attention. First, UNH's 17% MA denial rate is 3.4 times Elevance's 5%, establishing UNH as the most aggressive denier of care for seniors across the largest insurers. Second, the appeal overturn rates (67% MA, 47% Medicaid, 43% ACA) confirm that a majority of contested denials lack clinical defensibility, yet denials are rarely appealed in any market. Third, KFF's own analysis warns that the percentage-only reporting mandate obscures a crucial inverse relationship: insurers that process more PA requests per enrollee tend to report lower denial rates, meaning per-enrollee denial counts may be similar across insurers with divergent percentages. The transparency mechanism produces data that is simultaneously unprecedented and systematically misleading.</p>
+
   <h3>The Financial Reckoning</h3>
 
   <p>The shooting's financial impact on UnitedHealth Group was severe and sustained. The stock became a real-time barometer of how markets priced the new reality:</p>
@@ -4151,6 +4181,75 @@ new Chart(pathCtx, {
       },
       x: {
         grid: { display: false }
+      }
+    }
+  }
+});
+
+// Cross-Market KFF Denial Rates Chart (Aug 13, 2026 data)
+const crossCtx = document.getElementById('crossMarketChart').getContext('2d');
+new Chart(crossCtx, {
+  type: 'bar',
+  data: {
+    labels: ['UnitedHealth', 'Centene', 'Kaiser', 'CVS/Aetna', 'Humana', 'Elevance'],
+    datasets: [
+      {
+        label: 'Medicare Advantage',
+        data: [17, 15, 13, 8, 7, 5],
+        backgroundColor: 'rgba(255,71,87,0.75)',
+        borderColor: 'rgba(255,71,87,1)',
+        borderWidth: 1,
+        borderRadius: 3
+      },
+      {
+        label: 'Medicaid Managed Care',
+        data: [11, 18, null, 17, null, 9],
+        backgroundColor: 'rgba(255,165,2,0.75)',
+        borderColor: 'rgba(255,165,2,1)',
+        borderWidth: 1,
+        borderRadius: 3
+      },
+      {
+        label: 'ACA Marketplace',
+        data: [21, 25, null, null, null, 10],
+        backgroundColor: 'rgba(74,158,255,0.75)',
+        borderColor: 'rgba(74,158,255,1)',
+        borderWidth: 1,
+        borderRadius: 3
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { boxWidth: 12, padding: 14, color: '#a0aec0' }
+      },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            if (ctx.raw === null) return ctx.dataset.label + ': N/A';
+            return ctx.dataset.label + ': ' + ctx.raw + '%';
+          }
+        }
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 30,
+        ticks: {
+          stepSize: 5,
+          callback: function(v) { return v + '%'; },
+          color: '#a0aec0'
+        },
+        grid: { color: 'rgba(42,42,58,0.5)' }
+      },
+      x: {
+        grid: { display: false },
+        ticks: { color: '#a0aec0' }
       }
     }
   }

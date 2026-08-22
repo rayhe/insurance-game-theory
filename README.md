@@ -28,6 +28,11 @@ A data-driven analysis of how the December 2024 killing of UnitedHealthcare CEO 
 | Americans blaming denials/profits | ~70% | NORC/AP Poll, Dec 2024 |
 | Prior auth requirements eliminated | 6.5 million (11%) | AHIP, Apr 2026 |
 | UNH executive security spend (2024) | $1.7 million | SEC proxy filing |
+| UNH cross-market MA denial rate | 17% (3.4× Elevance) | KFF/CMS-0057-F, Aug 2026 |
+
+## Stats
+
+- **4,432 lines** | **122 subsections** | **~560 sources** | **6 interactive charts** | **~425 min read**
 
 ## Sources
 
